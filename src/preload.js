@@ -1,2 +1,6 @@
-// See the Electron documentation for details on how to use preload scripts:
-// https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
+import { contextBridge, ipcRenderer } from "electron";
+
+contextBridge.exposeInMainWorld("api", {
+  criarProduto: (dados) => ipcRenderer.invoke("produto:criar", dados),
+  listarProdutos: () => ipcRenderer.invoke("produto:listar")
+});
