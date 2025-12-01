@@ -1,19 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Sistema da Loja</title>
-  <script type="module" src="/js/main.js"></script>
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-  <h1>Bem-vindo ao Sistema da Loja</h1>
-  <button id="testar">Testar Electron</button>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sistema de Estoque - Loja</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div id="app"></div>
 
-  <script>
-    document.getElementById("testar").onclick = () => {
-      alert(window.api.hello());
-    };
-  </script>
-</body>
+    <script type="module" src="/src/renderer.js"></script>
+  </body>
 </html>
