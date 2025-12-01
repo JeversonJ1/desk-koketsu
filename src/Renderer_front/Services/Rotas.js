@@ -1,17 +1,17 @@
-import UsuarioListar from "../Views/Usuario/listar/UsuarioListar.js"
-import UsuarioForm from "../Views/Usuario/form/UsuarioForm.js"
-import UsuariosView from "../Views/Usuario/UsuariosView.js"
+import VendaListar from "../Views/Vendas/listar/VendaListar.js"
+import VendaForm from "../Views/Vendas/form/VendaForm.js"
+import VendasView from "../Views/Vendas/VendasView.js"
 class Rotas{
     constructor(){
         this.rotas={
-            "/usuario_listar":async () =>{
-                return new UsuarioListar().renderizarLista();
+            "/vendas_listar": async () =>{
+                return new VendaListar().renderizarLista();
             },
-            "/usuario_cadastrar": ()=> {
-                return new UsuarioForm().renderizarFormulario();
+            "/vendas_cadastrar": () => {
+                return new VendaForm().renderizarFormulario();
             },
-            "/usuario_menu": () => {
-                return new UsuariosView().renderizarMenu();
+            "/listar_menu": () => {
+                return new VendasView().renderizarMenu();
             }
         }        
     }

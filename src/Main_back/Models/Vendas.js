@@ -1,9 +1,11 @@
 import db from '../Database/db.js';
+import crypto from 'node:crypto';
 class Vendas{
     constructor() {
         
     }
 adicionar(venda) {
+        const uuid = crypto.ramdomUUID();
         const stmt = db.prepare(`
             INSERT INTO tbl_vendas (
                 data_venda, 
@@ -67,7 +69,6 @@ adicionar(venda) {
             WHERE id_venda = ?
         `);
         const info = stmt.run(venda.id_venda);
-        
         return info.changes > 0;
     }
 }

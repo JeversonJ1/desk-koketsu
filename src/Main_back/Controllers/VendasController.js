@@ -6,14 +6,9 @@ class VendasController{
     }
 
     async listar() {
-        try {
             const dados = await this.vendaModel.listar();
             console.log('Dados das vendas no controller:', dados);
             return dados;
-        } catch (error) {
-            console.error('Erro ao listar vendas:', error);
-            return [];
-        }
     }
 
     async cadastrar(venda) {

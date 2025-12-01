@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'node:path';
 import started from 'electron-squirrel-startup';
 import VendasController from './Main_back/Controllers/VendasController.js';
@@ -53,9 +53,7 @@ app.whenReady().then(() => {
       createWindow();
     }
   });
-});
-
-ipcMain.handle('dark-mode:toggle', () => {
+  ipcMain.handle('dark-mode:toggle', () => {
   if (nativeTheme.shouldUseDarkColors) {
     nativeTheme.themeSource = 'light'
   } else {
@@ -64,14 +62,34 @@ ipcMain.handle('dark-mode:toggle', () => {
   return nativeTheme.shouldUseDarkColors
 })
 
-// Quit when all windows are closed, except on macOS. There, it's common
-// for applications and their menu bar to stay active until the user quits
-// explicitly with Cmd + Q.
+ipcMain.handle("vendas:listar", async () => {
+  return await controllerVendas.listar();
+})
+
+ipcMain.handle("vendas:cadastrar", async (event, vendaData) => {
+  const resultado = await controllerVendas.cadastrar(vendaData);
+  return resultado;
+})
+
+ipcMain.handle("vendas:removervenda", async (event, uuid) => {
+  return await controllerVendas.removerVenda(uuid);
+})
+
+ipcMain.handle("vendas:editar", async (event, venda) => {
+  const resultado = await controllerVendas.atualizarVenda(venda);
+  return resultado;
+})
+
+});
+
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
   }
-});
+})
+
+
+
 
 app.on
 

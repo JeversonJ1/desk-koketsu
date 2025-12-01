@@ -8,6 +8,7 @@ const config = new Configuracao();
 const rota_mapeada = new Rotas();
 
 async function navegarPara(rota) {
+  console.log(rota);
   const html = await rota_mapeada.getPage(rota);
   document.querySelector('#app').innerHTML = html;
 }
@@ -16,4 +17,4 @@ window.addEventListener('hashchange', async () => {
   await navegarPara(rota);
 });
 
-navegarPara('/');
+navegarPara('/listar_menu');

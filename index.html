@@ -2,12 +2,20 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Hello World!</title>
+    <title>Desktop Koketsu</title>
 
   </head>
   <body>
-    <h1>💖 Hello World!</h1>
-    <p>Welcome to your Electron application.</p>
+    <div id="app"></div>
+    <nav>
+    <ul>
+      <li><a href="#vendas_menu">Usuarios</a></li>
+      <li><a href="#vendas_listar">Lista de Usuarios</a></li>
+    </ul>
+     <button id="toggle-dark-mode">Modo do site</button>
+     <p id="theme-source"></p>
+      <p>Conexão: <strong id='status'></strong></p>
+    </nav>
     <script type="module" src="/src/renderer.js"></script>
   </body>
 </html>

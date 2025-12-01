@@ -9,7 +9,7 @@ export function initDatabase() {
   db.pragma('journal_mode = WAL');
 
   db.exec(`
-    CREATE TABLE tbl_vendas (
+    CREATE TABLE IF NOT EXISTS tbl_vendas (
         id_venda INTEGER PRIMARY KEY AUTOINCREMENT,
         data_venda TEXT NOT NULL,
         valor_venda REAL NOT NULL,

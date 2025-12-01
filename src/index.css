@@ -1,8 +1,193 @@
+:root {
+  color-scheme: light dark;
+}
+
+/* --- Estilos Globais e Dark/Light Mode --- */
+@media (prefers-color-scheme: dark) {
+  body { 
+    background: #333; 
+    color: #fefefe; /* Cor clara para texto no modo escuro */
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body { 
+    background: #ddd; 
+    color: black; 
+  }
+}
+
 body {
   font-family:
     -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
     sans-serif;
   margin: auto;
-  max-width: 38rem;
+  max-width: 900px; /* Aumentado para acomodar tabelas de vendas */
   padding: 2rem;
+  background-color: rgb(228, 188, 78);
+}
+
+/* --- Estilos de Formulário --- */
+input, select { /* Adicionando 'select' para o modal de status */
+  font-size: 1rem;
+  font-family: inherit;
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  font-size: 1rem;
+  font-family: inherit;
+  display: block;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  width: 100%;
+  border-radius: 5px;
+  background-color: #c4ac44;
+  color: white;
+  border: 2px rgb(180, 180, 192) solid;
+  cursor: pointer;
+}
+
+/* --- Estilos de Navegação --- */
+nav{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 200px;
+  height: 100%;
+  background-color: #333;
+  padding-top: 20px;
+}
+ul{
+  list-style-type: none;
+  padding: 0;
+}
+ul li a{
+  text-decoration: none;
+  color: white;
+  border: solid 1px white;
+  padding: 10px;
+  display: block;
+  text-align: center;
+  margin-bottom: 10px;
+  box-shadow: 4px 4px #ccc;
+  transform: translateY(0);
+}
+ul li a:active{
+  box-shadow: none;
+  transform: translateY(4px);
+  transition: all 0.2s ease;
+}
+
+/* --- Estilos de Container e Layout Principal --- */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(75, 72, 73);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-left: 220px; /* Adiciona margem para não ficar atrás da nav */
+}
+
+/* --- Estilos de Tabela (Listagem de Vendas) --- */
+
+/* 1. Novo ID do container de vendas */
+#container-vendas { 
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+  background-color: white; /* Fundo branco para melhor leitura */
+  color: black;
+}
+
+th, td {
+  text-align: left;
+  padding: 12px;
+}
+
+tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+
+/* Estilo para o cabeçalho da tabela */
+th {
+  background-color: #6abac0; /* Cor do botão para o cabeçalho */
+  color: white;
+}
+
+/* --- Estilos para Botões de Ação na Tabela --- */
+
+/* 2. Estilizando botões de Editar/Excluir */
+.editar-venda, .excluir-venda {
+  display: inline-block; /* Deixa os botões lado a lado */
+  width: auto;
+  margin: 5px;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+}
+
+.editar-venda {
+  background-color: #007bff; /* Azul para Edição */
+  border-color: #007bff;
+}
+
+.excluir-venda {
+  background-color: #dc3545; /* Vermelho para Excluir */
+  border-color: #dc3545;
+}
+
+/* Sobrescreve o botão principal para o modal */
+.modal-content button[type="submit"] {
+    margin-top: 20px;
+}
+
+/* --- Estilos de Modal --- */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 10; /* Maior z-index */
+  padding-top: 100px; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 30px;
+  border: 1px solid #888;
+  width: 90%; 
+  max-width: 500px; /* Limita largura do modal para formulários */
+  border-radius: 10px;
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
