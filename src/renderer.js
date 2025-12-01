@@ -7,7 +7,11 @@ async function navegar() {
     const app = document.getElementById('app');
     
     // 1. Pega o hash da URL e remove o '#'
-    let hash = window.location.hash.replace('#', '');
+        if (!app) {
+            console.error("Elemento #app não encontrado no DOM. Impossível renderizar a rota.");
+            return;
+        }
+        let hash = window.location.hash.replace('#', '');
 
     // 2. Se o hash estiver vazio (início do app), define a rota padrão
     if (!hash) {
@@ -23,10 +27,12 @@ async function navegar() {
     console.log("Tentando acessar a rota:", hash); // Ajuda a ver o que está acontecendo no console
 
     // 4. Carrega a página
-    try {
-        app.innerHTML = await rotas.getPage(hash);
-    } catch (error) {
-        console.error("Erro crítico na navegação:", error);
+        try {
+            const html = await rotas.getPage(hash);
+            app.innerHTML = html;
+        } catch (Erro) {
+            console.error('Erro ao carregar a página', Erro);
+            app.innerHTML = `<h2>Erro ao carregar a página</h2><pre>${Erro.message}</pre>`;
     }
 }
 

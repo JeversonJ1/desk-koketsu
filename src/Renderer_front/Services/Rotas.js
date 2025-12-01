@@ -24,10 +24,19 @@ class Rotas {
             }
         }
     }
-    async getPage(Rotas){
-        // /usuario_listar
-            // UsuarioListar()
-        return await this.rotas[Rotas]();
+    async getPage(rota){
+        // rota ex: /usuario_listar
+        const handler = this.rotas[rota];
+        if (!handler) {
+            // Rota não encontrada -> retornar mensagem amigável
+            return `<h2>Página não encontrada</h2><p>Rota: ${rota}</p>`;
+        }
+        try {
+            return await handler();
+        } catch (err) {
+            console.error('Erro ao renderizar rota', rota, err);
+            return `<h2>Erro ao carregar a página</h2><pre>${err.message}</pre>`;
+        }
     }
 }
 export default Rotas;
