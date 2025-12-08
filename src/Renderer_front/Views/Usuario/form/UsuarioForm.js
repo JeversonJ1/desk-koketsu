@@ -19,14 +19,20 @@ class UsuarioForm{
             console.log(event)
             const nome = document.getElementById('nome');
             const idade = document.getElementById('idade');
+            const senha = document.getElementById('senha');
+            const role = document.getElementById('role');
             const usuario = {
                 nome: nome.value,
                 idade: idade.value
+                , senha: senha ? senha.value : undefined
+                , role: role ? role.value : undefined
             }
             const resultado = await window.api.cadastrar(usuario);
            if(resultado){
              nome.value = '';
              idade.value = '';
+             if (senha) senha.value = '';
+             if (role) role.value = '';
              this.mensagem.sucesso();
            }else{
              this.mensagem.erro();

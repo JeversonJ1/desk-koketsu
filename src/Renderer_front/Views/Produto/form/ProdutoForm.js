@@ -32,6 +32,9 @@ class ProdutoForm {
 
             const nome = document.getElementById('nome').value;
             const quantidade = document.getElementById('quantidade').value;
+            const categoria = document.getElementById('categoria') ? document.getElementById('categoria').value : '';
+            const codigo_produto = document.getElementById('codigo_produto') ? document.getElementById('codigo_produto').value : '';
+            const fileInput = document.getElementById('imagem_produto');
 
             // Validação simples
             if (!nome || !quantidade) {
@@ -42,10 +45,19 @@ class ProdutoForm {
             const produto = {
                 nome: nome,
                 tamanho: document.getElementById('tamanho').value,
+                categoria: categoria,
+                codigo_produto: codigo_produto,
                 quantidade: Number(quantidade), // Garante que é número
                 preco_custo: Number(document.getElementById('preco_custo').value),
                 preco_venda: Number(document.getElementById('preco_venda').value)
             };
+
+            // Se houver arquivo selecionado, solicitar upload ao main via preload
+            if (fileInput && fileInput.files && fileInput.files.length > 0) {
+                const filePath = fileInput.files[0].path;
+                const savedName = await window.api.uploadImagem(filePath);
+                if (savedName) produto.imagem = savedName;
+            }
 
             console.log("Enviando produto:", produto);
 

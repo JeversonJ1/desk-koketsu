@@ -5,13 +5,16 @@ class Produtos {
   adicionar(produto) {
     const uuid = crypto.randomUUID();
     const stmt = db.prepare(`
-      INSERT INTO produtos (uuid, nome, tamanho, preco_custo, preco_venda, quantidade)
-      VALUES (?, ?, ?, ?, ?, ?)
+  INSERT INTO produtos (uuid, nome, tamanho, categoria, codigo_produto, imagem, preco_custo, preco_venda, quantidade)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
     `);
     const info = stmt.run(
       uuid, 
       produto.nome, 
       produto.tamanho, 
+  produto.categoria || null,
+  produto.codigo_produto || null,
+  produto.imagem || null,
       produto.preco_custo, 
       produto.preco_venda, 
       produto.quantidade
@@ -31,13 +34,16 @@ class Produtos {
 
   atualizar(produto) {
     const stmt = db.prepare(`
-      UPDATE produtos
-      SET nome = ?, tamanho = ?, preco_custo = ?, preco_venda = ?, quantidade = ?
-      WHERE uuid = ?
+  UPDATE produtos
+  SET nome = ?, tamanho = ?, categoria = ?, codigo_produto = ?, imagem = ?, preco_custo = ?, preco_venda = ?, quantidade = ?
+  WHERE uuid = ?
     `);
     const info = stmt.run(
       produto.nome, 
       produto.tamanho, 
+  produto.categoria || null,
+  produto.codigo_produto || null,
+  produto.imagem || null,
       produto.preco_custo, 
       produto.preco_venda, 
       produto.quantidade, 

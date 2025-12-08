@@ -8,16 +8,23 @@ class Usuarios {
   adicionar(usuario) {
     const uuid = crypto.randomUUID();
     const stmt = db.prepare(`
-      INSERT INTO usuarios (uuid, nome, idade)
-      VALUES (?, ?, ?)
+  INSERT INTO usuarios (uuid, nome, idade, senha, role)
+  VALUES (?, ?, ?, ?, ?)
     `);
-    const info = stmt.run(
-      uuid,
-      usuario.nome,
-      usuario.idade
-    );
-    // Retorna o objeto criado ou o ID inserido
-    return { id: info.lastInsertRowid, uuid, ...usuario };
+    try {
+      const info = stmt.run(
+        uuid,
+        usuario.nome,
+        usuario.idade || null,
+        usuario.senha || null,
+        usuario.role || 'vendedor'
+      );
+      // Retorna o objeto criado com indicação de sucesso
+      return { success: true, id: info.lastInsertRowid, uuid, ...usuario };
+    } catch (err) {
+      console.error('Usuarios.adicionar -> erro ao inserir usuario', err);
+      return { success: false, error: String(err) };
+    }
   }
 
   async listar() {
@@ -30,6 +37,11 @@ class Usuarios {
     return stmt.get(uuid);
   }
 
+  async buscarPorNome(nome) {
+  const stmt = db.prepare('SELECT * FROM usuarios WHERE lower(nome) = lower(?) AND excluido_em IS NULL');
+  return stmt.get(nome);
+  }
+
   // Renomeado de 'atualizarusuario' para 'atualizar' para bater com o Controller
   // Alterado WHERE id para WHERE uuid para consistência
   async atualizar(usuarioAtualizado) {
@@ -37,6 +49,8 @@ class Usuarios {
       UPDATE usuarios
       SET nome = ?, 
       idade = ?,
+      senha = COALESCE(?, senha),
+      role = COALESCE(?, role),
       atualizado_em = CURRENT_TIMESTAMP,
       sync_status = 0
       WHERE uuid = ?
@@ -44,7 +58,9 @@ class Usuarios {
     
     const info = stmt.run(
       usuarioAtualizado.nome,
-      usuarioAtualizado.idade,
+      usuarioAtualizado.idade ?? null,
+      usuarioAtualizado.senha ?? null,
+      usuarioAtualizado.role ?? null,
       usuarioAtualizado.uuid 
     );
     return info.changes;

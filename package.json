@@ -35,5 +35,7 @@
     "better-sqlite3": "^12.4.6",
     "electron-squirrel-startup": "^1.0.1",
     "sweetalert2": "^11.26.3"
+  ,
+  "bcryptjs": "^2.4.3"
   }
 }

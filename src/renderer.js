@@ -15,7 +15,19 @@ async function navegar() {
 
     // 2. Se o hash estiver vazio (início do app), define a rota padrão
     if (!hash) {
-        hash = '/produto_listar';
+        // se não está logado, redireciona para login
+        const sess = localStorage.getItem('user');
+        if (!sess) {
+            hash = '/login';
+        } else {
+            hash = '/produto_listar';
+        }
+    }
+
+    // se já estamos sem sessão e tentou acessar outra rota, forçar /login
+    const sess = localStorage.getItem('user');
+    if (!sess && hash !== '/login') {
+        hash = '/login';
     }
 
     // 3. CORREÇÃO DE SEGURANÇA: Garante que a rota sempre comece com '/'

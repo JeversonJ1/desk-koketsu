@@ -23,24 +23,30 @@ class UsuariosView{
             <button class="editar-user" data-id="${usuario.uuid}">Editar</button>
             <button class="excluir-user" data-id="${usuario.uuid}">Excluir</button> </td><tr>`
         });
-        container += `</table></div>
-        <!-- The Modal -->
+    container += `</table></div>
+    <!-- The Modal -->
 <div id="myModal" class="modal">
-
+    
   <!-- Modal content -->
-  <div class="modal-content">
+    <div class="modal-content">
     <span class="close">&times;</span>
-    <form id="form-usuario">
+    <form id="form-formulario">
+                    <input type="hidden" id="id" />
                     <label>Nome:</label>
-                    <input type="text"id= id="nome"/>
+                    <input type="text" id="nome"/>
                     <label>Idade:</label>
                     <input type="number" id="idade"/>
-                    <button>Salvar</button>
-                    <label>Idade:</label>
+                    <label>Senha:</label>
+                    <input type="password" id="senha"/>
+                    <label>Role:</label>
+                    <select id="role">
+                        <option value="vendedor">Vendedor</option>
+                        <option value="admin">Admin</option>
+                    </select>
                     <button>Salvar</button>
                 </form>
   </div>
-
+    
 </div>`;
         return container;
     }
@@ -50,6 +56,13 @@ class UsuariosView{
                     <input type="text" id="nome"/>
                     <label>Idade:</label>
                     <input type="number" id="idade"/>
+                    <label>Senha:</label>
+                    <input type="password" id="senha"/>
+                    <label>Role:</label>
+                    <select id="role">
+                        <option value="vendedor">Vendedor</option>
+                        <option value="admin">Admin</option>
+                    </select>
                     <button>Salvar</button>
                 </form>`
             
