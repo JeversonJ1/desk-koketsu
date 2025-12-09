@@ -16,6 +16,16 @@ renderizarLista(produtos) {
                 <button id="btn_logout" style="margin-left:auto; background:#e74c3c; color:#fff; border:none; padding:8px 12px; border-radius:4px; cursor:pointer;">Sair</button>
                 <div style="display:flex; gap:10px; align-items:center;">
                     <input type="search" id="buscar_produto" placeholder="Buscar por nome..." style="padding:8px; border-radius:4px; border:1px solid #ccc; min-width:240px;">
+                    <select id="filtro_tamanho" style="padding:8px; border-radius:4px; border:1px solid #ccc;">
+                        <option value="">Tamanho</option>
+                        <!-- opções populadas dinamicamente -->
+                    </select>
+                    <select id="filtro_categoria" style="padding:8px; border-radius:4px; border:1px solid #ccc;">
+                        <option value="">Categoria</option>
+                        <!-- opções populadas dinamicamente -->
+                    </select>
+                    <input id="filtro_preco_min" type="number" step="0.01" placeholder="Preço min" style="padding:8px; border-radius:4px; border:1px solid #ccc; width:110px;">
+                    <input id="filtro_preco_max" type="number" step="0.01" placeholder="Preço max" style="padding:8px; border-radius:4px; border:1px solid #ccc; width:110px;">
                     <select id="filtro_qtd_operador" style="padding:8px; border-radius:4px; border:1px solid #ccc;">
                         <option value="">Qtd</option>
                         <option value="lt">&lt;=</option>

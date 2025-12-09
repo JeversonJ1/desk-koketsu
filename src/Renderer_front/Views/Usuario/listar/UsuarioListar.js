@@ -8,7 +8,8 @@ class UsuarioListar {
     }
 
     async renderizarLista() {
-        const dados = await window.api.listarUsuarios();
+        const res = await window.api.listarUsuarios();
+        const dados = res && res.success ? (Array.isArray(res.data) ? res.data : []) : [];
         console.log('dados na usuario lista', dados);
         setTimeout(() => {
             this.adicionarEventos();
@@ -29,7 +30,8 @@ class UsuarioListar {
                 console.log(e);
                 if (e.target.classList.contains('editar-user')) {
                     console.log('editar usuario id:', idUsuario);
-                    const usuario = await window.api.buscarUsuario(idUsuario);
+                    const res = await window.api.buscarUsuario(idUsuario);
+                    const usuario = res && res.success ? res.data || res : null;
                     const id = document.getElementById("id");
                     const nome = document.getElementById("nome");
                     const idade = document.getElementById("idade");
@@ -38,19 +40,22 @@ class UsuarioListar {
                         if (nome) nome.value = usuario.nome || '';
                         if (idade) idade.value = usuario.idade || '';
                         this.view.abrirModal();
+                    } else {
+                        this.mensagem.erro('Usuário não encontrado.');
                     }
                 }
 
                 if (e.target.classList.contains('excluir-user')) {
-                    const resultado = await window.api.removerUsuario(idUsuario);
-                    if (resultado) {
+                    const res = await window.api.removerUsuario(idUsuario);
+                    if (res && res.success) {
                         this.mensagem.sucesso("Excluido com sucesso!");
                         setTimeout(async () => {
                             const app = document.getElementById("app");
                             if (app) app.innerHTML = await this.renderizarLista();
                         }, 1500);
                     } else {
-                        this.mensagem.erro("Erro ao excluir!");
+                        const msg = res && res.error ? res.error : 'Erro ao excluir!';
+                        this.mensagem.erro(msg);
                     }
                 }
 
@@ -77,9 +82,8 @@ class UsuarioListar {
                     role: role && role.value ? role.value : undefined,
                 };
 
-                const resultado = await window.api.atualizarUsuario(usuario);
-
-                if (resultado) {
+                const res = await window.api.atualizarUsuario(usuario);
+                if (res && res.success) {
                     // fechar modal e recarregar lista
                     this.view.fecharModal();
                     this.mensagem.sucesso("Atualizado com sucesso!");
@@ -88,7 +92,8 @@ class UsuarioListar {
                         if (app) app.innerHTML = await this.renderizarLista();
                     }, 500);
                 } else {
-                    this.mensagem.erro("Erro ao atualizar!");
+                    const msg = res && res.error ? res.error : 'Erro ao atualizar!';
+                    this.mensagem.erro(msg);
                 }
             });
         }

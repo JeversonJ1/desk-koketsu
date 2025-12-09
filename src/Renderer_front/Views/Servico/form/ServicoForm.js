@@ -39,7 +39,7 @@ class ServicoForm {
                 // No preload, a função para adicionar é 'criarServico' que chama 'servico:adicionar'
                 const res = await window.api.criarServico(servico);
 
-                if (res) {
+                if (res && res.success) {
                     this.mensagem.sucesso("Serviço cadastrado!");
                     form.reset();
                     
@@ -47,7 +47,8 @@ class ServicoForm {
                         window.location.hash = "#/servico_listar";
                     }, 1500);
                 } else {
-                    this.mensagem.erro("Erro ao salvar o serviço no banco.");
+                    const msg = res && res.error ? res.error : 'Erro ao salvar o serviço no banco.';
+                    this.mensagem.erro(msg);
                 }
             } catch (error) {
                 console.error("Erro ao criar serviço:", error);

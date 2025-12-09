@@ -27,16 +27,17 @@ class UsuarioForm{
                 , senha: senha ? senha.value : undefined
                 , role: role ? role.value : undefined
             }
-            const resultado = await window.api.cadastrar(usuario);
-           if(resultado){
-             nome.value = '';
-             idade.value = '';
-             if (senha) senha.value = '';
-             if (role) role.value = '';
-             this.mensagem.sucesso();
-           }else{
-             this.mensagem.erro();
-           }
+                        const res = await window.api.cadastrar(usuario);
+                     if(res && res.success){
+                         nome.value = '';
+                         idade.value = '';
+                         if (senha) senha.value = '';
+                         if (role) role.value = '';
+                         this.mensagem.sucesso();
+                     }else{
+                         const msg = res && res.error ? res.error : undefined;
+                         this.mensagem.erro(msg);
+                     }
             
         })
     }

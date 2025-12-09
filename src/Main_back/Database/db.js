@@ -1,10 +1,22 @@
 import Database from 'better-sqlite3';
-import { app } from 'electron';
 import path from 'node:path';
+import { createRequire } from 'node:module';
 import bcrypt from 'bcryptjs';
 
-// Pode manter o nome que você preferir aqui
-const dbPath = path.join(app.getPath('userData'), 'loja_estoque_final.db');
+// carrega `electron.app` apenas se disponível; permite rodar fora do Electron para testes
+const require = createRequire(import.meta.url);
+let app;
+try {
+  // Pode falhar quando rodando com node puro
+  app = require('electron').app;
+} catch (err) {
+  app = null;
+}
+
+// caminho do arquivo DB. Usa userData do Electron quando disponível;
+// caso contrário usa a pasta do projeto (útil para testes/simulação offline)
+const userDataDir = process.env.USER_DATA_PATH || (app ? app.getPath('userData') : path.join(process.cwd(), 'userData'));
+const dbPath = path.join(userDataDir, 'loja_estoque_final.db');
 const db = new Database(dbPath, { verbose: console.log });
 
 export function initDatabase() {

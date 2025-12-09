@@ -8,9 +8,10 @@ class ServicoListar {
     }
 
     async renderizarLista() {
-        const dados = await window.api.listarServicos();
-        setTimeout(() => this.adicionarEventos(), 0);
-        return this.view.renderizarLista(dados);
+    const res = await window.api.listarServicos();
+    const dados = res && res.success ? (Array.isArray(res.data) ? res.data : []) : [];
+    setTimeout(() => this.adicionarEventos(), 0);
+    return this.view.renderizarLista(dados);
     }
 
     adicionarEventos() {
@@ -28,22 +29,28 @@ class ServicoListar {
             if (e.target.classList.contains('excluir-serv')) {
                 if(confirm("Tem certeza que deseja excluir este serviço?")) {
                     const res = await window.api.removerServico(uuid);
-                    if (res) {
+                    if (res && res.success) {
                         this.mensagem.sucesso("Serviço removido!");
                         document.getElementById("app").innerHTML = await this.renderizarLista();
                     } else {
-                        this.mensagem.erro("Erro ao remover o serviço.");
+                        const msg = res && res.error ? res.error : 'Erro ao remover o serviço.';
+                        this.mensagem.erro(msg);
                     }
                 }
             }
 
             // --- EDITAR (Abrir Modal) ---
             if (e.target.classList.contains('editar-serv')) {
-                const servico = await window.api.buscarServico(uuid);
-                document.getElementById('edit_uuid_servico').value = servico.uuid;
-                document.getElementById('edit_nome_servico').value = servico.nome;
-                document.getElementById('edit_preco_servico').value = servico.preco;
-                this.view.abrirModal();
+                const res = await window.api.buscarServico(uuid);
+                const servico = res && res.success ? res.data || res : null;
+                if (servico) {
+                    document.getElementById('edit_uuid_servico').value = servico.uuid;
+                    document.getElementById('edit_nome_servico').value = servico.nome;
+                    document.getElementById('edit_preco_servico').value = servico.preco;
+                    this.view.abrirModal();
+                } else {
+                    this.mensagem.erro('Serviço não encontrado.');
+                }
             }
         });
 
@@ -59,12 +66,13 @@ class ServicoListar {
                 };
                 
                 const res = await window.api.atualizarServico(servico);
-                if(res) {
+                if(res && res.success) {
                     this.mensagem.sucesso("Serviço atualizado!");
                     this.view.fecharModal();
                     document.getElementById("app").innerHTML = await this.renderizarLista();
                 } else {
-                    this.mensagem.erro("Erro ao atualizar o serviço.");
+                    const msg = res && res.error ? res.error : 'Erro ao atualizar o serviço.';
+                    this.mensagem.erro(msg);
                 }
             });
         }

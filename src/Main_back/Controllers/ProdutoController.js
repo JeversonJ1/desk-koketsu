@@ -13,8 +13,14 @@ class ProdutoController {
 
     async cadastrar(produto) {
         // Validação simples
-        if (!produto.nome || !produto.quantidade) return false;
-        return this.model.adicionar(produto);
+        if (!produto || !produto.nome) return { success: false, error: 'Nome do produto é obrigatório' };
+        try {
+            const resultado = this.model.adicionar(produto);
+            return resultado;
+        } catch (err) {
+            console.error('ProdutoController.cadastrar -> erro:', err);
+            return { success: false, error: String(err) };
+        }
     }
 
     async buscar(uuid) {

@@ -1,124 +1,126 @@
+:root{
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --text: #2d3748;
+  --muted: #6b7280;
+  --primary: #2563eb; /* azul padrão */
+  --success: #16a34a;
+  --danger: #e11d48;
+  --radius: 8px;
+  --gap: 16px;
+}
+
+/* Reset básico */
+*{box-sizing:border-box}
+html,body{height:100%}
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f4f9;
+  background-color: var(--bg);
   margin: 0;
-  padding: 20px;
-  color: #333;
+  color: var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 
-h2, h3 { color: #2c3e50; }
-
-/* --- Botão Novo (Tela de Listagem) --- */
-.btn-novo {
-  background-color: #27ae60;
-  color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-  float: right;
-}
-.btn-novo:hover { background-color: #219150; }
-
-/* --- Botões de Ação na Tabela --- */
-.btn-acao {
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.btn-acao:hover { background-color: #ddd; }
-.remove { color: red; }
-
-/* --- Container dos Botões do Formulário (NOVO) --- */
-.grupo-botoes {
-  display: flex;
-  gap: 15px; /* Espaço entre os botões */
-  margin-top: 20px;
+/* Layout principal - foco em desktop */
+.app-container{
+  max-width:1200px;
+  margin: 32px auto;
+  padding: 24px;
+  display:block;
 }
 
-/* --- Estilo GÊMEO para Salvar e Voltar --- */
-/* Isso garante que ambos tenham exatamente a mesma estrutura */
-.btn-salvar, .btn-voltar {
-  flex: 1; /* Divide o espaço igualmente (50% cada) */
-  height: 45px; /* Altura fixa igual para ambos */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  text-decoration: none; /* Remove sublinhado do link */
-  box-sizing: border-box;
-  font-family: inherit;
+h1,h2,h3{margin:0 0 12px 0;color:var(--text)}
+h1{font-size:24px}
+h2{font-size:20px}
+
+/* Cards e containers */
+.card, .form-container, .modal-content{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:20px;
+  box-shadow:0 6px 18px rgba(15,23,42,0.06);
 }
 
-/* Cores Específicas: Salvar (Azul) */
-.btn-salvar {
-  background-color: #2980b9;
-  color: white;
+/* Botões - sistema consistente */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:10px 16px;
+  border-radius:6px;
+  font-weight:600;
+  cursor:pointer;
+  border:none;
+  color:#fff;
+  background:var(--muted);
+  text-decoration:none;
 }
-.btn-salvar:hover { background-color: #2471a3; }
+.btn:focus{outline:2px solid rgba(37,99,235,0.15)}
+.btn--primary{background:var(--primary)}
+.btn--success{background:var(--success)}
+.btn--danger{background:var(--danger)}
+.btn--ghost{background:transparent;color:var(--text);border:1px solid #e6e9ee}
 
-/* Cores Específicas: Voltar (Cinza) */
-.btn-voltar {
-  background-color: #95a5a6;
-  color: white;
-}
-.btn-voltar:hover { background-color: #7f8c8d; }
+.actions{display:flex;gap:12px}
 
-/* --- Tabela --- */
-.tabela-estoque {
-  width: 100%;
-  border-collapse: collapse;
-  background: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  margin-top: 20px;
-  border-radius: 8px;
-  overflow: hidden;
-}
-.tabela-estoque th, .tabela-estoque td {
-  padding: 12px 15px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-.tabela-estoque th {
-  background-color: #2c3e50;
-  color: white;
-}
+/* Grupo de botões do formulário (usa flex para dividir) */
+.grupo-botoes{display:flex;gap:12px}
+.grupo-botoes .btn{flex:1}
 
-/* --- Formulários e Containers --- */
-.form-container, .modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  max-width: 500px;
-  margin: auto;
+/* Inputs e selects */
+input, select, textarea{
+  width:100%;
+  padding:10px 12px;
+  border:1px solid #e6e9ee;
+  border-radius:6px;
+  font-size:14px;
+  color:var(--text);
 }
-input {
-  width: 95%; /* Ajuste fino para não estourar */
-  padding: 10px;
-  margin: 5px 0 15px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  display: block; /* Garante que fique em linha própria */
+label{display:block;margin-bottom:6px;color:var(--muted);font-size:13px}
+
+/* Tabelas */
+.tabela-estoque{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  background:var(--card);
+  box-shadow:0 6px 18px rgba(15,23,42,0.04);
+  margin-top:var(--gap);
+  border-radius:var(--radius);
+  overflow:hidden;
+}
+.tabela-estoque th, .tabela-estoque td{
+  padding:14px 18px;
+  text-align:left;
+  border-bottom:1px solid #f1f3f5;
+  vertical-align:middle;
+}
+.tabela-estoque th{
+  background:#0f172a; /* tom escuro */
+  color:#fff;
+  font-weight:600;
+  font-size:13px;
 }
 
-/* --- Modal --- */
-.modal {
-  position: fixed;
-  z-index: 1;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.5);
-  padding-top: 60px;
+/* Botões em células */
+.btn-acao{padding:6px 10px;border-radius:6px;border:0;background:#f3f4f6;color:var(--text);cursor:pointer}
+.btn-acao:hover{filter:brightness(0.95)}
+.remove{color:var(--danger)}
+
+/* Modal */
+.modal{position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.45);padding:20px}
+.close-modal{position:absolute;right:18px;top:18px;font-size:22px;cursor:pointer}
+
+/* Responsividade mínima para telas menores */
+@media (max-width:900px){
+  .app-container{padding:16px;margin:16px}
+  .tabela-estoque th, .tabela-estoque td{padding:10px}
+  .grupo-botoes{flex-direction:column}
 }
-.close-modal {
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
+
+/* Helpers */
+.text-muted{color:var(--muted)}
+.flex{display:flex}
+.gap-8{gap:8px}

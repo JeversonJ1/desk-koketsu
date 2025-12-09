@@ -55,8 +55,8 @@ class ProdutoForm {
             // Se houver arquivo selecionado, solicitar upload ao main via preload
             if (fileInput && fileInput.files && fileInput.files.length > 0) {
                 const filePath = fileInput.files[0].path;
-                const savedName = await window.api.uploadImagem(filePath);
-                if (savedName) produto.imagem = savedName;
+                const saved = await window.api.uploadImagem(filePath);
+                if (saved && saved.success) produto.imagem = saved.data && saved.data.path ? saved.data.path : null;
             }
 
             console.log("Enviando produto:", produto);
@@ -65,7 +65,7 @@ class ProdutoForm {
                 const res = await window.api.criarProduto(produto);
                 console.log("Resposta do banco:", res);
 
-                if (res) {
+                if (res && res.success) {
                     this.mensagem.sucesso("Produto cadastrado!");
                     form.reset();
                     
@@ -75,7 +75,8 @@ class ProdutoForm {
                         window.location.hash = "#/produto_listar";
                     }, 1500);
                 } else {
-                    this.mensagem.erro("Erro ao salvar no banco.");
+                    const msg = res && res.error ? res.error : 'Erro ao salvar no banco.';
+                    this.mensagem.erro(msg);
                 }
             } catch (error) {
                 console.error("Erro fatal ao criar produto:", error);

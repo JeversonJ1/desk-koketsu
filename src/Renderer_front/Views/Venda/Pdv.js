@@ -8,8 +8,9 @@ class Pdv {
     }
 
     async renderizar(){
-        // carregar produtos
-        this._produtos = await window.api.listarProdutos();
+    // carregar produtos
+    const res = await window.api.listarProdutos();
+    this._produtos = res && res.success ? (Array.isArray(res.data) ? res.data : []) : [];
         setTimeout(()=> this.adicionarEventos(), 0);
         return this._template();
     }
