@@ -19,8 +19,10 @@ class Usuarios {
         usuario.senha || null,
         usuario.role || 'vendedor'
       );
-      // Retorna o objeto criado com indicação de sucesso
-      return { success: true, id: info.lastInsertRowid, uuid, ...usuario };
+  // Retorna o objeto criado com indicação de sucesso, sem expor a senha
+  const user = Object.assign({}, usuario);
+  if (user.senha) delete user.senha;
+  return { success: true, id: info.lastInsertRowid, uuid, ...user };
     } catch (err) {
       console.error('Usuarios.adicionar -> erro ao inserir usuario', err);
       return { success: false, error: String(err) };
@@ -29,17 +31,25 @@ class Usuarios {
 
   async listar() {
     const stmt = db.prepare('SELECT * FROM usuarios WHERE excluido_em IS NULL');
-    return stmt.all();
+  const rows = stmt.all();
+  // Remover campo senha dos retornos
+  return rows.map(r => { const copy = Object.assign({}, r); if (copy.senha) delete copy.senha; return copy; });
   }
 
   async buscarporid(uuid) {
     const stmt = db.prepare('SELECT * FROM usuarios WHERE uuid = ? AND excluido_em IS NULL');
-    return stmt.get(uuid);
+  const r = stmt.get(uuid);
+  if (!r) return null;
+  if (r.senha) delete r.senha;
+  return r;
   }
 
   async buscarPorNome(nome) {
   const stmt = db.prepare('SELECT * FROM usuarios WHERE lower(nome) = lower(?) AND excluido_em IS NULL');
-  return stmt.get(nome);
+  const r = stmt.get(nome);
+  if (!r) return null;
+  if (r.senha) delete r.senha;
+  return r;
   }
 
   // Renomeado de 'atualizarusuario' para 'atualizar' para bater com o Controller

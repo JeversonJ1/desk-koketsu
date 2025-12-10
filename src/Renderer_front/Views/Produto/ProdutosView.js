@@ -59,13 +59,13 @@ renderizarLista(produtos) {
             <div class="modal-content">
                 <span class="close-modal">&times;</span>
                 <h3>Editar Produto</h3>
-                <form id="form-editar-produto">
+                <form id="form-editar-produto" enctype="multipart/form-data">
                     <input type="hidden" id="edit_uuid">
                     <label>Nome:</label> <input type="text" id="edit_nome" required><br>
                     <label>Tamanho:</label> <input type="text" id="edit_tamanho"><br>
                     <label>Categoria:</label> <input type="text" id="edit_categoria"><br>
                     <label>Código do Produto:</label> <input type="text" id="edit_codigo_produto"><br>
-                    <label>Imagem (substituir):</label> <input type="file" id="edit_imagem_produto" accept="image/*"><br>
+                    <label>Imagem (substituir):</label> <input type="file" id="imagem_produto" accept="image/*"><br>
                     <label>Qtd:</label> <input type="number" id="edit_quantidade" required><br>
                     <label>Preço Venda:</label> <input type="number" step="0.01" id="edit_preco_venda"><br>
                     <label>Preço Custo:</label> <input type="number" step="0.01" id="edit_preco_custo"><br>
@@ -89,7 +89,7 @@ renderizarLista(produtos) {
                         <td>${p.nome}</td>
                         <td>${p.tamanho}</td>
                         <td>${p.codigo_produto || ''}</td>
-                        <td>${p.imagem ? `<img src="file://${p.imagem.replace(/\\/g, '/')}" style="height:40px; object-fit:cover;"/>` : ''}</td>
+                        <td>${p.imagem ? `<img src="data:image/png;base64,${p.imagem.replace(/\\/g, '/')}" style="width:80px; object-fit:cover;"/>` : ''}</td>
                         <td style="${cor}">${p.quantidade}</td>
                         <td>R$ ${p.preco_venda}</td>
                         <td>

@@ -31,7 +31,7 @@ class UsuarioListar {
                 if (e.target.classList.contains('editar-user')) {
                     console.log('editar usuario id:', idUsuario);
                     const res = await window.api.buscarUsuario(idUsuario);
-                    const usuario = res && res.success ? res.data || res : null;
+                    const usuario = res && res.success && res.data ? res.data : null;
                     const id = document.getElementById("id");
                     const nome = document.getElementById("nome");
                     const idade = document.getElementById("idade");
@@ -46,7 +46,8 @@ class UsuarioListar {
                 }
 
                 if (e.target.classList.contains('excluir-user')) {
-                    const res = await window.api.removerUsuario(idUsuario);
+                    const payload = { uuid: idUsuario, actor: (() => { try { return JSON.parse(localStorage.getItem('user')); } catch(e){ return null; } })() };
+                    const res = await window.api.removerUsuario(payload);
                     if (res && res.success) {
                         this.mensagem.sucesso("Excluido com sucesso!");
                         setTimeout(async () => {
@@ -54,8 +55,12 @@ class UsuarioListar {
                             if (app) app.innerHTML = await this.renderizarLista();
                         }, 1500);
                     } else {
-                        const msg = res && res.error ? res.error : 'Erro ao excluir!';
-                        this.mensagem.erro(msg);
+                        if (res && res.error === 'permission') {
+                            this.mensagem.erro('Ação negada: permissões insuficientes.');
+                        } else {
+                            const msg = res && res.error ? res.error : 'Erro ao excluir!';
+                            this.mensagem.erro(msg);
+                        }
                     }
                 }
 
@@ -82,6 +87,9 @@ class UsuarioListar {
                     role: role && role.value ? role.value : undefined,
                 };
 
+                // incluir actor (usuário que está solicitando a alteração) para validação no main
+                usuario.actor = (() => { try { return JSON.parse(localStorage.getItem('user')); } catch(e){ return null; } })();
+
                 const res = await window.api.atualizarUsuario(usuario);
                 if (res && res.success) {
                     // fechar modal e recarregar lista
@@ -92,8 +100,12 @@ class UsuarioListar {
                         if (app) app.innerHTML = await this.renderizarLista();
                     }, 500);
                 } else {
-                    const msg = res && res.error ? res.error : 'Erro ao atualizar!';
-                    this.mensagem.erro(msg);
+                    if (res && res.error === 'permission') {
+                        this.mensagem.erro('Ação negada: permissões insuficientes.');
+                    } else {
+                        const msg = res && res.error ? res.error : 'Erro ao atualizar!';
+                        this.mensagem.erro(msg);
+                    }
                 }
             });
         }

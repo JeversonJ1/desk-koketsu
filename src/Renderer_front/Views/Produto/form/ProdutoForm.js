@@ -35,13 +35,17 @@ class ProdutoForm {
             const categoria = document.getElementById('categoria') ? document.getElementById('categoria').value : '';
             const codigo_produto = document.getElementById('codigo_produto') ? document.getElementById('codigo_produto').value : '';
             const fileInput = document.getElementById('imagem_produto');
+            const produtos = {};
 
             // Validação simples
             if (!nome || !quantidade) {
                 this.mensagem.erro("Preencha o nome e a quantidade!");
                 return;
             }
-            
+             if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                produtos.imagem = await this.toBase64(file);
+            }
             const produto = {
                 nome: nome,
                 tamanho: document.getElementById('tamanho').value,
@@ -49,7 +53,8 @@ class ProdutoForm {
                 codigo_produto: codigo_produto,
                 quantidade: Number(quantidade), // Garante que é número
                 preco_custo: Number(document.getElementById('preco_custo').value),
-                preco_venda: Number(document.getElementById('preco_venda').value)
+                preco_venda: Number(document.getElementById('preco_venda').value),
+                imagem: produtos.imagem ? produtos.imagem : null
             };
 
             // Se houver arquivo selecionado, solicitar upload ao main via preload
@@ -82,6 +87,14 @@ class ProdutoForm {
                 console.error("Erro fatal ao criar produto:", error);
                 this.mensagem.erro("Erro técnico: " + error.message);
             }
+        });
+    }
+    toBase64(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result.split(',')[1]); 
+            reader.onerror = error => reject(error);
         });
     }
 }

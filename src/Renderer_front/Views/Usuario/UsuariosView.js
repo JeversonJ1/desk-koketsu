@@ -51,7 +51,7 @@ class UsuariosView{
         return container;
     }
     renderizarFomulario(){
-        return `<form id="form-usuario">
+        return `<form id="form-usuario"  >
                     <label>Nome:</label>
                     <input type="text" id="nome"/>
                     <label>Idade:</label>

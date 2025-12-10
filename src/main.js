@@ -122,14 +122,47 @@ app.on('ready', () => {
   ipcMain.handle('usuario:logout', wrapHandler(async () => true));
   ipcMain.handle('usuario:cadastrar', wrapHandler(async (event, dados) => {
     console.log('ipcMain -> usuario:cadastrar recebido:', dados);
+    // se vier actor, verificar permissão de admin para criar outros usuários
+    const actor = dados && dados.actor ? dados.actor : null;
+    if (actor && actor.role && actor.role !== 'admin') {
+      return { success: false, error: 'permission' };
+    }
+    // remover actor antes de enviar para o controller
+    if (dados && dados.actor) delete dados.actor;
     const resultado = await usuarioCtrl.cadastrar(dados);
     console.log('ipcMain -> usuario:cadastrar resultado:', resultado);
     return resultado;
   }));
   ipcMain.handle('usuario:listar', wrapHandler(async () => await usuarioCtrl.listar()));
   ipcMain.handle('usuario:buscar', wrapHandler(async (event, uuid) => await usuarioCtrl.buscarUsuarioPorId(uuid)));
-  ipcMain.handle('usuario:atualizar', wrapHandler(async (event, dados) => await usuarioCtrl.atualizarusuario(dados)));
-  ipcMain.handle('usuario:remover', wrapHandler(async (event, uuid) => await usuarioCtrl.removerUsuario(uuid)));
+  ipcMain.handle('usuario:atualizar', wrapHandler(async (event, dados) => {
+    // dados pode conter actor para autorização
+    const actor = dados && dados.actor ? datosToActor(dados) : null;
+    // aceita atualizações se actor for admin ou se não veio actor (autorizado local)
+    if (actor && actor.role && actor.role !== 'admin') {
+      return { success: false, error: 'permission' };
+    }
+    if (datosHasActor(dados)) delete datosRemoveActor(dados);
+    return await usuarioCtrl.atualizarusuario(dados);
+  }));
+  ipcMain.handle('usuario:remover', wrapHandler(async (event, payload) => {
+    // payload pode ser uuid simples ou { uuid, actor }
+    let uuid = payload;
+    let actor = null;
+    if (payload && typeof payload === 'object') {
+      uuid = payload.uuid;
+      actor = payload.actor || null;
+    }
+    if (actor && actor.role && actor.role !== 'admin') {
+      return { success: false, error: 'permission' };
+    }
+    return await usuarioCtrl.removerUsuario(uuid);
+  }));
+
+  // helpers locais para manipular actor no payload (evitam repetir lógica)
+  function datosToActor(dados){ try { return datos.actor || null } catch(e){ return null } }
+  function datosHasActor(dados){ return !!(dados && datos.actor) }
+  function datosRemoveActor(dados){ try { delete datos.actor; return true } catch(e){ return false } }
   ipcMain.handle('venda:criar', wrapHandler(async (event, dados) => await vendaCtrl.criar(dados)));
   ipcMain.handle('venda:listar', wrapHandler(async () => await vendaCtrl.listar()));
   // -----------------------------

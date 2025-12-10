@@ -24,10 +24,11 @@ class UsuarioForm{
             const usuario = {
                 nome: nome.value,
                 idade: idade.value
-                , senha: senha ? senha.value : undefined
-                , role: role ? role.value : undefined
+        , senha: senha ? senha.value : undefined
+        , role: role ? role.value : undefined
+        , actor: (() => { try { return JSON.parse(localStorage.getItem('user')); } catch(e){ return null; } })()
             }
-                        const res = await window.api.cadastrar(usuario);
+            const res = await window.api.cadastrar(usuario);
                      if(res && res.success){
                          nome.value = '';
                          idade.value = '';
@@ -35,8 +36,13 @@ class UsuarioForm{
                          if (role) role.value = '';
                          this.mensagem.sucesso();
                      }else{
-                         const msg = res && res.error ? res.error : undefined;
-                         this.mensagem.erro(msg);
+                         // tratamento de permissão específico
+                         if (res && res.error === 'permission'){
+                             this.mensagem.erro('Ação negada: permissões insuficientes.');
+                         } else {
+                             const msg = res && res.error ? res.error : undefined;
+                             this.mensagem.erro(msg);
+                         }
                      }
             
         })
