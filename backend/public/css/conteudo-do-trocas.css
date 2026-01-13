@@ -1,0 +1,82 @@
+body {
+    background-color: #fff;
+    color: #333;
+    font-family: 'Segoe UI', sans-serif;
+    padding-top: 70px ;
+  }
+
+  h2 {
+    color: #f4c430; /* amarelo ouro */
+    font-weight: bold;
+    margin-top: 40px 0 20px 0;
+    padding: 0;
+  }
+
+  p, li {
+    font-size: 1.05rem;
+  }
+
+  .highlight {
+    font-weight: bold;
+  }
+
+  ul {
+    margin-top: 10px;
+    padding-left: 20px;
+  }
+
+  .container {
+    max-width: 1200px;
+  }
+
+/* ============================================ */
+/* RESPONSIVIDADE - CONTEÚDO TROCAS */
+/* ============================================ */
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 60px;
+  }
+  
+  .container {
+    padding: 0 20px;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-top: 30px;
+  }
+  
+  p, li {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding-top: 50px;
+  }
+  
+  .container {
+    padding: 0 15px;
+  }
+  
+  h2 {
+    font-size: 1.25rem;
+    margin-top: 25px;
+  }
+  
+  p, li {
+    font-size: 0.9rem;
+  }
+  
+  ul {
+    padding-left: 15px;
+  }
+}

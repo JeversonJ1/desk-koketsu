@@ -1,0 +1,15 @@
+{
+  "name": "desk-koketsu",
+  "version": "1.0.0",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-reload": "^2.0.0-alpha.1"
+  },
+  "dependencies": {
+    "chart.js": "^4.5.1"
+  }
+}

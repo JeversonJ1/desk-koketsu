@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Programa-de-Fidelidade</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/footer.css">
+  <link rel="stylesheet" href="duvidas.css">
+  <link rel="stylesheet" href="frete.css">
+  <link rel="stylesheet" href="fidelidade.css">
+</head>
+<body>
+    <div class="page-content">
+    <header>
+        <!-- Navbar personalizada -->
+        <nav id="navbar" class="navbar d-flex align-items-center px-4 sticky-top">
+          <!-- Esquerda: Menu e Pesquisa -->
+          <div class="navbar-section d-flex align-items-center">
+            <button class="btn btn-link text-white d-flex align-items-center p-0 me-3" data-bs-toggle="offcanvas" data-bs-target="#menuOffcanvas">
+              <i class="bi bi-list fs-5"></i> <span class="ms-1">Menu</span>
+            </button>
+      
+          </div>
+      
+          <!-- Centro: Logo -->
+          <div class="navbar-center">
+            <a href="index.html">
+            <img src="/img/icons/logo.png" alt="Logo COMP" class="logo" />
+            </a>
+          </div>
+      
+          <!-- Direita: Login e Carrinho -->
+          <div class="navbar-end d-flex justify-content-end align-items-center">
+            <a href="login.html" class="icon-link"><i class="bi bi-person"></i> Login</a>
+            <a href="https://instagram.com" class="icon-button"><i class="bi bi-bag"></i> Carrinho</a>
+          </div>
+        </nav>
+
+         <!-- Menu lateral interativo -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="menuOffcanvas">
+    <div class="offcanvas-header justify-content-end">
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="list-unstyled">
+        <li><a class="text-white text-decoration-none d-block py-2" href="index.html">Início</a></li>
+        <li><a class="text-white text-decoration-none d-block py-2" href="produto.html">Produtos</a></li>
+        <li><a class="text-white text-decoration-none d-block py-2" href="sobre.html">Sobre</a></li>
+        <li><a class="text-white text-decoration-none d-block py-2" href="#">Contato</a></li>
+      </ul>
+    </div>
+        </header>
+        <main class="conteudo">
+        <h1>⭐ Programa de Fidelidade</h1>
+
+        <section>
+            <h2>1. Como Funciona</h2>
+            <p>Nosso programa de fidelidade foi criado para recompensar nossos clientes mais fiéis. A cada compra realizada, você acumula pontos que podem ser trocados por descontos e benefícios exclusivos.</p>
+        </section>
+
+        <section>
+            <h2>2. Acúmulo de Pontos</h2>
+            <ul>
+                <li>A cada R$ 1,00 gasto, você recebe <strong>1 ponto</strong> no programa;</li>
+                <li>Compras acima de R$ 500,00 recebem <strong>10% de pontos extras</strong>;</li>
+                <li>Pontos válidos por até 12 meses.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>3. Benefícios</h2>
+            <ul>
+                <li>Descontos exclusivos em produtos selecionados;</li>
+                <li>Acesso antecipado a lançamentos e promoções;</li>
+                <li>Brindes especiais em campanhas sazonais.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>4. Como Resgatar</h2>
+            <p>Você pode acompanhar seu saldo de pontos acessando sua conta em nosso site. No checkout, escolha a opção de usar seus pontos para obter descontos imediatos.</p>
+        </section>
+
+        <section>
+            <h2>5. Dúvidas e Suporte</h2>
+            <p>Se precisar de ajuda ou tiver dúvidas sobre o programa, entre em contato com nosso <a href="contato.html">atendimento</a>.</p>
+        </section>
+    </main>
+          
+      
+  <footer>
+    <div class="container">
+        <div class="coluna-footer">
+            <h3 class="titulo">FAÇA PARTE DA NOSSA FAMILIA</h3>
+            <p>Inscreva-se para ter acesso a exclusivo á venda antecipada, novidades e promoções.</p>
+            <form action="mailto:seuemail@exemplo.com" method="POST" enctype="text/plain" class="form-email">
+              <label for="email">Digite seu e-mail:</label>
+              <input type="email" id="email" name="email" placeholder="E-mail" required>
+              <button type="submit">Confirmar</button>
+            </form>
+
+        </div>
+        <div class="coluna-footer">
+            <h3 class="titulo">INSTITUCIONAL</h3>
+            <p><a href="sobre.html" class="hover-destaque">Sobre a Koketsu</a></p>
+        </div>
+
+        <div class="coluna-footer">
+            <h3 class="titulo">ATENDIMENTO AO CLIENTE</h3>
+            <a href="duvidas.html"><p>Dúvidas Frequentes</p></a>
+            <a href="Trocas.html"><P>Trocas e Devoluções</P></a>
+            <a href="politica.html"><P>Politica de Privacidade</P></a>
+            <a href="frete.html"><P>Frete e Entrega</P></a>
+        </div>
+
+        <div class="coluna-footer">
+          <h3 class="titulo">MINHA CONTA</h3>
+          <a href="#"><p>Minha Conta</p></a>
+          <a href="carrinho.html"><p>Carrinho</p></a>
+          <a href="fidelidade.html"><p>Programa de Fidelidade</p></a>
+          
+
+        <h3 class="titulo fale-conosco">FALE CONOSCO</h3>
+        <p>Atendimento:</p>
+        <p>Segunda a Sabado (exceto feriados) das 09h ás 19h</p>
+        <p>E-mail: sac@Koketsu.com.br</p>
+        <A  href="https://WhatsApp.com" target="_blank"><button type="button" class="btn3">WhatsApp  <img src="/img/icons/whatsapp.svg" alt=""></button></A>
+       </div>
+       <div class="copyright">
+        <p>© 2025 Koketsu Grife. Todos os direitos reservados. Koketsu comércio de roupas. calçados e acessorios ltda.</p>
+        <p></p>
+      </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/script.js"></script>
+</body>
+</html>

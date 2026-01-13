@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="app">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h1>Koketsu</h1>
+    <nav class="menu">
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <a href="produtos.html">Produtos</a>
+      <a href="#">Pedidos</a>
+      <a href="#">Clientes</a>
+      <a href="login.html">Sair</a>
+    </nav>
+  </aside>
+
+  <!-- CONTEÚDO -->
+  <main class="content">
+    <h2>Dashboard</h2>
+    <p>Bem-vindo, Administrador</p>
+
+    <!-- GRÁFICOS -->
+    <div class="card">
+      <h3>📊 Vendas por Mês</h3>
+      <canvas id="vendasMes" height="120"></canvas>
+    </div>
+
+    <div class="card">
+      <h3>📦 Estoque por Produto</h3>
+      <canvas id="estoqueProdutos" height="120"></canvas>
+    </div>
+  </main>
+</div>
+
+<!-- SCRIPTS -->
+<script src="../js/chart.umd.min.js"></script>
+<script src="../js/dashboard.js"></script>
+<script src="../js/auth.js"></script>
+
+</body>
+</html>

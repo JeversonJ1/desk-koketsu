@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Koketsu Grife</title>
+  <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/footer.css">
+</head>
+<body>
+  <header>
+    <!-- Navbar personalizada -->
+    <nav id="navbar" class="navbar d-flex align-items-center px-4 sticky-top">
+      <!-- Esquerda: Menu e Pesquisa -->
+      <div class="navbar-section d-flex align-items-center">
+        <button class="btn btn-link text-white d-flex align-items-center p-0 me-3" data-bs-toggle="offcanvas" data-bs-target="#menuOffcanvas">
+          <i class="bi bi-list fs-5"></i> <span class="ms-1">Menu</span>
+        </button>
+  
+      </div>
+  
+      <!-- Centro: Logo -->
+        <a href="index.html">
+            <img src="/img/icons/logo.png" alt="Logo COMP" class="logo" />
+            </a>
+          
+      </div>
+  
+      <!-- Direita: Login e Carrinho -->
+      <div class="navbar-end d-flex justify-content-end align-items-center">
+        <a href="/backend/login" class="icon-link"><i class="bi bi-person"></i> <span class="d-none d-sm-inline">Login</span></a>
+        <a href="carrinho.html" class="icon-button" style="position: relative;">
+          <i class="bi bi-bag"></i> 
+          <span class="d-none d-sm-inline">Carrinho</span>
+          <span id="cart-count" style="position: absolute; top: -5px; right: -5px; background: #ff4444; color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold;">0</span>
+        </a>
+      </div>
+    </nav>
+
+     <!-- Menu lateral interativo -->
+<div class="offcanvas offcanvas-start botao-fechar" tabindex="-1" id="menuOffcanvas">
+<div class="offcanvas-header justify-content-end">
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+</div>
+<div class="offcanvas-body">
+  <ul class="list-unstyled">
+    <li><a class="text-white text-decoration-none d-block py-2" href="index.html">Início</a></li>
+        <li><a class="text-white text-decoration-none d-block py-2" href="produto.html">Produtos</a></li>
+        <li><a class="text-white text-decoration-none d-block py-2" href="sobre.html">Sobre</a></li>
+        <li><a class="text-white text-decoration-none d-block py-2" href="#">Contato</a></li>
+      
+  </ul>
+</div>
+    </header>
+
+  <!-- Menu lateral interativo -->
+ 
+  <div >
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="5000">
+            <img src="/img/COMP1.png" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img src="/img/COMP2.png" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img src="/img/COMP3.png" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>   
+      </div>
+  </div>
+  <main class="container py-5">
+    <!-- CAMISETAS -->
+    <div id="vitrine"></div>
+    </section>
+
+  </main>
+  <div class="top-bar">
+    <div class="info-box">
+      <i class="bi bi-clock"></i>
+      <div>
+        <h4>ATENDIMENTO</h4>
+        <p>SEG A SEX DAS 08H-11:30 E DAS 13H-17:30H</p>
+      </div>
+    </div>
+  
+    <div class="info-box">
+      <i class="bi bi-box-seam"></i>
+      <div>
+        <h4>TROCAS E DEVOLUÇÕES</h4>
+        <p>ATÉ 7 DIAS PARA TROCAS OU DEVOLUÇÕES</p>
+      </div>
+    </div>
+  
+    <div class="info-box">
+      <i class="bi bi-truck"></i>
+      <div>
+        <h4>FRETE</h4>
+        <p>GRÁTIS PARA COMPRAS ACIMA DE R$349<br>PARA TODO O BRASIL</p>
+      </div>
+    </div>
+  
+    <div class="info-box">
+      <i class="bi bi-credit-card"></i>
+      <div>
+        <h4>PARCELAMENTO</h4>
+        <p>EM ATÉ 6X SEM JUROS NO CARTÃO</p>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="container">
+        <div class="coluna-footer">
+            <h3 class="titulo">FAÇA PARTE DA NOSSA FAMILIA</h3>
+            <p>Inscreva-se para ter acesso a exclusivo á venda antecipada, novidades e promoções.</p>
+            <form action="" method="POST" enctype="text/plain" class="form-email">
+              <label for="email">Digite seu e-mail:</label>
+              <input type="email" id="email" name="email" placeholder="E-mail" required>
+              <button type="submit">Confirmar</button>
+            </form>
+
+        </div>
+        <div class="coluna-footer">
+            <h3 class="titulo">INSTITUCIONAL</h3>
+            <p><a href="sobre.html" class="hover-destaque">Sobre a Koketsu</a></p>
+        </div>
+
+        <div class="coluna-footer">
+            <h3 class="titulo">ATENDIMENTO AO CLIENTE</h3>
+            <a href="duvidas.html"><p>Dúvidas Frequentes</p></a>
+            <a href="Trocas.html"><P>Trocas e Devoluções</P></a>
+            <a href="politica.html"><P>Politica de Privacidade</P></a>
+            <a href="frete.html"><P>Frete e Entrega</P></a>
+        </div>
+
+        <div class="coluna-footer">
+          <h3 class="titulo">MINHA CONTA</h3>
+          <a href="#"><p>Minha Conta</p></a>
+          <a href="carrinho.html"><p>Carrinho</p></a>
+          <a href="fidelidade.html"><p>Programa de Fidelidade</p></a>
+          
+
+        <h3 class="titulo fale-conosco">FALE CONOSCO</h3>
+        <p>Atendimento:</p>
+        <p>Segunda a Sabado (exceto feriados) das 09h ás 19h</p>
+        <p>E-mail: sac@Koketsu.com.br</p>
+        <A  href="https://api.whatsapp.com/send?phone=5547933856337" target="_blank"><button type="button" class="btn3">WhatsApp  <img src="/img/icons/whatsapp.svg" alt=""></button></A>
+       </div>
+
+       <div class="coluna-footer">
+        <h3 class="titulo">FORMAS DE PAGAMENTO</h3>
+        <div class="payment-methods">
+          <i class="bi bi-credit-card" title="Visa"></i>
+          <i class="bi bi-credit-card-2-front" title="Mastercard"></i>
+          <i class="bi bi-credit-card" title="Elo"></i>
+          <i class="bi bi-credit-card" title="Hipercard"></i>
+          <i class="bi bi-wallet2" title="PIX"></i>
+          <i class="bi bi-upc-scan" title="Boleto"></i>
+        </div>
+        <p style="margin-top: 12px; font-size: 0.85rem; color: #999;">Parcele em até 6x sem juros no cartão</p>
+       </div>
+       <div class="copyright">
+        <p>© 2025 Koketsu Grife. Todos os direitos reservados. Koketsu comércio de roupas. calçados e acessorios ltda.</p>
+        <p></p>
+      </div>
+  </div>
+</footer>
+  
+
+  <!-- Botão WhatsApp Flutuante -->
+  <a href="https://api.whatsapp.com/send?phone=5547933856337&text=Olá!%20Gostaria%20de%20mais%20informações" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
+  <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/script.js"></script>
+  <script src="/js/carrinho.js"></script>
+
+</body>
+</html>

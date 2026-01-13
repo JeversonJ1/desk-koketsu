@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dúvidas-Frequentes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/footer.css">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="duvidas.css">
+</head>
+<body>
+    <div class="page-content">
+    <header>
+        <!-- Navbar personalizada -->
+        <nav id="navbar" class="navbar d-flex align-items-center px-4 sticky-top">
+          <!-- Esquerda: Menu e Pesquisa -->
+          <div class="navbar-section d-flex align-items-center">
+            <button class="btn btn-link text-white d-flex align-items-center p-0 me-3" data-bs-toggle="offcanvas" data-bs-target="#menuOffcanvas">
+              <i class="bi bi-list fs-5"></i> <span class="ms-1">Menu</span>
+            </button>
+      
+          </div>
+      
+          <!-- Centro: Logo -->
+          <div class="navbar-center">
+            <a href="index.html">
+            <img src="/img/icons/logo.png" alt="Logo COMP" class="logo" />
+            </a>
+          </div>
+      
+          <!-- Direita: Login e Carrinho -->
+          <div class="navbar-end d-flex justify-content-end align-items-center">
+            <a href="login.html" class="icon-link"><i class="bi bi-person"></i> Login</a>
+            <a href="https://instagram.com" class="icon-button"><i class="bi bi-bag"></i> Carrinho</a>
+          </div>
+        </nav>
+
+         <!-- Menu lateral interativo -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="menuOffcanvas">
+    <div class="offcanvas-header justify-content-end">
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="list-unstyled">
+        <li><a class="text-white text-decoration-none d-block py-2" href="index.html">Início</a></li>
+        <li><a class="text-white text-decoration-none d-block py-2" href="produto.html">Produtos</a></li>
+        <li><a class="text-white text-decoration-none d-block py-2" href="sobre.html">Sobre</a></li>
+        <li><a class="text-white text-decoration-none d-block py-2" href="#">Contato</a></li>
+      </ul>
+    </div>
+        </header>
+          
+        <section class="faq-section">
+            <h2 class="h2-duvidas">Dúvidas Frequentes</h2>
+          
+            <div class="faq">
+              <button class="faq-question">1. Como faço para acompanhar meu pedido?</button>
+              <div class="faq-answer">
+                <p>Você pode acompanhar acessando "Minha Conta" > "Meus Pedidos" após o login.</p>
+              </div>
+            </div>
+          
+            <div class="faq">
+              <button class="faq-question">2. Quais formas de pagamento são aceitas?</button>
+              <div class="faq-answer">
+                <p>Cartão de crédito, Pix, boleto bancário e carteiras digitais.</p>
+              </div>
+            </div>
+          
+            <div class="faq">
+              <button class="faq-question">3. Qual o prazo de entrega?</button>
+              <div class="faq-answer">
+                <p>O prazo varia conforme a sua localização e a forma de envio escolhida.</p>
+              </div>
+            </div>
+          
+            <div class="faq">
+              <button class="faq-question">4. Posso trocar um produto?</button>
+              <div class="faq-answer">
+                <p>Sim, você tem até 7 dias corridos após o recebimento para solicitar a troca.</p>
+              </div>
+            </div>
+          
+            <div class="faq">
+              <button class="faq-question">5. Como solicito o reembolso?</button>
+              <div class="faq-answer">
+                <p>Entre em contato pelo nosso suporte com os dados do pedido e motivo da devolução.</p>
+              </div>
+            </div>
+          
+            <div class="faq">
+              <button class="faq-question">6. Os produtos têm garantia?</button>
+              <div class="faq-answer">
+                <p>Sim, todos os nossos produtos possuem garantia de 30 dias contra defeitos de fabricação.</p>
+              </div>
+            </div>
+          
+            <div class="faq">
+              <button class="faq-question">7. Como entro em contato com o suporte?</button>
+              <div class="faq-answer">
+                <p>Você pode nos contatar por WhatsApp, e-mail ou pelo formulário no site.</p>
+              </div>
+            </div>
+          
+            <div class="faq">
+              <button class="faq-question">8. Os produtos são originais?</button>
+              <div class="faq-answer">
+                <p>Sim, trabalhamos exclusivamente com produtos 100% originais e certificados.</p>
+              </div>
+            </div>
+          
+            <div class="faq">
+              <button class="faq-question">9. O site é seguro?</button>
+              <div class="faq-answer">
+                <p>Sim, utilizamos certificados SSL e criptografia para garantir a segurança dos seus dados.</p>
+              </div>
+            </div>
+          
+            <div class="faq">
+              <button class="faq-question">10. Posso alterar meu endereço após o pedido feito?</button>
+              <div class="faq-answer">
+                <p>Sim, mas entre em contato com urgência antes do pedido ser enviado.</p>
+              </div>
+            </div>
+          </section>
+          
+          
+        </div>
+  <footer>
+    <div class="container">
+        <div class="coluna-footer">
+            <h3 class="titulo">FAÇA PARTE DA NOSSA FAMILIA</h3>
+            <p>Inscreva-se para ter acesso a exclusivo á venda antecipada, novidades e promoções.</p>
+            <form action="mailto:seuemail@exemplo.com" method="POST" enctype="text/plain" class="form-email">
+              <label for="email">Digite seu e-mail:</label>
+              <input type="email" id="email" name="email" placeholder="E-mail" required>
+              <button type="submit">Confirmar</button>
+            </form>
+
+        </div>
+        <div class="coluna-footer">
+            <h3 class="titulo">INSTITUCIONAL</h3>
+            <p><a href="sobre.html" class="hover-destaque">Sobre a Koketsu</a></p>
+        </div>
+
+        <div class="coluna-footer">
+            <h3 class="titulo">ATENDIMENTO AO CLIENTE</h3>
+            <a href="duvidas.html"><p>Dúvidas Frequentes</p></a>
+            <a href="Trocas.html"><P>Trocas e Devoluções</P></a>
+            <a href="politica.html"><P>Politica de Privacidade</P></a>
+            <a href="frete.html"><P>Frete e Entrega</P></a>
+        </div>
+
+        <div class="coluna-footer">
+          <h3 class="titulo">MINHA CONTA</h3>
+          <a href="#"><p>Minha Conta</p></a>
+          <a href="#"><p>Carrinho</p></a>
+          <a href="fidelidade.html"><p>Programa de Fidelidade</p></a>
+          
+
+        <h3 class="titulo fale-conosco">FALE CONOSCO</h3>
+        <p>Atendimento:</p>
+        <p>Segunda a Sabado (exceto feriados) das 09h ás 19h</p>
+        <p>E-mail: sac@Koketsu.com.br</p>
+        <A  href="https://WhatsApp.com" target="_blank"><button type="button" class="btn3">WhatsApp  <img src="/img/icons/whatsapp.svg" alt=""></button></A>
+       </div>
+       <div class="copyright">
+        <p>© 2025 Koketsu Grife. Todos os direitos reservados. Koketsu comércio de roupas. calçados e acessorios ltda.</p>
+        <p></p>
+      </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/script.js"></script>
+</body>
+</html>

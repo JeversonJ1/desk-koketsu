@@ -1,0 +1,2 @@
+desktop/node_modules/electron/dist/* filter=lfs diff=lfs merge=lfs -text
+node_modules/electron/dist/* filter=lfs diff=lfs merge=lfs -text

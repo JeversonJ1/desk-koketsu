@@ -1,0 +1,260 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   
+  }
+  body{
+    background-color: white;
+    padding-top: 70px;
+    font-family: Arial, sans-serif;
+  }
+  main{
+    padding-top: 80px;
+  }
+  .navbar{
+    background-color: black;
+    z-index: 999;
+  }
+  .sidebar {
+    display: none !important;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar ul li {
+    padding: 15px 20px;
+    border-bottom: 1px solid #222;
+  }
+  
+  .sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    transition: background 0.3s ease;
+  }
+  
+  .sidebar ul li a:hover {
+    background-color: #f1cd2f;
+    color: #000;
+    border-radius: 4px;
+  }
+    
+  footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 40px 20px;
+    background-color: #000;
+    color: #fff;
+  }
+  /* Container principal */
+.conteudo-principal {
+  max-width: 850px;
+  margin: 60px auto;
+  padding: 0 20px;
+  font-family: 'Inter', sans-serif;
+  background-color: #f7f8fa;
+}
+
+/* Card de conteúdo */
+.card-conteudo {
+  background: #ffffff;
+  padding: 50px 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  line-height: 1.8;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-conteudo:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Título principal */
+.card-conteudo h1 {
+  font-size: 2.2rem;
+  color: #f5b300;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Títulos secundários */
+.card-conteudo h2 {
+  font-size: 1.5rem;
+  margin-top: 30px;
+  margin-bottom: 12px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-left: 4px solid #f5b300;
+  padding-left: 10px;
+}
+
+/* Parágrafos */
+.card-conteudo p {
+  margin-bottom: 18px;
+  color: #555;
+  font-size: 1rem;
+}
+
+/* Listas */
+.card-conteudo ul {
+  margin: 12px 0 22px 20px;
+  padding-left: 20px;
+}
+
+.card-conteudo ul li {
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 8px;
+}
+
+.card-conteudo ul li::before {
+  color: #f5b300;
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+/* Ícones */
+.card-conteudo i {
+  font-size: 1.4rem;
+  color: #f5b300;
+  transition: transform 0.3s;
+}
+
+.card-conteudo i:hover {
+  transform: rotate(15deg);
+}
+
+/* Destaque em strong */
+.card-conteudo strong {
+  color: #222;
+  font-weight: 600;
+}
+
+/* ============================================ */
+/* RESPONSIVIDADE - TROCAS */
+/* ============================================ */
+
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 180px;
+  }
+  
+  .conteudo-principal {
+    margin: 40px auto;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 60px;
+  }
+  
+  main {
+    padding-top: 40px;
+  }
+  
+  .sidebar {
+    position: static;
+    width: 100%;
+    padding-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .sidebar ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .sidebar ul li {
+    padding: 10px 15px;
+    border: 1px solid #222;
+    border-radius: 4px;
+  }
+  
+  .conteudo-principal {
+    margin: 30px auto;
+    padding: 0 15px;
+  }
+  
+  .card-conteudo {
+    padding: 30px 25px;
+  }
+  
+  .card-conteudo h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  .card-conteudo h2 {
+    font-size: 1.3rem;
+    margin-top: 25px;
+  }
+  
+  footer {
+    padding: 30px 15px;
+    gap: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar ul li {
+    padding: 8px 12px;
+    font-size: 0.875rem;
+  }
+  
+  .conteudo-principal {
+    margin: 20px auto;
+  }
+  
+  .card-conteudo {
+    padding: 20px 15px;
+  }
+  
+  .card-conteudo h1 {
+    font-size: 1.5rem;
+    gap: 8px;
+  }
+  
+  .card-conteudo h2 {
+    font-size: 1.1rem;
+    margin-top: 20px;
+    padding-left: 8px;
+    border-left-width: 3px;
+  }
+  
+  .card-conteudo p {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+  }
+  
+  .card-conteudo ul {
+    margin-left: 15px;
+    padding-left: 15px;
+  }
+  
+  .card-conteudo ul li {
+    font-size: 0.9rem;
+  }
+  
+  footer {
+    padding: 20px 10px;
+    gap: 20px;
+  }
+}

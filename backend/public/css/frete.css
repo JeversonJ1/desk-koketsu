@@ -1,0 +1,188 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.6;
+    background: #f5f5f5;
+    color: #333;
+}
+
+/* Cabeçalho */
+.topo {
+    background: #000;
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    height: 80px;
+}
+
+/* Conteúdo principal */
+.conteudo {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.conteudo h1 {
+    font-size: 2.2rem;
+    color: #f5b300;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+}
+
+.conteudo h1::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #f5b300;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* Seções em estilo card */
+section {
+    background: #fff;
+    padding: 25px 30px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #111;
+    border-left: 5px solid #f5b300;
+    padding-left: 10px;
+    font-weight: 600;
+}
+
+section p,
+section li {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 12px;
+}
+
+ul {
+    margin-left: 20px;
+    list-style: disc;
+}
+
+/* Links */
+a {
+    color: #f5b300;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #c79100;
+    text-decoration: underline;
+}
+
+/* Rodapé */
+.rodape {
+    background: #000;
+    color: #fff;
+    text-align: center;
+    padding: 20px 10px;
+    margin-top: 40px;
+    font-size: 0.95rem;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================ */
+/* RESPONSIVIDADE - FRETE */
+/* ============================================ */
+
+@media (max-width: 1024px) {
+    .conteudo {
+        padding: 0 30px;
+    }
+    
+    .conteudo h1 {
+        font-size: 2rem;
+    }
+    
+    .logo {
+        height: 70px;
+    }
+}
+
+@media (max-width: 768px) {
+    .topo {
+        padding: 15px 0;
+    }
+    
+    .logo {
+        height: 60px;
+    }
+    
+    .conteudo {
+        margin: 30px auto;
+        padding: 0 15px;
+    }
+
+    section {
+        padding: 20px;
+    }
+
+    .conteudo h1 {
+        font-size: 1.8rem;
+    }
+
+    section h2 {
+        font-size: 1.2rem;
+    }
+    
+    section p,
+    section li {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        height: 50px;
+    }
+    
+    .conteudo {
+        margin: 20px auto;
+    }
+    
+    .conteudo h1 {
+        font-size: 1.5rem;
+    }
+    
+    section {
+        padding: 15px;
+    }
+    
+    section h2 {
+        font-size: 1.1rem;
+    }
+    
+    section p,
+    section li {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossos Produtos - Koketsu</title>
+    <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/footer.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* =================================================================== */
+        /* 1. Reset Básico e Variáveis CSS (Custom Properties) */
+        /* =================================================================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            /* Cores */
+            --cor-primaria: #FFEA00; /* Amarelo Elétrico/Neon */
+            --cor-secundaria: #FFC400; /* Amarelo Dourado para Hover */
+            --cor-fundo-pagina: #121212;
+            --cor-fundo-card: #1E1E1E;
+            --cor-texto-claro: #F0F0F0;
+            --cor-texto-escuro: #121212;
+            --cor-borda-sutil: #333;
+
+            --navbar-height: 80px;
+
+            /* Espaçamentos e Tipografia */
+            --espacamento-pequeno: 8px;
+            --espacamento-medio: 12px;
+            --espacamento-grande: 20px;
+            --radius-borda: 8px;
+            --font-padrao: 'Montserrat', sans-serif;
+            --font-titulo: 'Oswald', sans-serif; 
+        }
+
+        body {
+            font-family: var(--font-padrao);
+            background-color: var(--cor-fundo-pagina);
+            padding: 0;
+            margin: 0; 
+            color: var(--cor-texto-claro);
+        }
+       
+        main {
+            padding-top: calc(var(--navbar-height) + 20px);
+            min-height: calc(100vh - 400px);
+        }
+        
+        .container {
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 15px;
+        }
+        
+        /* Navbar para consistência visual */
+        #navbar {
+            background-color: #000; /* Fundo preto para destaque */
+            border-bottom: 1px solid var(--cor-borda-sutil);
+            z-index: 100; /* Garante que a navbar fique acima de todos os outros elementos */
+            width: 100%;
+        }
+
+        .icon-link, .icon-button {
+            color: var(--cor-texto-claro) !important;
+            text-decoration: none;
+            margin-left: var(--espacamento-grande);
+            transition: color 0.2s;
+        }
+        .icon-link:hover, .icon-button:hover {
+            color: var(--cor-primaria) !important;
+        }
+
+        /* =================================================================== */
+        /* TÍTULO CENTRALIZADO (H2: Nossos Produtos) */
+        /* =================================================================== */
+        .produtos h2 { 
+            text-align: center;
+            font-family: var(--font-titulo);
+            color: var(--cor-primaria);
+            font-size: 2.5em;
+            margin-bottom: var(--espacamento-grande) * 1.5; 
+            margin-top: var(--espacamento-grande) * 2; 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 234, 0, 0.3);
+        }
+        
+        /* =================================================================== */
+        /* BARRA DE FILTROS (NOVO) */
+        /* =================================================================== */
+        .filter-btn {
+            border: 1px solid var(--cor-borda-sutil);
+            color: var(--cor-texto-claro) !important;
+            background-color: var(--cor-fundo-card) !important;
+            transition: background-color 0.3s;
+        }
+        .filter-btn:hover {
+            background-color: #333 !important;
+        }
+        .dropdown-menu-dark {
+            background-color: var(--cor-fundo-card);
+            border-color: var(--cor-borda-sutil);
+        }
+        .dropdown-menu-dark .dropdown-item {
+            color: var(--cor-texto-claro);
+        }
+        .dropdown-menu-dark .dropdown-item:hover {
+            background-color: var(--cor-borda-sutil);
+            color: var(--cor-primaria);
+        }
+
+        /* =================================================================== */
+        /* 2. Grid de Produtos */
+        /* =================================================================== */
+        .produtos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 25px; 
+            margin-bottom: 80px;
+            padding: 0 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .produtos-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 15px;
+            }
+        }
+
+        /* =================================================================== */
+        /* 3. Card do Produto (Otimizado) */
+        /* =================================================================== */
+        .produto-card {
+            border: 1px solid var(--cor-borda-sutil);
+            border-radius: var(--radius-borda);
+            overflow: hidden;
+            background-color: var(--cor-fundo-card);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5); 
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative; /* Para a tag */
+        }
+
+        .produto-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .produto-card:hover {
+            transform: translateY(-5px); /* Mais destaque */
+            box-shadow: 0 10px 25px rgba(255, 234, 0, 0.3); /* Sombra amarela sutil */
+            border-color: var(--cor-secundaria);
+        }
+
+        .produto-card:active {
+            transform: translateY(-2px);
+        }
+
+        .produto-card__image-container {
+            position: relative;
+            overflow: hidden;
+            height: 320px;
+            background-color: #000;
+        }
+        
+        @media (max-width: 768px) {
+            .produto-card__image-container {
+                height: 200px;
+            }
+        }
+        
+        .produto-card__img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            display: block;
+            opacity: 0.9;
+            transition: transform 0.4s ease, opacity 0.4s ease; /* Adicionar transição de transform */
+        }
+        
+        .produto-card:hover .produto-card__img {
+            transform: scale(1.08); /* Efeito zoom no hover */
+            opacity: 1;
+        }
+
+        .produto-card__tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--cor-primaria);
+            color: var(--cor-texto-escuro);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.7em;
+            font-weight: 700;
+            text-transform: uppercase;
+            z-index: 10;
+        }
+        
+        .produto-card__content {
+            padding: 18px 15px; 
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            min-height: 160px;
+        }
+        
+        .produto-card__titulo {
+            font-size: 1em;
+            color: var(--cor-texto-claro);
+            margin-bottom: 6px;
+            font-weight: 700; 
+            line-height: 1.3;
+            text-transform: uppercase;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        
+        .produto-card__categoria {
+            font-size: 0.75em;
+            color: #999;
+            margin-bottom: 8px;
+            text-transform: capitalize;
+        }
+
+        .produto-card__precos {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 8px 0 4px 0;
+        }
+
+        .produto-card__preco-antigo {
+            font-size: 0.9em;
+            color: #999;
+            text-decoration: line-through;
+            font-weight: 400;
+        }
+
+        .produto-card__preco {
+            font-weight: 800;
+            color: var(--cor-primaria);
+            font-size: 1.4em;
+            letter-spacing: 0.5px;
+        }
+
+        .produto-card__parcelamento {
+            font-size: 0.75em;
+            color: #ccc;
+            margin-bottom: 12px;
+            font-weight: 400;
+        }
+
+        .produto-card__button {
+            background: var(--cor-primaria);
+            color: var(--cor-texto-escuro);
+            border: none;
+            padding: 12px 16px; 
+            cursor: pointer;
+            width: 100%;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            margin-top: auto;
+            border-radius: 6px;
+            letter-spacing: 0.8px;
+        }
+        
+        .produto-card__button:hover {
+            background-color: var(--cor-secundaria);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 234, 0, 0.4);
+        }
+        
+        .produto-card__button:active {
+            transform: translateY(0);
+        }
+        
+        /* =================================================================== */
+        /* 4. Resumo do Carrinho (Otimizado) */
+        /* =================================================================== */
+        .carrinho-resumo {
+            max-width: 450px;
+            width: 95%; 
+            margin: 0 auto;
+            left: 50%; 
+            transform: translateX(-50%);
+            padding: 20px;
+            border: 2px solid var(--cor-primaria);
+            border-radius: 12px 12px 0 0;
+            background-color: var(--cor-fundo-card);
+            box-shadow: 0 -6px 20px rgba(255, 234, 0, 0.4);
+            text-align: left;
+            position: fixed;
+            bottom: 0;
+            z-index: 1000;
+            
+            max-height: 70px;
+            transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out; 
+            overflow: hidden; 
+        }
+
+        .carrinho-resumo.expandido {
+            max-height: 500px;
+            padding-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .carrinho-resumo {
+                max-width: 100%;
+                width: 100%;
+                border-radius: 0;
+            }
+        }
+        
+        .carrinho-resumo h2 {
+            font-family: var(--font-titulo);
+            color: var(--cor-primaria);
+            font-size: 1.5em;
+            text-transform: uppercase;
+            text-align: center; 
+            cursor: pointer; 
+            margin-bottom: 0;
+            padding: 0;
+        }
+
+        .carrinho-resumo:not(.expandido) #cart-items,
+        .carrinho-resumo:not(.expandido) .cart-total-line,
+        .carrinho-resumo:not(.expandido) #btn-finalizar {
+            display: none;
+        }
+        
+        .cart-total-line {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: var(--cor-texto-claro);
+            margin: var(--espacamento-medio) 0;
+            border-top: 1px solid var(--cor-borda-sutil);
+            padding-top: var(--espacamento-pequeno);
+        }
+
+        #btn-finalizar {
+            background: #28a745 !important; 
+            color: white !important;
+            border-radius: var(--radius-borda);
+        }
+        #btn-finalizar:hover {
+            background: #1e7e34 !important;
+        }
+
+        /* =================================================================== */
+        /* 5. WhatsApp Flutuante */
+        /* =================================================================== */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 32px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+            color: #FFF;
+        }
+
+        /* =================================================================== */
+        /* 6. FOOTER (Ajustes de consistência) */
+        /* =================================================================== */
+        /* Adicione o CSS do seu footer.css aqui se for necessário */
+        footer {
+            background-color: #000;
+            border-top: 2px solid var(--cor-borda-sutil);
+            padding: 40px 0;
+            color: #999;
+        }
+        footer h3.titulo {
+            color: var(--cor-primaria);
+            font-family: var(--font-titulo);
+            font-size: 1.2em;
+            margin-bottom: var(--espacamento-medio);
+            text-transform: uppercase;
+        }
+        footer p, footer a {
+            color: #AAA;
+            text-decoration: none;
+            line-height: 1.8;
+            transition: color 0.2s;
+        }
+        footer a:hover {
+            color: var(--cor-primaria);
+        }
+        .form-email input[type="email"] {
+            background-color: var(--cor-fundo-card);
+            border: 1px solid var(--cor-borda-sutil);
+            color: var(--cor-texto-claro);
+            padding: 8px;
+            width: 70%;
+        }
+        .form-email button {
+            background-color: var(--cor-primaria);
+            color: var(--cor-texto-escuro);
+            border: none;
+            padding: 8px 15px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav id="navbar" class="navbar d-flex align-items-center px-4 sticky-top">
+        <div class="navbar-section d-flex align-items-center">
+            <button class="btn btn-link text-white d-flex align-items-center p-0 me-3" data-bs-toggle="offcanvas" data-bs-target="#menuOffcanvas">
+                <i class="bi bi-list fs-5"></i> <span class="ms-1">Menu</span>
+            </button>
+        </div>
+        <a href="index.html">
+            <img src="/img/icons/logo.png" alt="Logo COMP" class="logo" />
+        </a>
+        <div class="navbar-end d-flex justify-content-end align-items-center">
+            <a href="login.html" class="icon-link"><i class="bi bi-person"></i> Login</a>
+            <a href="carrinho.html" class="icon-button" style="position: relative;">
+              <i class="bi bi-bag"></i> Carrinho
+              <span id="cart-count" style="position: absolute; top: -5px; right: -5px; background: #ff4444; color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold;">0</span>
+            </a>
+        </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-start botao-fechar" tabindex="-1" id="menuOffcanvas">
+        <div class="offcanvas-header justify-content-end">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="list-unstyled">
+                <li><a class="text-white text-decoration-none d-block py-2" href="index.html">Início</a></li>
+                <li><a class="text-white text-decoration-none d-block py-2" href="produto.html">Produtos</a></li>
+                <li><a class="text-white text-decoration-none d-block py-2" href="sobre.html">Sobre</a></li>
+                <li><a class="text-white text-decoration-none d-block py-2" href="#">Contato</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+    <main>
+        <section class="produtos" style="padding: 40px 0;">
+            <div class="container">
+                <h2>Nossos Produtos</h2>
+                
+                <div class="filter-bar d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+                    <div class="dropdown">
+                        <button class="btn btn-dark dropdown-toggle filter-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categorias
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="#" data-filter="all">Todas</a></li>
+                            <li><a class="dropdown-item" href="#" data-filter="Camisetas">Camisetas</a></li>
+                            <li><a class="dropdown-item" href="#" data-filter="Calças">Calças</a></li>
+                            <li><a class="dropdown-item" href="#" data-filter="Acessórios">Acessórios</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="dropdown">
+                        <button class="btn btn-dark dropdown-toggle filter-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Ordenar por: Mais Recente
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="#">Mais Recente</a></li>
+                            <li><a class="dropdown-item" href="#">Menor Preço</a></li>
+                            <li><a class="dropdown-item" href="#">Maior Preço</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="produtos-lista" class="produtos-grid">
+                    <!-- Camisetas -->
+                    <div class="produto-card" data-category="Camisetas" onclick="verProduto(1)" style="cursor: pointer;">
+                        <div class="produto-card__image-container">
+                            <span class="produto-card__tag">Novo</span>
+                            <img src="/img/camiseta-marrom.png" alt="Camiseta Oversized Marrom" class="produto-card__img">
+                        </div>
+                        <div class="produto-card__content">
+                            <div>
+                                <h3 class="produto-card__titulo">Camiseta Oversized Marrom</h3>
+                                <p class="produto-card__categoria">Camisetas</p>
+                            </div>
+                            <div class="produto-card__precos">
+                                <p class="produto-card__preco-antigo">R$ 169,90</p>
+                                <p class="produto-card__preco">R$ 120,00</p>
+                            </div>
+                            <p class="produto-card__parcelamento">ou 6x de R$ 20,00 no cartão s/ juros</p>
+                            <button class="produto-card__button add-to-cart" data-id="1" onclick="event.stopPropagation(); adicionarCarrinho(1)">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="produto-card" data-category="Camisetas">
+                        <div class="produto-card__image-container">
+                            <span class="produto-card__tag">Novo</span>
+                            <img src="/img/camiseta-off-white.png" alt="Camiseta Off White" class="produto-card__img">
+                        </div>
+                        <div class="produto-card__content">
+                            <div>
+                                <h3 class="produto-card__titulo">Camiseta Off White</h3>
+                                <p class="produto-card__categoria">Camisetas</p>
+                            </div>
+                            <div class="produto-card__precos">
+                                <p class="produto-card__preco-antigo">R$ 169,90</p>
+                                <p class="produto-card__preco">R$ 125,00</p>
+                            </div>
+                            <p class="produto-card__parcelamento">ou 6x de R$ 20,83 no cartão s/ juros</p>
+                            <button class="produto-card__button add-to-cart" data-id="2">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="produto-card" data-category="Camisetas">
+                        <div class="produto-card__image-container">
+                            <img src="/img/NOCAP.png" alt="Camiseta NoCap" class="produto-card__img">
+                        </div>
+                        <div class="produto-card__content">
+                            <div>
+                                <h3 class="produto-card__titulo">Camiseta NoCap</h3>
+                                <p class="produto-card__categoria">Camisetas</p>
+                            </div>
+                            <div class="produto-card__precos">
+                                <p class="produto-card__preco-antigo">R$ 149,90</p>
+                                <p class="produto-card__preco">R$ 115,00</p>
+                            </div>
+                            <p class="produto-card__parcelamento">ou 6x de R$ 19,17 no cartão s/ juros</p>
+                            <button class="produto-card__button add-to-cart" data-id="3">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="produto-card" data-category="Camisetas">
+                        <div class="produto-card__image-container">
+                            <img src="/img/camiseta-branca.png" alt="Camiseta Koketsu Classic" class="produto-card__img">
+                        </div>
+                        <div class="produto-card__content">
+                            <div>
+                                <h3 class="produto-card__titulo">Camiseta Koketsu Classic</h3>
+                                <p class="produto-card__categoria">Camisetas</p>
+                            </div>
+                            <div class="produto-card__precos">
+                                <p class="produto-card__preco-antigo">R$ 149,90</p>
+                                <p class="produto-card__preco">R$ 110,00</p>
+                            </div>
+                            <p class="produto-card__parcelamento">ou 6x de R$ 18,33 no cartão s/ juros</p>
+                            <button class="produto-card__button add-to-cart" data-id="4">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <!-- Moletom -->
+                    <div class="produto-card" data-category="Moletom">
+                        <div class="produto-card__image-container">
+                            <span class="produto-card__tag">Novo</span>
+                            <img src="/img/moletom.png" alt="Moletom Oversized Preto" class="produto-card__img">
+                        </div>
+                        <div class="produto-card__content">
+                            <div>
+                                <h3 class="produto-card__titulo">Moletom Oversized Preto</h3>
+                                <p class="produto-card__categoria">Moletom</p>
+                            </div>
+                            <div class="produto-card__precos">
+                                <p class="produto-card__preco-antigo">R$ 349,90</p>
+                                <p class="produto-card__preco">R$ 280,00</p>
+                            </div>
+                            <p class="produto-card__parcelamento">ou 6x de R$ 46,67 no cartão s/ juros</p>
+                            <button class="produto-card__button add-to-cart" data-id="5">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="produto-card" data-category="Moletom">
+                        <div class="produto-card__image-container">
+                            <img src="/img/moletom-2.png" alt="Moletom Classic" class="produto-card__img">
+                        </div>
+                        <div class="produto-card__content">
+                            <div>
+                                <h3 class="produto-card__titulo">Moletom Classic</h3>
+                                <p class="produto-card__categoria">Moletom</p>
+                            </div>
+                            <div class="produto-card__precos">
+                                <p class="produto-card__preco-antigo">R$ 329,90</p>
+                                <p class="produto-card__preco">R$ 260,00</p>
+                            </div>
+                            <p class="produto-card__parcelamento">ou 6x de R$ 43,33 no cartão s/ juros</p>
+                            <button class="produto-card__button add-to-cart" data-id="6">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="produto-card" data-category="Moletom">
+                        <div class="produto-card__image-container">
+                            <img src="/img/moletom-3.png" alt="Moletom Urban" class="produto-card__img">
+                        </div>
+                        <div class="produto-card__content">
+                            <div>
+                                <h3 class="produto-card__titulo">Moletom Urban</h3>
+                                <p class="produto-card__categoria">Moletom</p>
+                            </div>
+                            <p class="produto-card__preco">R$ 270,00</p>
+                            <button class="produto-card__button add-to-cart" data-id="7">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="produto-card" data-category="Moletom">
+                        <div class="produto-card__image-container">
+                            <span class="produto-card__tag">Novo</span>
+                            <img src="/img/moletom-4.png" alt="Moletom Premium" class="produto-card__img">
+                        </div>
+                        <div class="produto-card__content">
+                            <div>
+                                <h3 class="produto-card__titulo">Moletom Premium</h3>
+                                <p class="produto-card__categoria">Moletom</p>
+                            </div>
+                            <p class="produto-card__preco">R$ 290,00</p>
+                            <button class="produto-card__button add-to-cart" data-id="8">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <!-- Calças -->
+                    <div class="produto-card" data-category="Calças">
+                        <div class="produto-card__image-container">
+                            <img src="/img/calca-2.png" alt="Calça Cargo Preta" class="produto-card__img">
+                        </div>
+                        <div class="produto-card__content">
+                            <div>
+                                <h3 class="produto-card__titulo">Calça Cargo Preta</h3>
+                                <p class="produto-card__categoria">Calças</p>
+                            </div>
+                            <p class="produto-card__preco">R$ 250,00</p>
+                            <button class="produto-card__button add-to-cart" data-id="9">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="produto-card" data-category="Calças">
+                        <div class="produto-card__image-container">
+                            <span class="produto-card__tag">Novo</span>
+                            <img src="/img/calca-3.png" alt="Calça Skinny" class="produto-card__img">
+                        </div>
+                        <div class="produto-card__content">
+                            <div>
+                                <h3 class="produto-card__titulo">Calça Skinny</h3>
+                                <p class="produto-card__categoria">Calças</p>
+                            </div>
+                            <p class="produto-card__preco">R$ 230,00</p>
+                            <button class="produto-card__button add-to-cart" data-id="10">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="produto-card" data-category="Calças">
+                        <div class="produto-card__image-container">
+                            <img src="/img/calca-4.png" alt="Calça Wide Leg" class="produto-card__img">
+                        </div>
+                        <div class="produto-card__content">
+                            <div>
+                                <h3 class="produto-card__titulo">Calça Wide Leg</h3>
+                                <p class="produto-card__categoria">Calças</p>
+                            </div>
+                            <p class="produto-card__preco">R$ 260,00</p>
+                            <button class="produto-card__button add-to-cart" data-id="11">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="produto-card" data-category="Calças">
+                        <div class="produto-card__image-container">
+                            <img src="/img/carca.png" alt="Calça Cargo Caqui" class="produto-card__img">
+                        </div>
+                        <div class="produto-card__content">
+                            <div>
+                                <h3 class="produto-card__titulo">Calça Cargo Caqui</h3>
+                                <p class="produto-card__categoria">Calças</p>
+                            </div>
+                            <p class="produto-card__preco">R$ 255,00</p>
+                            <button class="produto-card__button add-to-cart" data-id="12">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <!-- Tênis -->
+                    <div class="produto-card" data-category="Tênis">
+                        <div class="produto-card__image-container">
+                            <span class="produto-card__tag">Novo</span>
+                            <img src="/img/dn.png" alt="Tênis DN Classic" class="produto-card__img">
+                        </div>
+                        <div class="produto-card__content">
+                            <div>
+                                <h3 class="produto-card__titulo">Tênis DN Classic</h3>
+                                <p class="produto-card__categoria">Tênis</p>
+                            </div>
+                            <p class="produto-card__preco">R$ 450,00</p>
+                            <button class="produto-card__button add-to-cart" data-id="13">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="produto-card" data-category="Tênis">
+                        <div class="produto-card__image-container">
+                            <span class="produto-card__tag">Novo</span>
+                            <img src="/img/dn-vermelho.png" alt="Tênis DN Vermelho" class="produto-card__img">
+                        </div>
+                        <div class="produto-card__content">
+                            <div>
+                                <h3 class="produto-card__titulo">Tênis DN Vermelho</h3>
+                                <p class="produto-card__categoria">Tênis</p>
+                            </div>
+                            <p class="produto-card__preco">R$ 480,00</p>
+                            <button class="produto-card__button add-to-cart" data-id="14">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="produto-card" data-category="Tênis">
+                        <div class="produto-card__image-container">
+                            <img src="/img/dn-branco.png" alt="Tênis DN Branco" class="produto-card__img">
+                        </div>
+                        <div class="produto-card__content">
+                            <div>
+                                <h3 class="produto-card__titulo">Tênis DN Branco</h3>
+                                <p class="produto-card__categoria">Tênis</p>
+                            </div>
+                            <p class="produto-card__preco">R$ 470,00</p>
+                            <button class="produto-card__button add-to-cart" data-id="15">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="produto-card" data-category="Tênis">
+                        <div class="produto-card__image-container">
+                            <img src="/img/TN.png" alt="Tênis TN Sport" class="produto-card__img">
+                        </div>
+                        <div class="produto-card__content">
+                            <div>
+                                <h3 class="produto-card__titulo">Tênis TN Sport</h3>
+                                <p class="produto-card__categoria">Tênis</p>
+                            </div>
+                            <p class="produto-card__preco">R$ 490,00</p>
+                            <button class="produto-card__button add-to-cart" data-id="16">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <!-- Polo -->
+                    <div class="produto-card" data-category="Polo">
+                        <div class="produto-card__image-container">
+                            <img src="/img/polo-.png" alt="Polo Classic Branca" class="produto-card__img">
+                        </div>
+                        <div class="produto-card__content">
+                            <div>
+                                <h3 class="produto-card__titulo">Polo Classic Branca</h3>
+                                <p class="produto-card__categoria">Polo</p>
+                            </div>
+                            <p class="produto-card__preco">R$ 150,00</p>
+                            <button class="produto-card__button add-to-cart" data-id="17">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="produto-card" data-category="Polo">
+                        <div class="produto-card__image-container">
+                            <span class="produto-card__tag">Novo</span>
+                            <img src="/img/polo-2.png" alt="Polo Premium Preta" class="produto-card__img">
+                        </div>
+                        <div class="produto-card__content">
+                            <div>
+                                <h3 class="produto-card__titulo">Polo Premium Preta</h3>
+                                <p class="produto-card__categoria">Polo</p>
+                            </div>
+                            <p class="produto-card__preco">R$ 160,00</p>
+                            <button class="produto-card__button add-to-cart" data-id="18">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="produto-card" data-category="Polo">
+                        <div class="produto-card__image-container">
+                            <img src="/img/polo-3.png" alt="Polo Slim Fit" class="produto-card__img">
+                        </div>
+                        <div class="produto-card__content">
+                            <div>
+                                <h3 class="produto-card__titulo">Polo Slim Fit</h3>
+                                <p class="produto-card__categoria">Polo</p>
+                            </div>
+                            <p class="produto-card__preco">R$ 155,00</p>
+                            <button class="produto-card__button add-to-cart" data-id="19">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <!-- Jaquetas -->
+                    <div class="produto-card" data-category="Jaquetas">
+                        <div class="produto-card__image-container">
+                            <span class="produto-card__tag">Novo</span>
+                            <img src="/img/jaqueta.jpg" alt="Jaqueta Bomber" class="produto-card__img">
+                        </div>
+                        <div class="produto-card__content">
+                            <div>
+                                <h3 class="produto-card__titulo">Jaqueta Bomber</h3>
+                                <p class="produto-card__categoria">Jaquetas</p>
+                            </div>
+                            <p class="produto-card__preco">R$ 380,00</p>
+                            <button class="produto-card__button add-to-cart" data-id="20">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+        </section>
+
+        <section class="carrinho">
+            <div class="container">
+                <div id="carrinho-resumo" class="carrinho-resumo"> 
+                    <h2>Seu Carrinho (<span id="cart-count">0</span> itens)</h2>
+                    <ul id="cart-items">
+                        </ul>
+                    <p class="cart-total-line">Total: R$ <span id="cart-total">0.00</span></p>
+                    <button id="btn-finalizar" class="produto-card__button">Finalizar Pedido</button>
+                    <div id="pedido-status" style="margin-top: 15px;"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+   <div class="top-bar">
+    <div class="info-box">
+      <i class="bi bi-clock"></i>
+      <div>
+        <h4>ATENDIMENTO</h4>
+        <p>SEG A SEX DAS 08H-11:30 E DAS 13H-17:30H</p>
+      </div>
+    </div>
+  
+    <div class="info-box">
+      <i class="bi bi-box-seam"></i>
+      <div>
+        <h4>TROCAS E DEVOLUÇÕES</h4>
+        <p>ATÉ 7 DIAS PARA TROCAS OU DEVOLUÇÕES</p>
+      </div>
+    </div>
+  
+    <div class="info-box">
+      <i class="bi bi-truck"></i>
+      <div>
+        <h4>FRETE</h4>
+        <p>GRÁTIS PARA COMPRAS ACIMA DE R$349<br>PARA TODO O BRASIL</p>
+      </div>
+    </div>
+  
+    <div class="info-box">
+      <i class="bi bi-credit-card"></i>
+      <div>
+        <h4>PARCELAMENTO</h4>
+        <p>EM ATÉ 6X SEM JUROS NO CARTÃO</p>
+      </div>
+    </div>
+  </div>
+    <footer>
+    <div class="container">
+        <div class="coluna-footer">
+            <h3 class="titulo">FAÇA PARTE DA NOSSA FAMILIA</h3>
+            <p>Inscreva-se para ter acesso a exclusivo á venda antecipada, novidades e promoções.</p>
+            <form action="mailto:seuemail@exemplo.com" method="POST" enctype="text/plain" class="form-email">
+              <label for="email">Digite seu e-mail:</label>
+              <input type="email" id="email" name="email" placeholder="E-mail" required>
+              <button type="submit">Confirmar</button>
+            </form>
+
+        </div>
+        <div class="coluna-footer">
+            <h3 class="titulo">INSTITUCIONAL</h3>
+            <p><a href="sobre.html" class="hover-destaque">Sobre a Koketsu</a></p>
+        </div>
+
+        <div class="coluna-footer">
+            <h3 class="titulo">ATENDIMENTO AO CLIENTE</h3>
+            <a href="duvidas.html"><p>Dúvidas Frequentes</p></a>
+            <a href="Trocas.html"><P>Trocas e Devoluções</P></a>
+            <a href="politica.html"><P>Politica de Privacidade</P></a>
+            <a href="frete.html"><P>Frete e Entrega</P></a>
+        </div>
+
+        <div class="coluna-footer">
+          <h3 class="titulo">MINHA CONTA</h3>
+          <a href="#"><p>Minha Conta</p></a>
+          <a href="carrinho.html"><p>Carrinho</p></a>
+          <a href="fidelidade.html"><p>Programa de Fidelidade</p></a>
+          
+
+        <h3 class="titulo fale-conosco">FALE CONOSCO</h3>
+        <p>Atendimento:</p>
+        <p>Segunda a Sabado (exceto feriados) das 09h ás 19h</p>
+        <p>E-mail: sac@Koketsu.com.br</p>
+        <A  href="https://WhatsApp.com" target="_blank"><button type="button" class="btn3">WhatsApp  <img src="/img/icons/whatsapp.svg" alt=""></button></A>
+       </div>
+       <div class="copyright">
+        <p>© 2025 Koketsu Grife. Todos os direitos reservados. Koketsu comércio de roupas. calçados e acessorios ltda.</p>
+        <p></p>
+      </div>
+  </div>
+</footer> 
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/script.js"></script>
+    <script src="/js/carrinho.js" defer></script>
+    <script src="/js/pedidos.js" defer></script>
+    <script src="/js/produtos.js" defer></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const carrinho = document.getElementById('carrinho-resumo');
+            
+            // Alterna a classe 'expandido' no clique no container do carrinho
+            carrinho.addEventListener('click', (e) => {
+                // Evita que clicar em um botão interno feche o carrinho
+                if (e.target.tagName !== 'BUTTON') { 
+                    carrinho.classList.toggle('expandido');
+                }
+            });
+            
+            // Se o carrinho tiver itens (via JS externo), garantir que ele apareça minimizado
+            // (Isto seria tratado no js/carrinho.js)
+        });
+
+        // Função para redirecionar para página de detalhes do produto
+        function verProduto(produtoId) {
+            window.location.href = `produto-detalhes.html?id=${produtoId}`;
+        }
+
+        // Função para adicionar ao carrinho sem redirecionar (gerenciada pelo carrinho.js)
+        function adicionarCarrinho(produtoId) {
+            // A funcionalidade é tratada pelo event listener no carrinho.js
+            return false;
+        }
+
+        // Tornar todos os cards de produtos clicáveis
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.produto-card');
+            cards.forEach((card, index) => {
+                const produtoId = index + 1;
+                
+                // Adicionar cursor pointer e onclick se ainda não tiver
+                if (!card.hasAttribute('onclick')) {
+                    card.style.cursor = 'pointer';
+                    card.setAttribute('onclick', `verProduto(${produtoId})`);
+                }
+
+                // Atualizar botão para não redirecionar
+                const button = card.querySelector('.add-to-cart');
+                if (button && !button.hasAttribute('onclick')) {
+                    button.setAttribute('onclick', `event.stopPropagation(); adicionarCarrinho(${produtoId})`);
+                }
+            });
+        });
+    </script>
+
+    <!-- Botão WhatsApp Flutuante -->
+    <a href="https://api.whatsapp.com/send?phone=5547933856337&text=Olá!%20Gostaria%20de%20mais%20informações" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

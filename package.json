@@ -1,0 +1,19 @@
+{
+	"name": "koketsu-grife",
+	"version": "1.0.0",
+	"description": "Site E-commerce Koketsu Grife",
+	"main": "index.html",
+	"scripts": {
+		"test": "node tests/test-carrinho.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"bootstrap": "^5.3.8",
+		"bootstrap-icons": "^1.13.1"
+	},
+	"devDependencies": {
+		"puppeteer": "^24.32.1"
+	}
+}

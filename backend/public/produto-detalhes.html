@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Produto - Koketsu</title>
+    <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/footer.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #f0f0f0;
+            padding-top: 100px;
+        }
+
+        .produto-detalhes {
+            padding: 40px 0;
+            min-height: 80vh;
+        }
+
+        .produto-detalhes .container {
+            max-width: 1200px;
+        }
+
+        .produto-imagem-principal {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .produto-info {
+            padding: 0 30px;
+        }
+
+        .produto-titulo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #FFEA00;
+            margin-bottom: 10px;
+        }
+
+        .produto-categoria {
+            font-size: 1rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .produto-precos {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .preco-antigo {
+            font-size: 1.3rem;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .preco-atual {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #FFEA00;
+        }
+
+        .parcelamento {
+            font-size: 1rem;
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+
+        .desconto-badge {
+            display: inline-block;
+            background: #ff4444;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .produto-descricao {
+            background: #1a1a1a;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+            line-height: 1.8;
+        }
+
+        .tamanhos-container {
+            margin: 30px 0;
+        }
+
+        .tamanhos-container h4 {
+            color: #FFEA00;
+            margin-bottom: 15px;
+        }
+
+        .tamanho-btn {
+            background: #1a1a1a;
+            border: 2px solid #333;
+            color: #f0f0f0;
+            padding: 12px 24px;
+            margin: 5px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tamanho-btn:hover,
+        .tamanho-btn.active {
+            background: #FFEA00;
+            color: #000;
+            border-color: #FFEA00;
+        }
+
+        .quantidade-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .quantidade-container h4 {
+            color: #FFEA00;
+            margin: 0;
+        }
+
+        .quantidade-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantidade-btn {
+            background: #FFEA00;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            font-size: 1.5rem;
+            color: #000;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quantidade-btn:hover {
+            background: #FFC400;
+            transform: scale(1.1);
+        }
+
+        .quantidade-input {
+            width: 60px;
+            text-align: center;
+            background: #1a1a1a;
+            border: 2px solid #333;
+            color: #f0f0f0;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+        }
+
+        .btn-adicionar-carrinho {
+            background: #FFEA00;
+            color: #000;
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .btn-adicionar-carrinho:hover {
+            background: #FFC400;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 234, 0, 0.3);
+        }
+
+        .btn-voltar {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #FFEA00;
+            text-decoration: none;
+            font-size: 1rem;
+            margin-bottom: 30px;
+            transition: all 0.3s;
+        }
+
+        .btn-voltar:hover {
+            color: #FFC400;
+            transform: translateX(-5px);
+        }
+
+        .detalhes-produto {
+            background: #1a1a1a;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .detalhes-produto h4 {
+            color: #FFEA00;
+            margin-bottom: 20px;
+        }
+
+        .detalhes-produto ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .detalhes-produto ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .detalhes-produto ul li:last-child {
+            border-bottom: none;
+        }
+
+        .detalhes-produto ul li i {
+            color: #FFEA00;
+            margin-right: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .produto-titulo {
+                font-size: 1.8rem;
+            }
+
+            .preco-atual {
+                font-size: 2rem;
+            }
+
+            .produto-info {
+                padding: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav id="navbar" class="navbar d-flex align-items-center px-4 sticky-top">
+            <div class="navbar-section d-flex align-items-center">
+                <button class="btn btn-link text-white d-flex align-items-center p-0 me-3" data-bs-toggle="offcanvas" data-bs-target="#menuOffcanvas">
+                    <i class="bi bi-list fs-5"></i> <span class="ms-1">Menu</span>
+                </button>
+            </div>
+            <a href="index.html">
+                <img src="/img/icons/logo.png" alt="Logo Koketsu" class="logo" />
+            </a>
+            <div class="navbar-end d-flex justify-content-end align-items-center">
+                <a href="/backend/login" class="icon-link"><i class="bi bi-person"></i> <span class="d-none d-sm-inline">Login</span></a>
+                <a href="carrinho.html" class="icon-button" style="position: relative;">
+                    <i class="bi bi-bag"></i> 
+                    <span class="d-none d-sm-inline">Carrinho</span>
+                    <span id="cart-count" style="position: absolute; top: -5px; right: -5px; background: #ff4444; color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold;">0</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="offcanvas offcanvas-start botao-fechar" tabindex="-1" id="menuOffcanvas">
+            <div class="offcanvas-header justify-content-end">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="list-unstyled">
+                    <li><a class="text-white text-decoration-none d-block py-2" href="index.html">Início</a></li>
+                    <li><a class="text-white text-decoration-none d-block py-2" href="produto.html">Produtos</a></li>
+                    <li><a class="text-white text-decoration-none d-block py-2" href="sobre.html">Sobre</a></li>
+                    <li><a class="text-white text-decoration-none d-block py-2" href="#">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main class="produto-detalhes">
+        <div class="container">
+            <a href="produto.html" class="btn-voltar">
+                <i class="bi bi-arrow-left"></i>
+                Voltar para Produtos
+            </a>
+
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <img id="produto-imagem" src="/img/camiseta-marrom.png" alt="Produto" class="produto-imagem-principal">
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="produto-info">
+                        <span id="produto-badge" class="desconto-badge">-29% OFF</span>
+                        <h1 id="produto-titulo" class="produto-titulo">Camiseta Oversized Marrom</h1>
+                        <p id="produto-categoria" class="produto-categoria">Camisetas</p>
+
+                        <div class="produto-precos">
+                            <span id="produto-preco-antigo" class="preco-antigo">R$ 169,90</span>
+                            <span id="produto-preco-atual" class="preco-atual">R$ 120,00</span>
+                        </div>
+                        <p id="produto-parcelamento" class="parcelamento">ou 6x de R$ 20,00 no cartão s/ juros</p>
+
+                        <div class="produto-descricao">
+                            <p id="produto-descricao-texto">
+                                Camiseta oversized premium com design exclusivo. 
+                                Confeccionada em 100% algodão de alta qualidade, 
+                                proporcionando máximo conforto e durabilidade. 
+                                Perfeita para looks casuais modernos.
+                            </p>
+                        </div>
+
+                        <div class="tamanhos-container">
+                            <h4>Tamanho</h4>
+                            <button class="tamanho-btn" data-tamanho="P">P</button>
+                            <button class="tamanho-btn active" data-tamanho="M">M</button>
+                            <button class="tamanho-btn" data-tamanho="G">G</button>
+                            <button class="tamanho-btn" data-tamanho="GG">GG</button>
+                        </div>
+
+                        <div class="quantidade-container">
+                            <h4>Quantidade</h4>
+                            <div class="quantidade-controls">
+                                <button class="quantidade-btn" onclick="diminuirQuantidade()">-</button>
+                                <input type="number" id="quantidade" class="quantidade-input" value="1" min="1" max="10">
+                                <button class="quantidade-btn" onclick="aumentarQuantidade()">+</button>
+                            </div>
+                        </div>
+
+                        <button class="btn-adicionar-carrinho" onclick="adicionarAoCarrinho()">
+                            <i class="bi bi-bag-plus"></i> Adicionar ao Carrinho
+                        </button>
+
+                        <div class="detalhes-produto">
+                            <h4>Detalhes do Produto</h4>
+                            <ul>
+                                <li><i class="bi bi-check-circle"></i> 100% Algodão Premium</li>
+                                <li><i class="bi bi-check-circle"></i> Modelagem Oversized</li>
+                                <li><i class="bi bi-check-circle"></i> Estampa de Alta Durabilidade</li>
+                                <li><i class="bi bi-check-circle"></i> Lavagem à Máquina</li>
+                                <li><i class="bi bi-truck"></i> Frete Grátis acima de R$ 449</li>
+                                <li><i class="bi bi-arrow-repeat"></i> Trocas em até 7 dias</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="coluna-footer">
+                <h3 class="titulo">SOBRE A KOKETSU</h3>
+                <p>A Koketsu é uma grife de moda urbana que combina estilo, qualidade e atitude. Nossas peças são criadas para quem busca exclusividade e conforto.</p>
+            </div>
+
+            <div class="coluna-footer">
+                <h3 class="titulo">ATENDIMENTO AO CLIENTE</h3>
+                <a href="duvidas.html"><p>Dúvidas Frequentes</p></a>
+                <a href="Trocas.html"><p>Trocas e Devoluções</p></a>
+                <a href="politica.html"><p>Política de Privacidade</p></a>
+                <a href="frete.html"><p>Frete e Entrega</p></a>
+            </div>
+
+            <div class="coluna-footer">
+                <h3 class="titulo">MINHA CONTA</h3>
+                <a href="#"><p>Minha Conta</p></a>
+                <a href="carrinho.html"><p>Carrinho</p></a>
+                <a href="fidelidade.html"><p>Programa de Fidelidade</p></a>
+
+                <h3 class="titulo fale-conosco">FALE CONOSCO</h3>
+                <p>Atendimento:</p>
+                <p>Segunda a Sábado (exceto feriados) das 09h às 19h</p>
+                <p>E-mail: sac@Koketsu.com.br</p>
+                <a href="https://api.whatsapp.com/send?phone=5547933856337" target="_blank"><button type="button" class="btn3">WhatsApp <img src="/img/icons/whatsapp.svg" alt=""></button></a>
+            </div>
+
+            <div class="coluna-footer">
+                <h3 class="titulo">FORMAS DE PAGAMENTO</h3>
+                <div class="payment-methods">
+                    <i class="bi bi-credit-card" title="Visa"></i>
+                    <i class="bi bi-credit-card-2-front" title="Mastercard"></i>
+                    <i class="bi bi-credit-card" title="Elo"></i>
+                    <i class="bi bi-credit-card" title="Hipercard"></i>
+                    <i class="bi bi-wallet2" title="PIX"></i>
+                    <i class="bi bi-upc-scan" title="Boleto"></i>
+                </div>
+                <p style="margin-top: 12px; font-size: 0.85rem; color: #999;">Parcele em até 6x sem juros no cartão</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Koketsu Grife. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Botão WhatsApp Flutuante -->
+    <a href="https://api.whatsapp.com/send?phone=5547933856337&text=Olá!%20Gostaria%20de%20mais%20informações" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/script.js"></script>
+    <script src="/js/carrinho.js"></script>
+    <script>
+        // Dados dos produtos
+        const produtos = {
+            1: {
+                nome: "Camiseta Oversized Marrom",
+                categoria: "Camisetas",
+                preco: 120.00,
+                precoAntigo: 169.90,
+                imagem: "img/camiseta-marrom.png",
+                descricao: "Camiseta oversized premium com design exclusivo. Confeccionada em 100% algodão de alta qualidade, proporcionando máximo conforto e durabilidade. Perfeita para looks casuais modernos.",
+                desconto: 29
+            },
+            2: {
+                nome: "Camiseta Off White",
+                categoria: "Camisetas",
+                preco: 125.00,
+                precoAntigo: 169.90,
+                imagem: "img/camiseta-off-white.png",
+                descricao: "Camiseta off white com modelagem oversized. Tecido premium que não desbota e mantém a forma mesmo após várias lavagens. Estilo urbano e contemporâneo.",
+                desconto: 26
+            },
+            3: {
+                nome: "Camiseta NoCap",
+                categoria: "Camisetas",
+                preco: 115.00,
+                precoAntigo: 149.90,
+                imagem: "img/NOCAP.png",
+                descricao: "Camiseta NoCap com estampa exclusiva. Design único que expressa atitude e personalidade. Material confortável e respirável.",
+                desconto: 23
+            },
+            4: {
+                nome: "Camiseta Koketsu Classic",
+                categoria: "Camisetas",
+                preco: 110.00,
+                precoAntigo: 149.90,
+                imagem: "/img/camiseta-branca.png",
+                descricao: "Camiseta clássica da Koketsu com logo bordado. Peça essencial para o guarda-roupa urbano. Qualidade superior e durabilidade garantida.",
+                desconto: 27
+            },
+            5: {
+                nome: "Moletom Oversized Preto",
+                categoria: "Moletom",
+                preco: 280.00,
+                precoAntigo: 349.90,
+                imagem: "img/moletom.png",
+                descricao: "Moletom oversized de alta qualidade com forro interno macio. Perfeito para os dias mais frios. Design moderno e confortável.",
+                desconto: 20
+            },
+            6: {
+                nome: "Moletom Classic",
+                categoria: "Moletom",
+                preco: 260.00,
+                precoAntigo: 329.90,
+                imagem: "img/moletom-2.png",
+                descricao: "Moletom clássico com capuz e bolso canguru. Tecido de alta gramatura que proporciona aquecimento sem pesar. Ideal para looks casuais.",
+                desconto: 21
+            },
+            7: {
+                nome: "Moletom Urban",
+                categoria: "Moletom",
+                preco: 270.00,
+                precoAntigo: 339.90,
+                imagem: "img/moletom-3.png",
+                descricao: "Moletom urban style com detalhes exclusivos. Modelagem moderna e confortável. Perfeito para compor looks streetwear.",
+                desconto: 21
+            },
+            8: {
+                nome: "Moletom Premium",
+                categoria: "Moletom",
+                preco: 290.00,
+                precoAntigo: 359.90,
+                imagem: "img/moletom-4.png",
+                descricao: "Moletom premium com acabamento diferenciado. Confeccionado com tecidos de primeira linha. Design sofisticado e urbano.",
+                desconto: 19
+            },
+            9: {
+                nome: "Calça Cargo Preta",
+                categoria: "Calças",
+                preco: 250.00,
+                precoAntigo: 319.90,
+                imagem: "img/calca-2.png",
+                descricao: "Calça cargo preta com múltiplos bolsos. Design funcional e estiloso. Tecido resistente e confortável para o dia a dia.",
+                desconto: 22
+            },
+            10: {
+                nome: "Calça Skinny",
+                categoria: "Calças",
+                preco: 230.00,
+                precoAntigo: 299.90,
+                imagem: "img/calca-3.png",
+                descricao: "Calça skinny com modelagem ajustada. Tecido com elastano para maior conforto e mobilidade. Estilo moderno e versátil.",
+                desconto: 23
+            },
+            11: {
+                nome: "Calça Wide Leg",
+                categoria: "Calças",
+                preco: 260.00,
+                precoAntigo: 329.90,
+                imagem: "img/calca-4.png",
+                descricao: "Calça wide leg com modelagem ampla e confortável. Tendência fashion que não sai de moda. Tecido premium de alta qualidade.",
+                desconto: 21
+            },
+            12: {
+                nome: "Calça Cargo Caqui",
+                categoria: "Calças",
+                preco: 255.00,
+                precoAntigo: 324.90,
+                imagem: "img/carca.png",
+                descricao: "Calça cargo em tom caqui militar. Bolsos estratégicos e design utilitário. Ideal para looks descolados.",
+                desconto: 22
+            },
+            13: {
+                nome: "Tênis DN Classic",
+                categoria: "Tênis",
+                preco: 450.00,
+                precoAntigo: 599.90,
+                imagem: "img/dn.png",
+                descricao: "Tênis DN Classic com design icônico. Solado confortável e amortecimento superior. Estilo e conforto para o dia todo.",
+                desconto: 25
+            },
+            14: {
+                nome: "Tênis DN Vermelho",
+                categoria: "Tênis",
+                preco: 480.00,
+                precoAntigo: 629.90,
+                imagem: "img/dn-vermelho.png",
+                descricao: "Tênis DN na cor vermelha vibrante. Destaque garantido em qualquer look. Tecnologia de amortecimento avançada.",
+                desconto: 24
+            },
+            15: {
+                nome: "Tênis DN Branco",
+                categoria: "Tênis",
+                preco: 470.00,
+                precoAntigo: 619.90,
+                imagem: "img/dn-branco.png",
+                descricao: "Tênis DN branco clean e versátil. Combina com qualquer outfit. Qualidade e durabilidade excepcionais.",
+                desconto: 24
+            },
+            16: {
+                nome: "Tênis TN Sport",
+                categoria: "Tênis",
+                preco: 490.00,
+                precoAntigo: 649.90,
+                imagem: "img/TN.png",
+                descricao: "Tênis TN Sport com design esportivo. Máximo conforto para atividades do dia a dia. Estilo e performance em um só produto.",
+                desconto: 25
+            },
+            17: {
+                nome: "Polo Classic Branca",
+                categoria: "Polo",
+                preco: 150.00,
+                precoAntigo: 199.90,
+                imagem: "/img/polo-.png",
+                descricao: "Polo clássica branca com gola e botões. Elegância casual para diversas ocasiões. Tecido respirável e confortável.",
+                desconto: 25
+            },
+            18: {
+                nome: "Polo Premium Preta",
+                categoria: "Polo",
+                preco: 160.00,
+                precoAntigo: 209.90,
+                imagem: "img/polo-2.png",
+                descricao: "Polo premium em preto com acabamento refinado. Sofisticação e conforto em uma única peça. Ideal para looks elegantes.",
+                desconto: 24
+            },
+            19: {
+                nome: "Polo Slim Fit",
+                categoria: "Polo",
+                preco: 155.00,
+                precoAntigo: 204.90,
+                imagem: "img/polo-3.png",
+                descricao: "Polo slim fit com modelagem ajustada. Design moderno e elegante. Tecido de alta qualidade que não amassa.",
+                desconto: 24
+            },
+            20: {
+                nome: "Jaqueta Bomber",
+                categoria: "Jaquetas",
+                preco: 380.00,
+                precoAntigo: 499.90,
+                imagem: "img/jaqueta.jpg",
+                descricao: "Jaqueta bomber style com design clássico. Perfeita para meia estação. Tecido resistente e estilo atemporal.",
+                desconto: 24
+            }
+        };
+
+        // Carregar produto baseado no ID da URL
+        function carregarProduto() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const produtoId = urlParams.get('id');
+
+            if (produtoId && produtos[produtoId]) {
+                const produto = produtos[produtoId];
+                
+                document.getElementById('produto-titulo').textContent = produto.nome;
+                document.getElementById('produto-categoria').textContent = produto.categoria;
+                document.getElementById('produto-imagem').src = produto.imagem;
+                document.getElementById('produto-imagem').alt = produto.nome;
+                document.getElementById('produto-preco-antigo').textContent = `R$ ${produto.precoAntigo.toFixed(2).replace('.', ',')}`;
+                document.getElementById('produto-preco-atual').textContent = `R$ ${produto.preco.toFixed(2).replace('.', ',')}`;
+                document.getElementById('produto-parcelamento').textContent = `ou 6x de R$ ${(produto.preco / 6).toFixed(2).replace('.', ',')} no cartão s/ juros`;
+                document.getElementById('produto-descricao-texto').textContent = produto.descricao;
+                document.getElementById('produto-badge').textContent = `-${produto.desconto}% OFF`;
+                
+                // Atualizar título da página
+                document.title = `${produto.nome} - Koketsu`;
+            }
+        }
+
+        // Funções globais - devem estar disponíveis antes do DOMContentLoaded
+        window.aumentarQuantidade = function() {
+            const input = document.getElementById('quantidade');
+            const valor = parseInt(input.value);
+            if (valor < 10) {
+                input.value = valor + 1;
+            }
+        }
+
+        window.diminuirQuantidade = function() {
+            const input = document.getElementById('quantidade');
+            const valor = parseInt(input.value);
+            if (valor > 1) {
+                input.value = valor - 1;
+            }
+        }
+
+        // Adicionar ao carrinho - função global
+        window.adicionarAoCarrinho = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const produtoId = urlParams.get('id');
+            const quantidade = parseInt(document.getElementById('quantidade').value);
+            const tamanhoSelecionado = document.querySelector('.tamanho-btn.active')?.dataset.tamanho;
+
+            if (!tamanhoSelecionado) {
+                alert('Por favor, selecione um tamanho');
+                return;
+            }
+
+            const produto = produtos[produtoId];
+            if (produto && window.carrinhoManager) {
+                // Adicionar ao carrinho usando o gerenciador
+                carrinhoManager.adicionarProduto({
+                    id: produtoId,
+                    nome: produto.nome,
+                    preco: produto.preco,
+                    imagem: produto.imagem,
+                    tamanho: tamanhoSelecionado,
+                    quantidade: quantidade
+                });
+            }
+        }
+
+        // Carregar produto e inicializar eventos ao carregar a página
+        window.addEventListener('DOMContentLoaded', function() {
+            carregarProduto();
+            
+            // Seleção de tamanho
+            document.querySelectorAll('.tamanho-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.tamanho-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
