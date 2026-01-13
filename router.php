@@ -18,5 +18,5 @@ if ($uri !== '/' && file_exists($requested) && is_file($requested)) {
     return false; // permite que o servidor embutido entregue o arquivo
 }
 
-// Caso contrário, encaminha para o front controller (rotas PHP)
-require_once __DIR__ . '/backend/Rotas/Rotas.php';
+// Caso contrário, encaminha para o front controller (front controller existente em backend/public)
+require_once __DIR__ . '/backend/public/index.php';

@@ -1,7 +1,7 @@
 <?php
 
-use App\Koketsu\Controllers\Web\AuthController;
-use App\Koketsu\Controllers\Web\DashboardController;
+use App\Koketsu\Controles\Web\AuthController;
+use App\Koketsu\Controles\Web\DashboardController;
 
 // Login site
 $router->get('/login', [AuthController::class, 'login']);
