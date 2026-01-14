@@ -1,3 +1,6 @@
+const { ipcMain } = require('electron');
+const db = require('../database/db');
+
 const { app, BrowserWindow } = require("electron");
 const path = require("path");
 // log básico e captura de exceções para diagnóstico
@@ -40,3 +43,29 @@ app.whenReady().then(() => {
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit();
 });
+ipcMain.handle('produtos:listar', () => {
+  return db.prepare('SELECT * FROM produtos').all();
+});
+
+ipcMain.handle('produtos:criar', (event, produto) => {
+  const stmt = db.prepare(`
+    INSERT INTO produtos (nome, categoria, preco, estoque, imagem)
+    VALUES (?, ?, ?, ?, ?)
+  `);
+
+  stmt.run(
+    produto.nome,
+    produto.categoria,
+    produto.preco,
+    produto.estoque,
+    produto.imagem
+  );
+
+  return true;
+});
+
+ipcMain.handle('produtos:excluir', (event, id) => {
+  db.prepare('DELETE FROM produtos WHERE id = ?').run(id);
+  return true;
+});
+
