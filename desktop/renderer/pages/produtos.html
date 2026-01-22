@@ -4,19 +4,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Produtos</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* Estilos para placeholders dos inputs de tamanhos */
+    #novoTamanho::placeholder,
+    #novaQuantidade::placeholder {
+      color: #fff !important;
+      opacity: 0.7;
+    }
+    #novoTamanho,
+    #novaQuantidade {
+      background: #1a1a1a !important;
+      border-color: #444 !important;
+      color: #fff !important;
+    }
+    #novoTamanho:focus,
+    #novaQuantidade:focus {
+      background: #1a1a1a !important;
+      border-color: #ffd84d !important;
+      color: #fff !important;
+    }
+    
+    /* Remover setas dos inputs numéricos */
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type=number] {
+      -moz-appearance: textfield;
+      appearance: textfield;
+    }
+  </style>
 </head>
 <body>
 
 <div class="app">
   <aside class="sidebar">
-    <img src="../assets/produtos/logo _sem_fundo.png" class="logo">
+    <img src="../assets/img/logo.jpg" class="logo">
     <nav class="menu">
       <a href="dashboard.html">Dashboard</a>
       <a class="active" href="produtos.html">Produtos</a>
-      <a href="pedidos.html">Pedidos</a>
-      <a href="#">Clientes</a>
+      <a href="clientes.html">Clientes</a>
+      <a href="configuracoes.html">⚙️ Configurações</a>
       <a href="login.html">Sair</a>
     </nav>
   </aside>
@@ -32,14 +63,46 @@
 
     <!-- BUSCA E FILTRO -->
     <div class="card mb-4">
-      <div class="row">
-        <div class="col-md-8">
-          <input type="text" id="searchProduto" class="form-control" placeholder="🔍 Buscar por nome ou categoria...">
+      <div class="row" style="gap: 12px;">
+        <div class="col-md-3">
+          <label style="font-size: 12px; color: #888; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; display: block;">🔍 Buscar Produto</label>
+          <input type="text" id="searchProduto" class="form-control" placeholder="Nome ou categoria...">
         </div>
-        <div class="col-md-4">
+        <div class="col-md-2">
+          <label style="font-size: 12px; color: #888; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; display: block;">📦 Categoria</label>
           <select id="filterCategoria" class="form-control">
             <option value="">Todas as categorias</option>
           </select>
+        </div>
+        <div class="col-md-2">
+          <label style="font-size: 12px; color: #888; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; display: block;">📏 Tamanho</label>
+          <select id="filterTamanho" class="form-control">
+            <option value="">Todos os tamanhos</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <label style="font-size: 12px; color: #888; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; display: block;">📊 Estoque</label>
+          <select id="filterEstoque" class="form-control">
+            <option value="">Todo estoque</option>
+            <option value="em-falta">Em falta</option>
+            <option value="baixo">Baixo (1-10)</option>
+            <option value="medio">Médio (11-30)</option>
+            <option value="alto">Alto (31+)</option>
+          </select>
+        </div>
+        <div class="col-md-2" style="display: flex; align-items: flex-end; gap: 8px;">
+          <div style="flex: 1;">
+            <label style="font-size: 12px; color: #888; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; display: block;">🔀 Ordenar</label>
+            <select id="ordenarPor" class="form-control">
+              <option value="nome-az">Nome (A → Z)</option>
+              <option value="nome-za">Nome (Z → A)</option>
+              <option value="preco-menor">Preço (menor)</option>
+              <option value="preco-maior">Preço (maior)</option>
+              <option value="estoque-menor">Estoque (menor)</option>
+              <option value="estoque-maior">Estoque (maior)</option>
+            </select>
+          </div>
+          <button id="limparFiltros" class="btn btn-outline-secondary" style="padding: 10px 14px; font-size: 14px; font-weight: 600; border: 2px solid #555; border-radius: 8px; background: transparent; color: #fff; transition: all 0.3s; height: 42px;" title="Limpar todos os filtros">🔄</button>
         </div>
       </div>
     </div>
@@ -48,66 +111,103 @@
     <div id="gridProdutos" class="produtos-estoque-grid">
       <p class="text-muted col-12">Carregando produtos...</p>
     </div>
-
-    <!-- RESUMO -->
-    <div class="card mt-4">
-      <div class="row text-center">
-        <div class="col-md-4">
-          <h6 class="text-muted">Total de Produtos</h6>
-          <h3 id="totalProdutos" style="color: #ffd84d;">0</h3>
-        </div>
-        <div class="col-md-4">
-          <h6 class="text-muted">Total em Estoque</h6>
-          <h3 id="totalEstoque" style="color: #ffd84d;">0</h3>
-        </div>
-        <div class="col-md-4">
-          <h6 class="text-muted">Valor Total</h6>
-          <h3 id="valorTotal" style="color: #ffd84d;">R$ 0.00</h3>
-        </div>
-      </div>
-    </div>
   </main>
 </div>
 
 <!-- MODAL PRODUTO -->
 <div class="modal" id="modalProduto" style="display: none;">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h3 id="modalTitulo">Novo Produto</h3>
-      <button class="btn-close-modal" id="cancelarModal">&times;</button>
+  <div class="modal-content" style="max-width: 900px; max-height: 90vh; overflow-y: auto;">
+    <div class="modal-header" style="background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); padding: 20px 30px; border-bottom: 2px solid #ffd84d; border-radius: 12px 12px 0 0;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="background: #ffd84d; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px;">📦</div>
+        <h3 id="modalTitulo" style="margin: 0; color: #ffd84d; font-size: 22px; font-weight: 600;">Novo Produto</h3>
+      </div>
+      <button class="btn-close-modal" id="cancelarModal" style="background: none; border: none; color: #fff; font-size: 32px; cursor: pointer; padding: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 6px; transition: all 0.2s;" onmouseover="this.style.background='#ff4444'; this.style.transform='rotate(90deg)';" onmouseout="this.style.background='none'; this.style.transform='rotate(0deg)';">&times;</button>
     </div>
 
-    <div class="modal-body">
+    <div class="modal-body" style="padding: 30px;">
       <div class="row">
-        <div class="col-md-6">
-          <label>Nome *</label>
-          <input type="text" id="nome" class="form-control" placeholder="Nome do produto">
+        <div class="col-md-7" style="padding-right: 20px;">
+          <div style="margin-bottom: 20px;">
+            <label style="color: #ffd84d; font-weight: 500; font-size: 13px; display: flex; align-items: center; gap: 6px; margin-bottom: 8px;">
+              <span style="background: #ffd84d; color: #000; width: 20px; height: 20px; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700;">✓</span>
+              Nome do Produto *
+            </label>
+            <input type="text" id="nome" class="form-control" placeholder="Digite o nome do produto" autocomplete="off" style="background: #0f0f0f; border: 2px solid #333; color: #fff; padding: 12px 15px; border-radius: 8px; font-size: 14px; transition: all 0.3s;" onfocus="this.style.borderColor='#ffd84d'; this.style.boxShadow='0 0 0 3px rgba(255,216,77,0.1)';" onblur="this.style.borderColor='#333'; this.style.boxShadow='none';">
+          </div>
 
-          <label class="mt-3">Categoria</label>
-          <input type="text" id="categoria" class="form-control" placeholder="Ex: Roupas, Calçados">
+          <div class="row" style="margin-bottom: 20px;">
+            <div class="col-md-6" style="padding-right: 10px;">
+              <label style="color: #ffd84d; font-weight: 500; font-size: 13px; display: flex; align-items: center; gap: 6px; margin-bottom: 8px;">
+                🏷️ Categoria
+              </label>
+              <input type="text" id="categoria" class="form-control" placeholder="Ex: Roupas, Calçados" autocomplete="off" style="background: #0f0f0f; border: 2px solid #333; color: #fff; padding: 12px 15px; border-radius: 8px; font-size: 14px; transition: all 0.3s;" onfocus="this.style.borderColor='#ffd84d'; this.style.boxShadow='0 0 0 3px rgba(255,216,77,0.1)';" onblur="this.style.borderColor='#333'; this.style.boxShadow='none';">
+            </div>
+            <div class="col-md-6" style="padding-left: 10px;">
+              <label style="color: #ffd84d; font-weight: 500; font-size: 13px; display: flex; align-items: center; gap: 6px; margin-bottom: 8px;">
+                💰 Preço *
+              </label>
+              <input type="text" id="preco" class="form-control" placeholder="0,00" inputmode="decimal" autocomplete="off" style="background: #0f0f0f; border: 2px solid #333; color: #fff; padding: 12px 15px; border-radius: 8px; font-size: 14px; transition: all 0.3s;" onfocus="this.style.borderColor='#ffd84d'; this.style.boxShadow='0 0 0 3px rgba(255,216,77,0.1)';" onblur="this.style.borderColor='#333'; this.style.boxShadow='none';">
+            </div>
+          </div>
 
-          <label class="mt-3">Preço *</label>
-          <input type="number" id="preco" class="form-control" placeholder="0.00" step="0.01" min="0">
+          <div style="margin-bottom: 20px;">
+            <label style="color: #ffd84d; font-weight: 500; font-size: 13px; display: flex; align-items: center; gap: 6px; margin-bottom: 8px;">
+              📊 Quantidade em Estoque *
+            </label>
+            <input type="number" id="qtd" class="form-control" placeholder="Digite a quantidade" min="0" style="background: #0f0f0f; border: 2px solid #333; color: #fff; padding: 12px 15px; border-radius: 8px; font-size: 14px; transition: all 0.3s;" onfocus="this.style.borderColor='#ffd84d'; this.style.boxShadow='0 0 0 3px rgba(255,216,77,0.1)';" onblur="this.style.borderColor='#333'; this.style.boxShadow='none';">
+          </div>
 
-          <label class="mt-3">Quantidade *</label>
-          <input type="number" id="qtd" class="form-control" placeholder="0" min="0">
+          <div style="margin-bottom: 20px;">
+            <label style="color: #ffd84d; font-weight: 500; font-size: 14px; display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+              📏 Tamanhos Disponíveis
+            </label>
+            <div class="tamanhos-container" style="border: 2px solid #333; border-radius: 8px; padding: 15px; background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%); box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+              <div class="row mb-3" style="gap: 8px;">
+                <div class="col" style="flex: 1.5;">
+                  <input type="text" id="novoTamanho" class="form-control" placeholder="Ex: P, M, G, 38, 40" autocomplete="off" style="background: #0f0f0f; border: 1px solid #555; color: #fff; padding: 10px 12px; border-radius: 6px; font-size: 13px;">
+                </div>
+                <div class="col" style="flex: 1;">
+                  <input type="number" id="novaQuantidade" class="form-control" placeholder="Qtd" min="0" style="background: #0f0f0f; border: 1px solid #555; color: #fff; padding: 10px 12px; border-radius: 6px; font-size: 13px;">
+                </div>
+                <div class="col-auto">
+                  <button type="button" class="btn btn-gold" id="btnAdicionarTamanho" style="padding: 10px 20px; font-weight: 600; font-size: 16px; border-radius: 6px; box-shadow: 0 2px 6px rgba(255,216,77,0.3);">+ Adicionar</button>
+                </div>
+              </div>
+              <div id="listaTamanhos" style="max-height: 160px; overflow-y: auto; padding-right: 5px;">
+                <!-- Tamanhos adicionados aparecerão aqui -->
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-md-6">
-          <label>Imagem</label>
-          <input type="file" id="imagem" class="form-control" accept="image/*">
-          <img id="preview" style="display:none; width: 100%; margin-top: 10px; border-radius: 6px;" alt="Pré-visualização">
-          <p class="text-muted small mt-2">Formatos: JPG, PNG, WebP</p>
+
+        <div class="col-md-5" style="padding-left: 20px; border-left: 1px solid #333;">
+          <label style="color: #ffd84d; font-weight: 500; font-size: 13px; display: flex; align-items: center; gap: 6px; margin-bottom: 8px;">
+            🖼️ Imagem do Produto
+          </label>
+          <div style="background: #0f0f0f; border: 2px dashed #555; border-radius: 8px; padding: 20px; text-align: center; transition: all 0.3s; cursor: pointer;" onclick="document.getElementById('imagem').click();" onmouseover="this.style.borderColor='#ffd84d'; this.style.background='#1a1a1a';" onmouseout="this.style.borderColor='#555'; this.style.background='#0f0f0f';">
+            <img id="preview" style="display:none; width: 100%; max-height: 300px; object-fit: contain; margin-bottom: 15px; border-radius: 6px;" alt="Pré-visualização">
+            <div id="uploadPlaceholder" style="padding: 40px 20px;">
+              <div style="font-size: 48px; margin-bottom: 10px; opacity: 0.5;">📸</div>
+              <p style="color: #888; margin: 0; font-size: 14px;">Clique para selecionar uma imagem</p>
+              <p style="color: #666; margin: 5px 0 0 0; font-size: 12px;">JPG, PNG ou WebP</p>
+            </div>
+          </div>
+          <input type="file" id="imagem" class="form-control" accept="image/*" style="display: none;">
         </div>
       </div>
     </div>
 
-    <div class="modal-footer">
-      <button class="btn btn-outline-secondary" id="cancelarModalBtn">Cancelar</button>
-      <button class="btn btn-gold" id="salvarProduto">Salvar Produto</button>
+    <div class="modal-footer" style="background: #1a1a1a; padding: 20px 30px; border-top: 1px solid #333; border-radius: 0 0 12px 12px; display: flex; justify-content: space-between; align-items: center;">
+      <p style="color: #888; margin: 0; font-size: 13px;">* Campos obrigatórios</p>
+      <div style="display: flex; gap: 12px;">
+        <button class="btn btn-outline-secondary" id="cancelarModalBtn" style="padding: 12px 30px; font-weight: 600; border: 2px solid #555; border-radius: 8px; background: transparent; color: #fff; transition: all 0.2s;" onmouseover="this.style.background='#333'; this.style.borderColor='#777';" onmouseout="this.style.background='transparent'; this.style.borderColor='#555';">Cancelar</button>
+        <button class="btn btn-gold" id="salvarProduto" style="padding: 12px 35px; font-weight: 600; border-radius: 8px; box-shadow: 0 4px 12px rgba(255,216,77,0.3); transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(255,216,77,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(255,216,77,0.3)';">💾 Salvar Produto</button>
+      </div>
     </div>
   </div>
 </div>
 <script src="../js/produtos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

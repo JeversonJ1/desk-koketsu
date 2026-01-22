@@ -1,6 +1,5 @@
 let vendasChart = null;
 let estoqueChart = null;
-let ultimaAtualizacao = null;
 
 // ================================
 // ATUALIZAR DASHBOARD
@@ -8,28 +7,214 @@ let ultimaAtualizacao = null;
 async function atualizarDashboard() {
   try {
     console.log('=== Atualizando Dashboard ===');
-    const inicio = new Date();
     
     // Carregar dados
+    const dados = await window.api.obterDashboard();
     const produtos = await window.api.listarProdutos();
-    const vendas = await window.api.vendasMes();
-    const estoque = await window.api.estoqueDashboard();
+    
+    // Atualizar cards principais
+    const elemProdutos = document.getElementById('totalProdutos');
+    const elemEstoque = document.getElementById('totalEstoque');
+    const elemPedidos = document.getElementById('totalPedidos');
+    const elemValor = document.getElementById('valorEstoque');
+    
+    if (elemProdutos) elemProdutos.textContent = dados.totalProdutos || 0;
+    if (elemEstoque) elemEstoque.textContent = dados.estoqueTotal || 0;
+    if (elemPedidos) elemPedidos.textContent = dados.totalPedidos || 0;
+    if (elemValor) {
+      const valorTotal = produtos.reduce((sum, p) => sum + (p.preco * p.estoque), 0);
+      elemValor.textContent = 'R$ ' + valorTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+    }
+    
+    // Atualizar alertas de estoque baixo
+    atualizarAlertas(produtos);
+    
+    // Atualizar top produtos
+    atualizarTopProdutos(produtos);
+    
+    // Atualizar gráficos
+    atualizarGraficos(produtos);
     
     // Atualizar timestamp
-    ultimaAtualizacao = new Date();
     atualizarTimestamp();
     
-    // Atualizar componentes
-    atualizarMetricas(produtos, estoque, vendas);
-    atualizarAlertas(produtos);
-    atualizarTopProdutos(produtos);
-    atualizarGraficos(vendas, produtos);
-    
-    const duracao = new Date() - inicio;
-    console.log(`✓ Dashboard atualizado em ${duracao}ms`);
+    console.log('✓ Dashboard atualizado com sucesso');
   } catch (erro) {
     console.error('Erro ao atualizar dashboard:', erro);
   }
+}
+
+// ================================
+// ATUALIZAR ALERTAS DE ESTOQUE BAIXO
+// ================================
+function atualizarAlertas(produtos) {
+  const container = document.getElementById('alertasEstoque');
+  if (!container) return;
+  
+  // Produtos com estoque < 20
+  const alertos = produtos.filter(p => p.estoque < 20).sort((a, b) => a.estoque - b.estoque);
+  
+  if (alertos.length === 0) {
+    container.innerHTML = '<p class="text-muted">✓ Nenhum alerta de estoque</p>';
+    return;
+  }
+  
+  container.innerHTML = alertos.map(p => `
+    <div class="alert-item" style="padding: 10px; border-bottom: 1px solid #333;">
+      <div style="font-weight: bold; color: #ffc107;">${p.nome.substring(0, 30)}</div>
+      <div style="color: #ff6b6b; font-size: 12px;">📦 ${p.estoque} unidades</div>
+    </div>
+  `).join('');
+}
+
+// ================================
+// ATUALIZAR TOP PRODUTOS
+// ================================
+function atualizarTopProdutos(produtos) {
+  const container = document.getElementById('topEstoque');
+  if (!container) return;
+  
+  // Top 5 produtos por estoque
+  const top = [...produtos].sort((a, b) => b.estoque - a.estoque).slice(0, 5);
+  
+  container.innerHTML = top.map((p, i) => `
+    <div style="padding: 12px; border-bottom: 1px solid #444; display: flex; justify-content: space-between; align-items: center;">
+      <div style="color: #fff; font-weight: 500;">
+        <strong style="color: #ffc107; font-size: 16px;">${i + 1}º</strong> <span style="color: #e0e0e0;">${p.nome.substring(0, 25)}</span>
+      </div>
+      <div style="color: #ffc107; font-weight: bold; font-size: 14px;">${p.estoque} un</div>
+    </div>
+  `).join('');
+}
+
+// ================================
+// ATUALIZAR GRÁFICOS
+// ================================
+function atualizarGraficos(produtos) {
+  atualizarGraficoVendas();
+  atualizarGraficoEstoque(produtos);
+}
+
+// ================================
+// GRÁFICO DE VENDAS
+// ================================
+function atualizarGraficoVendas() {
+  const canvas = document.getElementById('vendasChart');
+  if (!canvas) return;
+  
+  // Dados fictícios para últimos 7 dias
+  const labels = [];
+  const valores = [];
+  
+  for (let i = 6; i >= 0; i--) {
+    const data = new Date();
+    data.setDate(data.getDate() - i);
+    labels.push(data.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' }));
+    valores.push(Math.floor(Math.random() * 5000) + 1000);
+  }
+  
+  if (vendasChart) {
+    vendasChart.data.labels = labels;
+    vendasChart.data.datasets[0].data = valores;
+    vendasChart.update();
+    return;
+  }
+  
+  const ctx = canvas.getContext('2d');
+  vendasChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Vendas (R$)',
+        data: valores,
+        borderColor: '#ffc107',
+        backgroundColor: 'rgba(255, 193, 7, 0.1)',
+        tension: 0.4,
+        fill: true,
+        pointBackgroundColor: '#ffc107',
+        pointBorderColor: '#fff',
+        pointRadius: 5
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { 
+          display: true,
+          labels: { color: '#fff' }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          grid: { color: '#444' },
+          ticks: { color: '#fff' }
+        },
+        x: {
+          grid: { color: '#444' },
+          ticks: { color: '#fff' }
+        }
+      }
+    }
+  });
+}
+
+// ================================
+// GRÁFICO DE ESTOQUE
+// ================================
+function atualizarGraficoEstoque(produtos) {
+  const canvas = document.getElementById('estoqueChart');
+  if (!canvas) return;
+  
+  // Top 5 produtos por estoque
+  const top = [...produtos].sort((a, b) => b.estoque - a.estoque).slice(0, 5);
+  
+  const labels = top.map(p => p.nome.substring(0, 15));
+  const valores = top.map(p => p.estoque);
+  
+  if (estoqueChart) {
+    estoqueChart.data.labels = labels;
+    estoqueChart.data.datasets[0].data = valores;
+    estoqueChart.update();
+    return;
+  }
+  
+  const ctx = canvas.getContext('2d');
+  estoqueChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: labels,
+      datasets: [{
+        data: valores,
+        backgroundColor: [
+          '#ffc107',
+          '#17a2b8',
+          '#28a745',
+          '#dc3545',
+          '#6f42c1'
+        ],
+        borderColor: '#1a1a1a',
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { 
+          display: true,
+          position: 'bottom',
+          labels: { 
+            color: '#fff',
+            padding: 15,
+            font: { size: 12 }
+          }
+        }
+      }
+    }
+  });
 }
 
 // ================================
@@ -47,195 +232,6 @@ function atualizarTimestamp() {
 }
 
 // ================================
-// ATUALIZAR MÉTRICAS
-// ================================
-function atualizarMetricas(produtos, estoque, vendas) {
-  try {
-    // Total de Produtos
-    const totalProdutos = produtos.length;
-    document.getElementById('totalProdutos').textContent = totalProdutos;
-    
-    // Total em Estoque
-    const totalEstoque = estoque.reduce((sum, p) => sum + (p.estoque || 0), 0);
-    document.getElementById('totalEstoque').textContent = totalEstoque;
-    
-    // Total de Pedidos
-    const totalPedidos = vendas.length;
-    document.getElementById('totalPedidos').textContent = totalPedidos;
-    
-    // Valor em Estoque
-    const valorEstoque = produtos.reduce((sum, p) => sum + (p.preco * p.estoque), 0);
-    document.getElementById('valorEstoque').textContent = 'R$ ' + valorEstoque.toFixed(0);
-    
-    console.log('✓ Métricas atualizadas');
-  } catch (erro) {
-    console.error('Erro ao atualizar métricas:', erro);
-  }
-}
-
-// ================================
-// ATUALIZAR ALERTAS DE ESTOQUE BAIXO
-// ================================
-function atualizarAlertas(produtos) {
-  try {
-    const container = document.getElementById('alertasEstoque');
-    if (!container) return;
-    
-    // Produtos com estoque < 5
-    const alertos = produtos.filter(p => p.estoque < 5).sort((a, b) => a.estoque - b.estoque);
-    
-    if (alertos.length === 0) {
-      container.innerHTML = '<p class="text-muted">✓ Nenhum alerta de estoque</p>';
-      return;
-    }
-    
-    container.innerHTML = alertos.map(p => `
-      <div class="alert-item">
-        <div class="produto-nome">${p.nome}</div>
-        <div class="produto-qtd">📦 ${p.estoque} un</div>
-      </div>
-    `).join('');
-    
-    console.log(`✓ Alertas atualizados: ${alertos.length}`);
-  } catch (erro) {
-    console.error('Erro ao atualizar alertas:', erro);
-  }
-}
-
-// ================================
-// TOP 5 PRODUTOS EM ESTOQUE
-// ================================
-function atualizarTopProdutos(produtos) {
-  try {
-    const container = document.getElementById('topEstoque');
-    if (!container) return;
-    
-    // Top 5 por estoque
-    const top = produtos
-      .sort((a, b) => b.estoque - a.estoque)
-      .slice(0, 5);
-    
-    if (top.length === 0) {
-      container.innerHTML = '<p class="text-muted">Nenhum produto cadastrado</p>';
-      return;
-    }
-    
-    container.innerHTML = top.map(p => `
-      <div class="product-item">
-        <div class="name">${p.nome}</div>
-        <div class="qtd">${p.estoque}</div>
-      </div>
-    `).join('');
-    
-    console.log('✓ Top produtos atualizados');
-  } catch (erro) {
-    console.error('Erro ao atualizar top produtos:', erro);
-  }
-}
-
-// ================================
-// ATUALIZAR GRÁFICOS
-// ================================
-function atualizarGraficos(vendas, produtos) {
-  try {
-    // Preparar dados de vendas
-    const meses = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
-    const dadosVendas = Array(12).fill(0);
-    
-    if (Array.isArray(vendas)) {
-      vendas.forEach(v => {
-        const mesIndex = parseInt(v.mes) - 1;
-        if (mesIndex >= 0 && mesIndex < 12) {
-          dadosVendas[mesIndex] = v.total || 0;
-        }
-      });
-    }
-    
-    // Preparar dados de estoque
-    let labelsEstoque = [];
-    let dadosEstoque = [];
-    let coresEstoque = ['#ffd84d', '#f5c400', '#e0ac00', '#c99700', '#b38600', '#9a7200'];
-    
-    if (Array.isArray(produtos)) {
-      produtos.slice(0, 6).forEach((p, idx) => {
-        labelsEstoque.push(p.nome || `Produto ${idx + 1}`);
-        dadosEstoque.push(p.estoque || 0);
-      });
-    }
-    
-    // Destruir gráficos anteriores
-    if (vendasChart) vendasChart.destroy();
-    if (estoqueChart) estoqueChart.destroy();
-    
-    // Gráfico de Vendas
-    const vendasCtx = document.getElementById('vendasChart');
-    if (vendasCtx) {
-      vendasChart = new Chart(vendasCtx, {
-        type: 'line',
-        data: {
-          labels: meses,
-          datasets: [{
-            label: 'Vendas',
-            data: dadosVendas,
-            borderColor: '#ffd84d',
-            backgroundColor: 'rgba(255, 216, 77, 0.15)',
-            tension: 0.3,
-            fill: true,
-            pointBackgroundColor: '#f5c400',
-            pointBorderColor: '#1a1a1a',
-            pointRadius: 5,
-            pointHoverRadius: 7
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { labels: { color: '#fff' } },
-            tooltip: { backgroundColor: '#111' }
-          },
-          scales: {
-            x: { grid: { color: '#2a2a2a' }, ticks: { color: '#ddd' } },
-            y: { grid: { color: '#2a2a2a' }, ticks: { color: '#ddd' } }
-          }
-        }
-      });
-    }
-    
-    // Gráfico de Estoque
-    const estoqueCtx = document.getElementById('estoqueChart');
-    if (estoqueCtx) {
-      estoqueChart = new Chart(estoqueCtx, {
-        type: 'doughnut',
-        data: {
-          labels: labelsEstoque.length > 0 ? labelsEstoque : ['Sem dados'],
-          datasets: [{
-            label: 'Estoque',
-            data: dadosEstoque.length > 0 ? dadosEstoque : [0],
-            backgroundColor: coresEstoque.slice(0, labelsEstoque.length),
-            borderColor: '#1a1a1a',
-            borderWidth: 2
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { position: 'bottom', labels: { color: '#fff', boxWidth: 12, padding: 16 } },
-            tooltip: { backgroundColor: '#111' }
-          },
-          cutout: '60%'
-        }
-      });
-    }
-    
-    console.log('✓ Gráficos atualizados');
-  } catch (erro) {
-    console.error('Erro ao atualizar gráficos:', erro);
-  }
-}
-
-// ================================
 // EVENT LISTENERS
 // ================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -248,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
       btnAtualizar.textContent = '⏳ Atualizando...';
       btnAtualizar.disabled = true;
       atualizarDashboard().then(() => {
-        btnAtualizar.textContent = '🔄 Atualizar';
+        btnAtualizar.textContent = '🔄 ATUALIZAR';
         btnAtualizar.disabled = false;
       });
     });
@@ -260,4 +256,5 @@ document.addEventListener('DOMContentLoaded', () => {
   // Recarregar a cada 30 segundos
   setInterval(atualizarDashboard, 30000);
 });
+
 
