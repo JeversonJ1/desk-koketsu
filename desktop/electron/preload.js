@@ -1,6 +1,13 @@
 const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('api', {
+  // AUTENTICAÇÃO
+  login: (username, password) => ipcRenderer.invoke('auth:login', username, password),
+  logout: (sessionId) => ipcRenderer.invoke('auth:logout', sessionId),
+  validateSession: (sessionId) => ipcRenderer.invoke('auth:validate', sessionId),
+  changePassword: (sessionId, oldPassword, newPassword) => 
+    ipcRenderer.invoke('auth:changePassword', sessionId, oldPassword, newPassword),
+
   // PRODUTOS
   listarProdutos: () => ipcRenderer.invoke('produtos:listar'),
   criarProduto: (p) => ipcRenderer.invoke('produtos:criar', p),
@@ -22,15 +29,12 @@ contextBridge.exposeInMainWorld('api', {
   // PEDIDOS
   listarPedidos: () => ipcRenderer.invoke('pedidos:listar'),
   criarPedido: (pedido) => ipcRenderer.invoke('pedidos:criar', pedido),
-  
+  atualizarPedido: (pedido) => ipcRenderer.invoke('pedidos:atualizar', pedido),
+  excluirPedido: (id) => ipcRenderer.invoke('pedidos:excluir', id),
+
   // DASHBOARD
   obterDashboard: () => ipcRenderer.invoke('dashboard:obter'),
-  
-  // CONFIGURAÇÕES
-  alterarCredenciais: (dados) => ipcRenderer.invoke('config:alterar-credenciais', dados),
-  obterBanners: () => ipcRenderer.invoke('config:obter-banners'),
-  criarBanner: (banner) => ipcRenderer.invoke('config:criar-banner', banner),
-  atualizarBanner: (index, banner) => ipcRenderer.invoke('config:atualizar-banner', index, banner),
-  excluirBanner: (index) => ipcRenderer.invoke('config:excluir-banner', index)
+  vendasMes: () => ipcRenderer.invoke('dashboard:vendas-mes'),
+  estoqueDashboard: () => ipcRenderer.invoke('dashboard:estoque')
 });
 
