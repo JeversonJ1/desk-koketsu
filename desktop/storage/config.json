@@ -4,11 +4,11 @@
     "passwordHash": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9"
   },
   "sessions": {
-    "2d46a90fd952ac0e0ac6aee2d0991e9d7ab0941ac77f87bc7d5d714ce4f58e9d": {
-      "sessionId": "2d46a90fd952ac0e0ac6aee2d0991e9d7ab0941ac77f87bc7d5d714ce4f58e9d",
+    "0f017c404493cbcc8da03bcbdba2bfba34786a7762a89e5f37421df1abbd740a": {
+      "sessionId": "0f017c404493cbcc8da03bcbdba2bfba34786a7762a89e5f37421df1abbd740a",
       "username": "admin",
-      "createdAt": "2026-01-24T14:24:06.716Z",
-      "expiresAt": "2026-01-25T14:24:06.716Z"
+      "createdAt": "2026-01-25T19:03:05.479Z",
+      "expiresAt": "2026-01-26T19:03:05.479Z"
     }
   }
 }

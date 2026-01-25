@@ -1,5 +1,7 @@
 {
     "name": "app/koketsu",
+    "description": "Sistema Koketsu - Aplicação desktop para gerenciamento de pedidos",
+    "license": "proprietary",
     "autoload": {
         "psr-4": {
             "App\\Koketsu\\": "backend/",
