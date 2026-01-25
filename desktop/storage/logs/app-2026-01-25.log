@@ -45,3 +45,31 @@
 [2026-01-25T19:03:31.670Z] INFO: Tamanhos listados para produto 25
 [2026-01-25T19:03:31.676Z] INFO: Tamanhos listados para produto 26
 [2026-01-25T19:03:34.095Z] INFO: Clientes listados
+[2026-01-25T19:19:12.268Z] INFO: Aplicação Koketsu Desktop iniciada
+[2026-01-25T19:19:12.305Z] INFO: Todos os handlers IPC registrados
+[2026-01-25T19:19:12.411Z] INFO: Janela principal criada
+[2026-01-25T19:19:12.853Z] INFO: Dashboard carregado
+[2026-01-25T19:19:12.961Z] INFO: Produtos listados
+[2026-01-25T19:19:16.450Z] INFO: Produtos listados
+[2026-01-25T19:19:16.481Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T19:19:16.487Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T19:19:16.495Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T19:19:16.502Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T19:19:16.513Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T19:19:16.528Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T19:19:16.536Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T19:19:17.681Z] INFO: Clientes listados
+[2026-01-25T19:19:18.828Z] INFO: Dashboard carregado
+[2026-01-25T19:19:18.836Z] INFO: Produtos listados
+[2026-01-25T19:19:20.813Z] INFO: Configuração salva com sucesso
+[2026-01-25T19:19:20.814Z] INFO: Logout bem-sucedido para sessão: 0f017c404493cbcc8da03bcbdba2bfba34786a7762a89e5f37421df1abbd740a
+[2026-01-25T19:21:14.589Z] INFO: Configuração salva com sucesso
+[2026-01-25T19:21:14.590Z] INFO: Login bem-sucedido para usuário: admin
+[2026-01-25T19:21:14.729Z] INFO: Dashboard carregado
+[2026-01-25T19:21:14.738Z] INFO: Produtos listados
+[2026-01-25T19:21:45.680Z] INFO: Dashboard carregado
+[2026-01-25T19:21:45.696Z] INFO: Produtos listados
+[2026-01-25T19:22:15.680Z] INFO: Dashboard carregado
+[2026-01-25T19:22:15.697Z] INFO: Produtos listados
+[2026-01-25T19:22:45.680Z] INFO: Dashboard carregado
+[2026-01-25T19:22:45.697Z] INFO: Produtos listados
