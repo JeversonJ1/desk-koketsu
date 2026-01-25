@@ -141,7 +141,18 @@
               <label style="color: #ffd84d; font-weight: 500; font-size: 13px; display: flex; align-items: center; gap: 6px; margin-bottom: 8px;">
                 🏷️ Categoria
               </label>
-              <input type="text" id="categoria" class="form-control" placeholder="Ex: Roupas, Calçados" autocomplete="off" style="background: #0f0f0f; border: 2px solid #333; color: #fff; padding: 12px 15px; border-radius: 8px; font-size: 14px; transition: all 0.3s;" onfocus="this.style.borderColor='#ffd84d'; this.style.boxShadow='0 0 0 3px rgba(255,216,77,0.1)';" onblur="this.style.borderColor='#333'; this.style.boxShadow='none';">
+              <input list="categoriasList" type="text" id="categoria" class="form-control" placeholder="Ex: Roupas, Calçados" autocomplete="off" style="background: #0f0f0f; border: 2px solid #333; color: #fff; padding: 12px 15px; border-radius: 8px; font-size: 14px; transition: all 0.3s;" onfocus="this.style.borderColor='#ffd84d'; this.style.boxShadow='0 0 0 3px rgba(255,216,77,0.1)';" onblur="this.style.borderColor='#333'; this.style.boxShadow='none';">
+              <datalist id="categoriasList">
+                <option value="Roupas">
+                <option value="Calçados">
+                <option value="Acessórios">
+                <option value="Bolsas">
+                <option value="Jóias">
+                <option value="Relógios">
+                <option value="Eletrônicos">
+                <option value="Casa">
+                <option value="Outros">
+              </datalist>
             </div>
             <div class="col-md-6" style="padding-left: 10px;">
               <label style="color: #ffd84d; font-weight: 500; font-size: 13px; display: flex; align-items: center; gap: 6px; margin-bottom: 8px;">

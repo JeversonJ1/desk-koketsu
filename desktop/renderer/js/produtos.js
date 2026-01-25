@@ -93,6 +93,18 @@ function configurarEventListeners() {
   if (inputImagem) {
     inputImagem.onchange = previewImagemHandler;
   }
+  
+  // Formatação automática de preço
+  const precoInput = document.getElementById('preco');
+  if (precoInput) {
+    precoInput.addEventListener('input', (e) => {
+      let valor = e.target.value.replace(/\D/g, '');
+      if (valor) {
+        valor = (parseInt(valor) / 100).toFixed(2);
+        e.target.value = valor.replace('.', ',');
+      }
+    });
+  }
 
   // Busca e filtro
   if (searchProduto) {
@@ -401,6 +413,21 @@ async function excluirProduto(id) {
 function previewImagemHandler() {
   const file = inputImagem.files[0];
   if (!file) return;
+  
+  // Validar tipo de arquivo
+  const tiposPermitidos = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+  if (!tiposPermitidos.includes(file.type)) {
+    alert('❌ Tipo de arquivo inválido! Use JPG, PNG ou WebP');
+    inputImagem.value = '';
+    return;
+  }
+  
+  // Validar tamanho (max 5MB)
+  if (file.size > 5 * 1024 * 1024) {
+    alert('❌ Imagem muito grande! Tamanho máximo: 5MB');
+    inputImagem.value = '';
+    return;
+  }
 
   const reader = new FileReader();
   reader.onload = (e) => {
