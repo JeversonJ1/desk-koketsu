@@ -26,7 +26,8 @@ async function carregarClientes() {
 // ================================
 async function carregarProdutos(filtro = '') {
   try {
-    produtos = await window.api.listarProdutosPedido();
+    produtos = await window.api.listarProdutos();
+    console.log('Produtos carregados:', produtos.length);
     
     // Filtrar por busca
     const produtosFiltrados = filtro 
@@ -46,22 +47,32 @@ function renderizarProdutos(lista) {
   const container = document.getElementById('listaProdutos');
   
   if (lista.length === 0) {
-    container.innerHTML = '<p class="text-muted col-12">Nenhum produto encontrado</p>';
+    container.innerHTML = '<p class="text-muted col-12 text-center py-5">📦 Nenhum produto encontrado</p>';
     return;
   }
   
   container.innerHTML = lista.map(p => `
-    <div class="produto-card">
+    <div class="produto-card" style="opacity: ${p.estoque > 0 ? '1' : '0.5'};">
       <img src="${p.imagem || '../assets/produtos/placeholder.png'}" 
            class="produto-imagem" 
-           onerror="this.src='../assets/produtos/placeholder.png'">
+           onerror="this.src='../assets/produtos/placeholder.png'"
+           alt="${p.nome}">
       <div class="nome">${p.nome}</div>
+      <div class="categoria" style="font-size: 11px; color: #888; margin-bottom: 4px;">${p.categoria || 'Sem categoria'}</div>
       <div class="preco">R$ ${parseFloat(p.preco).toFixed(2)}</div>
-      <div class="estoque">Estoque: ${p.estoque}</div>
-      <input type="number" id="qtd-${p.id}" min="1" max="${p.estoque}" value="1" placeholder="Qtd">
-      <button class="btn-add" onclick="adicionarCarrinho(${p.id}, '${p.nome}', ${p.preco}, ${p.estoque})">
-        Adicionar
-      </button>
+      <div class="estoque" style="color: ${p.estoque > 10 ? '#51cf66' : p.estoque > 0 ? '#ffa94d' : '#ff6b6b'};">
+        ${p.estoque > 0 ? `🟢 ${p.estoque} em estoque` : '🔴 Esgotado'}
+      </div>
+      ${p.estoque > 0 ? `
+        <input type="number" id="qtd-${p.id}" min="1" max="${p.estoque}" value="1" placeholder="Qtd">
+        <button class="btn-add" onclick="adicionarCarrinho(${p.id}, '${p.nome.replace(/'/g, "\\'").replace(/"/g, '&quot;')}', ${p.preco}, ${p.estoque})">
+          ➕ Adicionar
+        </button>
+      ` : `
+        <button class="btn-add" disabled style="background: #666; cursor: not-allowed;">
+          Esgotado
+        </button>
+      `}
     </div>
   `).join('');
 }
@@ -269,27 +280,62 @@ document.getElementById('searchProduto').addEventListener('input', (e) => {
 // ================================
 // HISTÓRICO DE PEDIDOS
 // ================================
-function carregarHistorico() {
+async function carregarHistorico() {
   const container = document.getElementById('historicoPedidos');
   
-  if (pedidosRealizados.length === 0) {
-    container.innerHTML = '<p class="text-muted text-center py-3">Nenhum pedido realizado</p>';
-    return;
+  try {
+    const pedidosDB = await window.api.listarPedidos();
+    const clientesDB = await window.api.listarClientes();
+    
+    // Ordenar por data decrescente e pegar últimos 10
+    const ultimosPedidos = pedidosDB
+      .sort((a, b) => new Date(b.data) - new Date(a.data))
+      .slice(0, 10);
+    
+    if (ultimosPedidos.length === 0) {
+      container.innerHTML = '<p class="text-muted text-center py-3">📭 Nenhum pedido realizado</p>';
+      return;
+    }
+    
+    container.innerHTML = ultimosPedidos.map(pedido => {
+      const cliente = clientesDB.find(c => c.id === pedido.cliente_id);
+      const nomeCliente = cliente ? cliente.nome : 'Cliente não encontrado';
+      const data = new Date(pedido.data).toLocaleString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+      
+      return `
+        <div class="pedido-item">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <div>
+              <strong style="color: #fff; font-size: 14px;">Pedido #${pedido.id}</strong>
+              <div class="pedido-item-data">📅 ${data}</div>
+            </div>
+            <span class="badge bg-success" style="font-size: 11px;">✓ Finalizado</span>
+          </div>
+          <div style="color: #bbb; font-size: 13px; margin-bottom: 6px;">
+            👤 ${nomeCliente}
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <span style="color: #999; font-size: 12px;">
+              ${pedido.itens?.length || 0} ${pedido.itens?.length === 1 ? 'item' : 'itens'}
+            </span>
+            <span class="pedido-item-valor" style="font-size: 16px;">
+              R$ ${parseFloat(pedido.total).toFixed(2)}
+            </span>
+          </div>
+        </div>
+      `;
+    }).join('');
+    
+  } catch (erro) {
+    console.error('Erro ao carregar histórico:', erro);
+    container.innerHTML = '<p class="text-danger text-center py-3">❌ Erro ao carregar histórico</p>';
   }
-  
-  container.innerHTML = pedidosRealizados.slice(0, 5).map(pedido => `
-    <div class="pedido-item" style="border-bottom: 1px solid #333; padding: 12px 0;">
-      <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-        <strong style="color: #ffd84d;">#${pedido.id}</strong>
-        <span style="font-size: 11px; color: #888;">${pedido.data}</span>
-      </div>
-      ${pedido.cliente ? `<div style="font-size: 12px; color: #aaa; margin-bottom: 4px;">👤 ${pedido.cliente}</div>` : ''}
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <span style="font-size: 13px; color: #bbb;">${pedido.itens} ${pedido.itens === 1 ? 'item' : 'itens'}</span>
-        <strong style="color: #51cf66;">R$ ${pedido.total.toFixed(2)}</strong>
-      </div>
-    </div>
-  `).join('');
 }
 
 // ================================
@@ -301,4 +347,3 @@ document.addEventListener('DOMContentLoaded', () => {
   carregarProdutos();
   carregarHistorico();
 });
-

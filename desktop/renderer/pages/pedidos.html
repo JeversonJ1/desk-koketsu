@@ -33,16 +33,28 @@
 
     <div class="row">
       <!-- COLUNA ESQUERDA: PRODUTOS -->
-      <div class="col-lg-8">
+      <div class="col-lg-8 mb-4">
         <div class="card">
-          <h3>📦 Produtos Disponíveis</h3>
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3 class="mb-0">📦 Produtos Disponíveis</h3>
+            <button class="btn btn-sm btn-outline-warning" onclick="carregarProdutos()">
+              🔄 Atualizar
+            </button>
+          </div>
           
           <!-- BUSCA -->
-          <input type="text" id="searchProduto" class="form-control mb-3" placeholder="🔍 Buscar produto...">
+          <input type="text" id="searchProduto" class="form-control mb-3" 
+                 placeholder="🔍 Buscar por nome, categoria..." 
+                 style="font-size: 14px;">
           
           <!-- LISTA DE PRODUTOS -->
           <div id="listaProdutos" class="produtos-grid">
-            <p class="text-muted">Carregando...</p>
+            <div class="col-12 text-center py-5">
+              <div class="spinner-border text-warning" role="status" style="width: 3rem; height: 3rem;">
+                <span class="visually-hidden">Carregando...</span>
+              </div>
+              <p class="text-muted mt-3">Carregando produtos...</p>
+            </div>
           </div>
         </div>
       </div>
