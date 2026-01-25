@@ -72,6 +72,9 @@ function configurarEventListeners() {
   if (salvarCliente) {
     salvarCliente.onclick = salvarClienteHandler;
   }
+  
+  // Formatação automática de campos
+  configurarFormatacao();
 
   // Busca e filtro
   if (searchCliente) {
@@ -93,6 +96,181 @@ function configurarEventListeners() {
       ordenarPor.value = 'nome-az';
       filtrarClientes();
     };
+  }
+}
+
+// ================================
+// FORMATAÇÃO DE CAMPOS
+// ================================
+function configurarFormatacao() {
+  // Telefone
+  const telefoneInput = document.getElementById('telefone');
+  if (telefoneInput) {
+    telefoneInput.addEventListener('input', (e) => {
+      let valor = e.target.value.replace(/\D/g, '');
+      if (valor.length <= 11) {
+        valor = valor.replace(/^(\d{2})(\d)/g, '($1) $2');
+        valor = valor.replace(/(\d)(\d{4})$/, '$1-$2');
+      }
+      e.target.value = valor;
+    });
+  }
+  
+  // CPF/CNPJ
+  const cpfInput = document.getElementById('cpf');
+  if (cpfInput) {
+    cpfInput.addEventListener('input', (e) => {
+      let valor = e.target.value.replace(/\D/g, '');
+      if (valor.length <= 11) {
+        // CPF: 000.000.000-00
+        valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+        valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+        valor = valor.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+      } else {
+        // CNPJ: 00.000.000/0000-00
+        valor = valor.replace(/^(\d{2})(\d)/, '$1.$2');
+        valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+        valor = valor.replace(/\.(\d{3})(\d)/, '.$1/$2');
+        valor = valor.replace(/(\d{4})(\d)/, '$1-$2');
+      }
+      e.target.value = valor;
+    });
+    
+    cpfInput.addEventListener('blur', () => {
+      const cpfErro = document.getElementById('cpfErro');
+      if (cpfInput.value && !validarCPFCNPJ(cpfInput.value)) {
+        cpfErro.style.display = 'block';
+        cpfInput.style.borderColor = '#dc3545';
+      } else {
+        cpfErro.style.display = 'none';
+        cpfInput.style.borderColor = '#333';
+      }
+    });
+  }
+  
+  // CEP
+  const cepInput = document.getElementById('cep');
+  if (cepInput) {
+    cepInput.addEventListener('input', (e) => {
+      let valor = e.target.value.replace(/\D/g, '');
+      valor = valor.replace(/^(\d{5})(\d)/, '$1-$2');
+      e.target.value = valor;
+    });
+    
+    cepInput.addEventListener('blur', () => {
+      const cep = cepInput.value.replace(/\D/g, '');
+      if (cep.length === 8) {
+        buscarCEP(cep);
+      }
+    });
+  }
+  
+  // Email
+  const emailInput = document.getElementById('email');
+  if (emailInput) {
+    emailInput.addEventListener('blur', () => {
+      const emailErro = document.getElementById('emailErro');
+      if (emailInput.value && !validarEmail(emailInput.value)) {
+        emailErro.style.display = 'block';
+        emailInput.style.borderColor = '#dc3545';
+      } else {
+        emailErro.style.display = 'none';
+        emailInput.style.borderColor = '#333';
+      }
+    });
+  }
+}
+
+// ================================
+// VALIDAÇÕES
+// ================================
+function validarEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email);
+}
+
+function validarCPFCNPJ(valor) {
+  const numeros = valor.replace(/\D/g, '');
+  
+  if (numeros.length === 11) {
+    return validarCPF(numeros);
+  } else if (numeros.length === 14) {
+    return validarCNPJ(numeros);
+  }
+  return false;
+}
+
+function validarCPF(cpf) {
+  if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
+  
+  let soma = 0;
+  for (let i = 0; i < 9; i++) {
+    soma += parseInt(cpf.charAt(i)) * (10 - i);
+  }
+  let resto = 11 - (soma % 11);
+  let digito1 = resto === 10 || resto === 11 ? 0 : resto;
+  
+  if (digito1 !== parseInt(cpf.charAt(9))) return false;
+  
+  soma = 0;
+  for (let i = 0; i < 10; i++) {
+    soma += parseInt(cpf.charAt(i)) * (11 - i);
+  }
+  resto = 11 - (soma % 11);
+  let digito2 = resto === 10 || resto === 11 ? 0 : resto;
+  
+  return digito2 === parseInt(cpf.charAt(10));
+}
+
+function validarCNPJ(cnpj) {
+  if (cnpj.length !== 14 || /^(\d)\1{13}$/.test(cnpj)) return false;
+  
+  let tamanho = cnpj.length - 2;
+  let numeros = cnpj.substring(0, tamanho);
+  let digitos = cnpj.substring(tamanho);
+  let soma = 0;
+  let pos = tamanho - 7;
+  
+  for (let i = tamanho; i >= 1; i--) {
+    soma += numeros.charAt(tamanho - i) * pos--;
+    if (pos < 2) pos = 9;
+  }
+  
+  let resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+  if (resultado != digitos.charAt(0)) return false;
+  
+  tamanho = tamanho + 1;
+  numeros = cnpj.substring(0, tamanho);
+  soma = 0;
+  pos = tamanho - 7;
+  
+  for (let i = tamanho; i >= 1; i--) {
+    soma += numeros.charAt(tamanho - i) * pos--;
+    if (pos < 2) pos = 9;
+  }
+  
+  resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+  return resultado == digitos.charAt(1);
+}
+
+// ================================
+// BUSCAR CEP
+// ================================
+async function buscarCEP(cep) {
+  try {
+    const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+    const data = await response.json();
+    
+    if (!data.erro) {
+      document.getElementById('endereco').value = data.logradouro || '';
+      document.getElementById('bairro').value = data.bairro || '';
+      document.getElementById('cidade').value = data.localidade || '';
+      
+      // Focar no campo número
+      document.getElementById('numero').focus();
+    }
+  } catch (err) {
+    console.log('Erro ao buscar CEP:', err);
   }
 }
 
@@ -192,17 +370,28 @@ async function salvarClienteHandler() {
   const nome = document.getElementById('nome').value.trim();
   const email = document.getElementById('email').value.trim();
   const telefone = document.getElementById('telefone').value.trim();
+  const cpf = document.getElementById('cpf').value.trim();
+  const dataNascimento = document.getElementById('dataNascimento').value;
+  const cep = document.getElementById('cep').value.trim();
   const endereco = document.getElementById('endereco').value.trim();
+  const numero = document.getElementById('numero').value.trim();
+  const bairro = document.getElementById('bairro').value.trim();
+  const cidade = document.getElementById('cidade').value.trim();
+  const observacoes = document.getElementById('observacoes').value.trim();
 
+  // Validações
   if (!nome || !email) {
     alert('❌ Preencha pelo menos Nome e Email');
     return;
   }
 
-  // Validar email
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
+  if (!validarEmail(email)) {
     alert('❌ Email inválido');
+    return;
+  }
+  
+  if (cpf && !validarCPFCNPJ(cpf)) {
+    alert('❌ CPF/CNPJ inválido');
     return;
   }
 
@@ -210,11 +399,24 @@ async function salvarClienteHandler() {
     salvarCliente.disabled = true;
     salvarCliente.textContent = '⏳ Salvando...';
 
+    // Montar endereço completo
+    const enderecoCompleto = [
+      endereco,
+      numero ? `nº ${numero}` : '',
+      bairro,
+      cidade
+    ].filter(Boolean).join(', ');
+
     const dados = {
       nome_clientes: nome,
       email_clientes: email,
       telefone_clientes: telefone,
-      endereco_clientes: endereco
+      endereco_clientes: enderecoCompleto || endereco,
+      cpf_clientes: cpf,
+      data_nascimento: dataNascimento,
+      cep_clientes: cep,
+      cidade_clientes: cidade,
+      observacoes_clientes: observacoes
     };
 
     if (clienteEditando) {
@@ -269,7 +471,21 @@ function limparFormulario() {
   document.getElementById('nome').value = '';
   document.getElementById('email').value = '';
   document.getElementById('telefone').value = '';
+  document.getElementById('cpf').value = '';
+  document.getElementById('dataNascimento').value = '';
+  document.getElementById('cep').value = '';
   document.getElementById('endereco').value = '';
+  document.getElementById('numero').value = '';
+  document.getElementById('bairro').value = '';
+  document.getElementById('cidade').value = '';
+  document.getElementById('observacoes').value = '';
+  
+  // Limpar mensagens de erro
+  document.getElementById('emailErro').style.display = 'none';
+  document.getElementById('cpfErro').style.display = 'none';
+  document.getElementById('email').style.borderColor = '#333';
+  document.getElementById('cpf').style.borderColor = '#333';
+  
   clienteEditando = null;
   modalTitulo.textContent = 'Novo Cliente';
 }
