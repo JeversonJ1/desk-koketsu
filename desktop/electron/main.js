@@ -7,6 +7,8 @@ const { registerClientHandlers } = require('./handlers/clientHandlers');
 const { registerOrderHandlers } = require('./handlers/orderHandlers');
 const { registerSizeHandlers } = require('./handlers/sizeHandlers');
 const { registerDashboardHandlers } = require('./handlers/dashboardHandlers');
+const { registerBannersHandlers } = require('./handlers/bannersHandlers');
+const { registerConfigHandlers } = require('./handlers/configHandlers');
 
 // Variaveis globais
 let mainWindow;
@@ -47,6 +49,8 @@ function registerHandlers() {
   registerOrderHandlers();
   registerSizeHandlers();
   registerDashboardHandlers();
+  registerBannersHandlers();
+  registerConfigHandlers();
   Logger.log('Todos os handlers IPC registrados');
 }
 

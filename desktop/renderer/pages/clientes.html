@@ -80,8 +80,8 @@
       <a href="dashboard.html">Dashboard</a>
       <a href="produtos.html">Produtos</a>
       <a class="active" href="clientes.html">Clientes</a>
-      <a href="pedidos.html">🛒 Pedidos</a>
-      <a href="configuracoes.html">⚙️ Configurações</a>
+      <a href="pedidos.html">Pedidos</a>
+      <a href="configuracoes.html">Configurações</a>
       <a href="#" data-logout>Sair</a>
     </nav>
   </aside>
@@ -92,34 +92,32 @@
         <h1>Gerenciar Clientes</h1>
         <p>Administre seus clientes e histórico de compras</p>
       </div>
-      <button class="btn btn-gold" id="btnNovoCliente">➕ Novo Cliente</button>
+      <button class="btn btn-gold" id="btnNovoCliente">Novo Cliente</button>
     </div>
 
     <!-- BUSCA E FILTRO -->
     <div class="card mb-4">
-      <div class="row" style="gap: 12px;">
-        <div class="col-md-4">
-          <label style="font-size: 12px; color: #bbb; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; display: block;">🔍 Buscar Cliente</label>
+      <div style="display: flex; gap: 12px; align-items: flex-end;">
+        <div style="flex: 2; min-width: 240px;">
+          <label style="font-size: 12px; color: #bbb; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; display: block;">Buscar Cliente</label>
           <input type="text" id="searchCliente" class="form-control" placeholder="Nome ou email...">
         </div>
-        <div class="col-md-3">
-          <label style="font-size: 12px; color: #bbb; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; display: block;">📍 Cidade</label>
+        <div style="flex: 1.5; min-width: 180px;">
+          <label style="font-size: 12px; color: #bbb; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; display: block;">Cidade</label>
           <select id="filterCidade" class="form-control">
             <option value="">Todas as cidades</option>
           </select>
         </div>
-        <div class="col-md-3" style="display: flex; align-items: flex-end; gap: 8px;">
-          <div style="flex: 1;">
-            <label style="font-size: 12px; color: #bbb; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; display: block;">🔀 Ordenar</label>
-            <select id="ordenarPor" class="form-control">
-              <option value="nome-az">Nome (A → Z)</option>
-              <option value="nome-za">Nome (Z → A)</option>
-              <option value="data-recente">Mais Recente</option>
-              <option value="data-antigo">Mais Antigo</option>
-            </select>
-          </div>
-          <button id="limparFiltros" class="btn btn-outline-secondary" style="padding: 10px 14px; font-size: 14px; font-weight: 600; border: 2px solid #555; border-radius: 8px; background: transparent; color: #fff; transition: all 0.3s; height: 42px;" title="Limpar todos os filtros">🔄</button>
+        <div style="flex: 1.5; min-width: 180px;">
+          <label style="font-size: 12px; color: #bbb; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; display: block;">Ordenar</label>
+          <select id="ordenarPor" class="form-control">
+            <option value="nome-az">Nome (A → Z)</option>
+            <option value="nome-za">Nome (Z → A)</option>
+            <option value="data-recente">Mais Recente</option>
+            <option value="data-antigo">Mais Antigo</option>
+          </select>
         </div>
+        <button id="limparFiltros" class="btn btn-outline-secondary" style="padding: 10px 14px; font-size: 13px; font-weight: 600; border: 2px solid #555; border-radius: 8px; background: transparent; color: #fff; transition: all 0.3s; white-space: nowrap; height: 38px;" title="Limpar todos os filtros">Limpar</button>
       </div>
     </div>
 
@@ -135,7 +133,7 @@
   <div class="modal-content" style="max-width: 600px;">
     <div class="modal-header" style="background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); padding: 20px 30px; border-bottom: 2px solid #ffd84d; border-radius: 12px 12px 0 0;">
       <div style="display: flex; align-items: center; gap: 12px;">
-        <div style="background: #ffd84d; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px;">👤</div>
+        <div style="background: #ffd84d; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; color: #0f0f0f;">C</div>
         <h2 style="margin: 0; color: #fff;" id="modalTitulo">Novo Cliente</h2>
       </div>
       <span class="close" id="cancelarModal" style="font-size: 28px; font-weight: bold; cursor: pointer; color: #888;">&times;</span>
@@ -143,59 +141,59 @@
     <div class="modal-body" style="padding: 30px;">
       <div class="row">
         <div class="col-12 mb-3">
-          <label class="form-label" style="color: #ffd84d; font-weight: 500;">👤 Nome Completo *</label>
+          <label class="form-label" style="color: #ffd84d; font-weight: 500;">Nome Completo *</label>
           <input type="text" id="nome" class="form-control" placeholder="Ex: João Silva" autocomplete="off" style="background: #0f0f0f; border: 2px solid #333; color: #fff;">
         </div>
         
         <div class="col-md-6 mb-3">
-          <label class="form-label" style="color: #ffd84d; font-weight: 500;">📧 Email *</label>
+          <label class="form-label" style="color: #ffd84d; font-weight: 500;">Email *</label>
           <input type="email" id="email" class="form-control" placeholder="Ex: joao@email.com" autocomplete="off" style="background: #0f0f0f; border: 2px solid #333; color: #fff;">
           <small class="text-danger" id="emailErro" style="display: none;">Email inválido</small>
         </div>
         
         <div class="col-md-6 mb-3">
-          <label class="form-label" style="color: #ffd84d; font-weight: 500;">📱 Telefone</label>
+          <label class="form-label" style="color: #ffd84d; font-weight: 500;">Telefone</label>
           <input type="tel" id="telefone" class="form-control" placeholder="(11) 99999-9999" autocomplete="off" maxlength="15" style="background: #0f0f0f; border: 2px solid #333; color: #fff;">
         </div>
         
         <div class="col-md-6 mb-3">
-          <label class="form-label" style="color: #ffd84d; font-weight: 500;">🆔 CPF/CNPJ</label>
+          <label class="form-label" style="color: #ffd84d; font-weight: 500;">CPF/CNPJ</label>
           <input type="text" id="cpf" class="form-control" placeholder="000.000.000-00" autocomplete="off" maxlength="18" style="background: #0f0f0f; border: 2px solid #333; color: #fff;">
           <small class="text-danger" id="cpfErro" style="display: none;">CPF/CNPJ inválido</small>
         </div>
         
         <div class="col-md-6 mb-3">
-          <label class="form-label" style="color: #ffd84d; font-weight: 500;">📅 Data Nascimento</label>
+          <label class="form-label" style="color: #ffd84d; font-weight: 500;">Data Nascimento</label>
           <input type="date" id="dataNascimento" class="form-control" autocomplete="off" style="background: #0f0f0f; border: 2px solid #333; color: #fff;">
         </div>
         
         <div class="col-md-4 mb-3">
-          <label class="form-label" style="color: #ffd84d; font-weight: 500;">📮 CEP</label>
+          <label class="form-label" style="color: #ffd84d; font-weight: 500;">CEP</label>
           <input type="text" id="cep" class="form-control" placeholder="00000-000" autocomplete="off" maxlength="9" style="background: #0f0f0f; border: 2px solid #333; color: #fff;">
         </div>
         
         <div class="col-md-8 mb-3">
-          <label class="form-label" style="color: #ffd84d; font-weight: 500;">🏠 Endereço</label>
+          <label class="form-label" style="color: #ffd84d; font-weight: 500;">Endereço</label>
           <input type="text" id="endereco" class="form-control" placeholder="Rua, Avenida..." autocomplete="off" style="background: #0f0f0f; border: 2px solid #333; color: #fff;">
         </div>
         
         <div class="col-md-4 mb-3">
-          <label class="form-label" style="color: #ffd84d; font-weight: 500;">🔢 Número</label>
+          <label class="form-label" style="color: #ffd84d; font-weight: 500;">Número</label>
           <input type="text" id="numero" class="form-control" placeholder="123" autocomplete="off" style="background: #0f0f0f; border: 2px solid #333; color: #fff;">
         </div>
         
         <div class="col-md-4 mb-3">
-          <label class="form-label" style="color: #ffd84d; font-weight: 500;">🏘️ Bairro</label>
+          <label class="form-label" style="color: #ffd84d; font-weight: 500;">Bairro</label>
           <input type="text" id="bairro" class="form-control" placeholder="Centro" autocomplete="off" style="background: #0f0f0f; border: 2px solid #333; color: #fff;">
         </div>
         
         <div class="col-md-4 mb-3">
-          <label class="form-label" style="color: #ffd84d; font-weight: 500;">🏙️ Cidade</label>
+          <label class="form-label" style="color: #ffd84d; font-weight: 500;">Cidade</label>
           <input type="text" id="cidade" class="form-control" placeholder="São Paulo" autocomplete="off" style="background: #0f0f0f; border: 2px solid #333; color: #fff;">
         </div>
         
         <div class="col-12 mb-3">
-          <label class="form-label" style="color: #ffd84d; font-weight: 500;">📝 Observações</label>
+          <label class="form-label" style="color: #ffd84d; font-weight: 500;">Observações</label>
           <textarea id="observacoes" class="form-control" rows="2" placeholder="Informações adicionais sobre o cliente..." autocomplete="off" style="background: #0f0f0f; border: 2px solid #333; color: #fff;"></textarea>
         </div>
       </div>
@@ -203,7 +201,7 @@
     </div>
     <div class="modal-footer" style="padding: 20px 30px; border-top: 1px solid #333; display: flex; gap: 12px; justify-content: flex-end;">
       <button class="btn btn-outline-secondary" id="cancelarModalBtn">Cancelar</button>
-      <button class="btn btn-gold" id="salvarCliente">💾 Salvar Cliente</button>
+      <button class="btn btn-gold" id="salvarCliente">Salvar Cliente</button>
     </div>
   </div>
 </div>

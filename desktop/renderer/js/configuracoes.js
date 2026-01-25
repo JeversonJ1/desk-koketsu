@@ -1,4 +1,115 @@
 // ================================
+// FUNÇÕES AUXILIARES
+// ================================
+
+// Notificações Toast
+function mostrarNotificacao(mensagem, tipo = 'info') {
+  const cores = {
+    sucesso: '#51cf66',
+    erro: '#ff6b6b',
+    aviso: '#ffa94d',
+    info: '#4dabf7'
+  };
+  
+  const toast = document.createElement('div');
+  toast.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: ${cores[tipo] || cores.info};
+    color: #000;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    z-index: 10000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    animation: slideIn 0.3s ease;
+  `;
+  toast.textContent = mensagem;
+  document.body.appendChild(toast);
+  
+  setTimeout(() => {
+    toast.style.animation = 'slideOut 0.3s ease';
+    setTimeout(() => toast.remove(), 300);
+  }, 3000);
+}
+
+// Toggle de visibilidade de senha
+function toggleSenhaVisibilidade() {
+  const senhaInput = document.getElementById('novaSenha');
+  const toggleBtn = document.getElementById('toggleSenha');
+  
+  if (senhaInput.type === 'password') {
+    senhaInput.type = 'text';
+    toggleBtn.textContent = '👁️';
+  } else {
+    senhaInput.type = 'password';
+    toggleBtn.textContent = '👁️';
+  }
+}
+
+// Verificar força da senha
+function verificarForcaSenha(senha) {
+  const forcaDiv = document.getElementById('forcaSenha');
+  const forcaTexto = document.getElementById('forcaTexto');
+  const barras = document.querySelectorAll('.forca-bar');
+  
+  if (!senha || senha.length === 0) {
+    forcaDiv.style.display = 'none';
+    return;
+  }
+  
+  forcaDiv.style.display = 'block';
+  
+  let forca = 0;
+  if (senha.length >= 6) forca++;
+  if (senha.length >= 10) forca++;
+  if (/[a-z]/.test(senha) && /[A-Z]/.test(senha)) forca++;
+  if (/[0-9]/.test(senha)) forca++;
+  if (/[^a-zA-Z0-9]/.test(senha)) forca++;
+  
+  // Calcular nível (0-4)
+  const nivel = Math.min(Math.floor(forca / 1.25), 4);
+  
+  const cores = ['#ff6b6b', '#ffa94d', '#ffc107', '#51cf66', '#51cf66'];
+  const textos = ['Muito fraca', 'Fraca', 'Média', 'Forte', 'Muito forte'];
+  
+  barras.forEach((barra, index) => {
+    if (index < nivel) {
+      barra.style.background = cores[nivel];
+    } else {
+      barra.style.background = '#333';
+    }
+  });
+  
+  forcaTexto.textContent = textos[nivel];
+  forcaTexto.style.color = cores[nivel];
+}
+
+// Verificar correspondência de senhas
+function verificarSenhasIguais() {
+  const novaSenha = document.getElementById('novaSenha').value;
+  const confirmarSenha = document.getElementById('confirmarSenha').value;
+  const matchEl = document.getElementById('senhaMatch');
+  
+  if (!confirmarSenha) {
+    matchEl.style.display = 'none';
+    return;
+  }
+  
+  matchEl.style.display = 'block';
+  
+  if (novaSenha === confirmarSenha) {
+    matchEl.textContent = '✓ Senhas correspondem';
+    matchEl.style.color = '#51cf66';
+  } else {
+    matchEl.textContent = '× Senhas não correspondem';
+    matchEl.style.color = '#ff6b6b';
+  }
+}
+
+// ================================
 // MUDAR ABA
 // ================================
 function mudarAba(abaName) {
@@ -63,8 +174,8 @@ function renderizarBanners(banners) {
         <div style="color: #aaa; font-size: 12px;">Criado em: ${new Date(banner.dataCriacao).toLocaleDateString('pt-BR')}${banner.dataAtualizacao ? ` • Atualizado: ${new Date(banner.dataAtualizacao).toLocaleDateString('pt-BR')}` : ''}</div>
       </div>
       <div style="display: flex; gap: 8px;">
-        <button type="button" class="btn btn-sm" onclick="editarBanner(${index})" style="background: #ffc107; color: #000; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 600; cursor: pointer;">✏️ Editar</button>
-        <button type="button" class="btn btn-sm" onclick="excluirBanner(${index})" style="background: #ff4444; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 600; cursor: pointer;">🗑️ Excluir</button>
+        <button type="button" class="btn btn-sm" onclick="editarBanner(${index})" style="background: #ffc107; color: #000; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 600; cursor: pointer;">Editar</button>
+        <button type="button" class="btn btn-sm" onclick="excluirBanner(${index})" style="background: #ff4444; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 600; cursor: pointer;">Excluir</button>
       </div>
     </div>
   `).join('');
@@ -79,7 +190,7 @@ window.editarBanner = async function(index) {
     const banner = banners[index];
     
     if (!banner) {
-      alert('❌ Banner não encontrado');
+      mostrarNotificacao('Banner não encontrado', 'erro');
       return;
     }
     
@@ -98,8 +209,13 @@ window.editarBanner = async function(index) {
     // Guardar índice para atualização
     document.getElementById('formBanners').dataset.bannerIndex = index;
     document.getElementById('formBanners').dataset.modoEdicao = 'true';
+    
+    // Scroll para formulário
+    document.getElementById('formBanners').scrollIntoView({ behavior: 'smooth' });
+    mostrarNotificacao('Modo de edição ativado', 'info');
   } catch (err) {
-    alert('❌ Erro ao editar banner: ' + err.message);
+    console.error('Erro ao editar banner:', err);
+    mostrarNotificacao('Erro ao editar banner: ' + err.message, 'erro');
   }
 }
 
@@ -107,14 +223,15 @@ window.editarBanner = async function(index) {
 // EXCLUIR BANNER
 // ================================
 window.excluirBanner = async function(index) {
-  if (!confirm('Tem certeza que deseja excluir este banner?')) return;
+  if (!confirm('Tem certeza que deseja excluir este banner? Esta ação não pode ser desfeita.')) return;
   
   try {
     await window.api.excluirBanner(index);
-    alert('✅ Banner excluído com sucesso!');
+    mostrarNotificacao('Banner excluído com sucesso', 'sucesso');
     carregarBanners();
   } catch (err) {
-    alert('❌ Erro ao excluir banner: ' + err.message);
+    console.error('Erro ao excluir banner:', err);
+    mostrarNotificacao('Erro ao excluir banner: ' + err.message, 'erro');
   }
 }
 
@@ -199,6 +316,21 @@ document.addEventListener('DOMContentLoaded', () => {
 // ================================
 const formCredenciais = document.getElementById('formCredenciais');
 if (formCredenciais) {
+  // Listeners para validação em tempo real
+  const novaSenhaInput = document.getElementById('novaSenha');
+  const confirmarSenhaInput = document.getElementById('confirmarSenha');
+  
+  if (novaSenhaInput) {
+    novaSenhaInput.addEventListener('input', (e) => {
+      verificarForcaSenha(e.target.value);
+      verificarSenhasIguais();
+    });
+  }
+  
+  if (confirmarSenhaInput) {
+    confirmarSenhaInput.addEventListener('input', verificarSenhasIguais);
+  }
+  
   formCredenciais.addEventListener('submit', async (e) => {
     e.preventDefault();
     
@@ -210,17 +342,26 @@ if (formCredenciais) {
     
     // Validações
     if (!loginAtual || !senhaAtual || !novoLogin || !novaSenha || !confirmarSenha) {
-      alert('❌ Preencha todos os campos');
+      mostrarNotificacao('Preencha todos os campos', 'aviso');
       return;
     }
     
     if (novaSenha !== confirmarSenha) {
-      alert('❌ As senhas não conferem');
+      mostrarNotificacao('As senhas não correspondem', 'erro');
       return;
     }
     
     if (novaSenha.length < 6) {
-      alert('❌ A senha deve ter no mínimo 6 caracteres');
+      mostrarNotificacao('A senha deve ter no mínimo 6 caracteres', 'aviso');
+      return;
+    }
+    
+    if (novoLogin.length < 3) {
+      mostrarNotificacao('O login deve ter no mínimo 3 caracteres', 'aviso');
+      return;
+    }
+    
+    if (!confirm('Confirma a alteração das credenciais? Você precisará fazer login novamente.')) {
       return;
     }
     
@@ -232,10 +373,20 @@ if (formCredenciais) {
         novaSenha
       });
       
-      alert('✅ Credenciais alteradas com sucesso!');
+      mostrarNotificacao('Credenciais alteradas com sucesso!', 'sucesso');
       formCredenciais.reset();
+      
+      // Resetar indicadores
+      document.getElementById('forcaSenha').style.display = 'none';
+      document.getElementById('senhaMatch').style.display = 'none';
+      
+      // Redirecionar para login após 2 segundos
+      setTimeout(() => {
+        window.location.href = 'login.html';
+      }, 2000);
     } catch (err) {
-      alert('❌ Erro ao alterar credenciais: ' + err.message);
+      console.error('Erro ao alterar credenciais:', err);
+      mostrarNotificacao('Erro ao alterar credenciais: ' + err.message, 'erro');
     }
   });
 }
@@ -254,18 +405,24 @@ if (formBanners) {
     const bannerIndex = parseInt(formBanners.dataset.bannerIndex);
     
     if (!nomeBanner) {
-      alert('❌ Digite o nome do banner');
+      mostrarNotificacao('Digite o nome do banner', 'aviso');
       return;
     }
     
     if (!imagemFile && !modoEdicao) {
-      alert('❌ Selecione uma imagem para o banner');
+      mostrarNotificacao('Selecione uma imagem para o banner', 'aviso');
       return;
     }
     
     // Validar tamanho
     if (imagemFile && imagemFile.size > 5 * 1024 * 1024) {
-      alert('❌ A imagem não pode ultrapassar 5MB');
+      mostrarNotificacao('A imagem não pode ultrapassar 5MB', 'erro');
+      return;
+    }
+    
+    // Validar tipo de arquivo
+    if (imagemFile && !['image/jpeg', 'image/png', 'image/gif', 'image/webp'].includes(imagemFile.type)) {
+      mostrarNotificacao('Formato inválido. Use JPG, PNG, GIF ou WebP', 'erro');
       return;
     }
     
@@ -281,25 +438,18 @@ if (formBanners) {
               nome: nomeBanner,
               imagem: imagemData
             });
-            alert('✅ Banner atualizado com sucesso!');
+            mostrarNotificacao('Banner atualizado com sucesso', 'sucesso');
           } else {
             // Modo criação
             await window.api.criarBanner({
               nome: nomeBanner,
               imagem: imagemData
             });
-            alert('✅ Banner criado com sucesso!');
+            mostrarNotificacao('Banner criado com sucesso', 'sucesso');
           }
           
           // Limpar form
-          formBanners.reset();
-          document.getElementById('previewNovo').style.display = 'none';
-          const sbox = document.getElementById('simulacaoBanner');
-          const info = document.getElementById('previewInfo');
-          if (sbox) sbox.style.display = 'none';
-          if (info) info.style.display = 'none';
-          delete formBanners.dataset.modoEdicao;
-          delete formBanners.dataset.bannerIndex;
+          limparFormBanner();
           
           // Recarregar lista
           carregarBanners();
@@ -310,21 +460,26 @@ if (formBanners) {
         await window.api.atualizarBanner(bannerIndex, {
           nome: nomeBanner
         });
-        alert('✅ Banner atualizado com sucesso!');
+        mostrarNotificacao('Banner atualizado com sucesso', 'sucesso');
         
-        formBanners.reset();
-        document.getElementById('previewNovo').style.display = 'none';
-        const sbox = document.getElementById('simulacaoBanner');
-        const info = document.getElementById('previewInfo');
-        if (sbox) sbox.style.display = 'none';
-        if (info) info.style.display = 'none';
-        delete formBanners.dataset.modoEdicao;
-        delete formBanners.dataset.bannerIndex;
-        
+        limparFormBanner();
         carregarBanners();
       }
     } catch (err) {
-      alert('❌ Erro ao salvar banner: ' + err.message);
+      console.error('Erro ao salvar banner:', err);
+      mostrarNotificacao('Erro ao salvar banner: ' + err.message, 'erro');
     }
   });
+}
+
+// Função auxiliar para limpar formulário de banner
+function limparFormBanner() {
+  formBanners.reset();
+  document.getElementById('previewNovo').style.display = 'none';
+  const sbox = document.getElementById('simulacaoBanner');
+  const info = document.getElementById('previewInfo');
+  if (sbox) sbox.style.display = 'none';
+  if (info) info.style.display = 'none';
+  delete formBanners.dataset.modoEdicao;
+  delete formBanners.dataset.bannerIndex;
 }

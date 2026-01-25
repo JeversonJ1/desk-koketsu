@@ -62,12 +62,14 @@ function configurarEventListeners() {
 
   if (cancelarModal) {
     cancelarModal.onclick = () => {
+      limparFormulario();
       modal.style.display = 'none';
     };
   }
 
   if (cancelarModalBtn) {
     cancelarModalBtn.onclick = () => {
+      limparFormulario();
       modal.style.display = 'none';
     };
   }
@@ -75,6 +77,7 @@ function configurarEventListeners() {
   // Fechar ao clicar fora do modal
   window.onclick = (e) => {
     if (e.target === modal) {
+      limparFormulario();
       modal.style.display = 'none';
     }
   };

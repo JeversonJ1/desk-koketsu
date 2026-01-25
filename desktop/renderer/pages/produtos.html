@@ -47,8 +47,8 @@
       <a href="dashboard.html">Dashboard</a>
       <a class="active" href="produtos.html">Produtos</a>
       <a href="clientes.html">Clientes</a>
-      <a href="pedidos.html">🛒 Pedidos</a>
-      <a href="configuracoes.html">⚙️ Configurações</a>
+      <a href="pedidos.html">Pedidos</a>
+      <a href="configuracoes.html">Configurações</a>
       <a href="#" data-logout>Sair</a>
     </nav>
   </aside>
@@ -59,30 +59,30 @@
         <h1>Estoque de Produtos</h1>
         <p>Gerencie seus produtos</p>
       </div>
-      <button class="btn btn-gold" id="btnNovoProduto">➕ Novo Produto</button>
+      <button class="btn btn-gold" id="btnNovoProduto">Novo Produto</button>
     </div>
 
     <!-- BUSCA E FILTRO -->
     <div class="card mb-4">
-      <div class="row" style="gap: 12px;">
-        <div class="col-md-3">
-          <label style="font-size: 12px; color: #bbb; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; display: block;">🔍 Buscar Produto</label>
+      <div style="display: flex; gap: 12px; align-items: flex-end;">
+        <div style="flex: 1.5; min-width: 220px;">
+          <label style="font-size: 12px; color: #bbb; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; display: block;">Buscar Produto</label>
           <input type="text" id="searchProduto" class="form-control" placeholder="Nome ou categoria...">
         </div>
-        <div class="col-md-2">
-          <label style="font-size: 12px; color: #bbb; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; display: block;">📦 Categoria</label>
+        <div style="flex: 1; min-width: 140px;">
+          <label style="font-size: 12px; color: #bbb; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; display: block;">Categoria</label>
           <select id="filterCategoria" class="form-control">
             <option value="">Todas as categorias</option>
           </select>
         </div>
-        <div class="col-md-2">
-          <label style="font-size: 12px; color: #bbb; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; display: block;">📏 Tamanho</label>
+        <div style="flex: 1; min-width: 140px;">
+          <label style="font-size: 12px; color: #bbb; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; display: block;">Tamanho</label>
           <select id="filterTamanho" class="form-control">
             <option value="">Todos os tamanhos</option>
           </select>
         </div>
-        <div class="col-md-2">
-          <label style="font-size: 12px; color: #bbb; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; display: block;">📊 Estoque</label>
+        <div style="flex: 1; min-width: 140px;">
+          <label style="font-size: 12px; color: #bbb; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; display: block;">Estoque</label>
           <select id="filterEstoque" class="form-control">
             <option value="">Todo estoque</option>
             <option value="em-falta">Em falta</option>
@@ -91,20 +91,18 @@
             <option value="alto">Alto (31+)</option>
           </select>
         </div>
-        <div class="col-md-2" style="display: flex; align-items: flex-end; gap: 8px;">
-          <div style="flex: 1;">
-            <label style="font-size: 12px; color: #bbb; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; display: block;">🔀 Ordenar</label>
-            <select id="ordenarPor" class="form-control">
-              <option value="nome-az">Nome (A → Z)</option>
-              <option value="nome-za">Nome (Z → A)</option>
-              <option value="preco-menor">Preço (menor)</option>
-              <option value="preco-maior">Preço (maior)</option>
-              <option value="estoque-menor">Estoque (menor)</option>
-              <option value="estoque-maior">Estoque (maior)</option>
-            </select>
-          </div>
-          <button id="limparFiltros" class="btn btn-outline-secondary" style="padding: 10px 14px; font-size: 14px; font-weight: 600; border: 2px solid #555; border-radius: 8px; background: transparent; color: #fff; transition: all 0.3s; height: 42px;" title="Limpar todos os filtros">🔄</button>
+        <div style="flex: 1; min-width: 140px;">
+          <label style="font-size: 12px; color: #bbb; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; display: block;">Ordenar</label>
+          <select id="ordenarPor" class="form-control">
+            <option value="nome-az">Nome (A → Z)</option>
+            <option value="nome-za">Nome (Z → A)</option>
+            <option value="preco-menor">Preço (menor)</option>
+            <option value="preco-maior">Preço (maior)</option>
+            <option value="estoque-menor">Estoque (menor)</option>
+            <option value="estoque-maior">Estoque (maior)</option>
+          </select>
         </div>
+        <button id="limparFiltros" class="btn btn-outline-secondary" style="padding: 10px 14px; font-size: 13px; font-weight: 600; border: 2px solid #555; border-radius: 8px; background: transparent; color: #fff; transition: all 0.3s; white-space: nowrap; height: 38px;" title="Limpar todos os filtros">Limpar</button>
       </div>
     </div>
 
@@ -120,7 +118,7 @@
   <div class="modal-content" style="max-width: 900px; max-height: 90vh; overflow-y: auto;">
     <div class="modal-header" style="background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); padding: 20px 30px; border-bottom: 2px solid #ffd84d; border-radius: 12px 12px 0 0;">
       <div style="display: flex; align-items: center; gap: 12px;">
-        <div style="background: #ffd84d; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px;">📦</div>
+        <div style="background: #ffd84d; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #000; font-weight: bold;">P</div>
         <h3 id="modalTitulo" style="margin: 0; color: #ffd84d; font-size: 22px; font-weight: 600;">Novo Produto</h3>
       </div>
       <button class="btn-close-modal" id="cancelarModal" style="background: none; border: none; color: #fff; font-size: 32px; cursor: pointer; padding: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 6px; transition: all 0.2s;" onmouseover="this.style.background='#ff4444'; this.style.transform='rotate(90deg)';" onmouseout="this.style.background='none'; this.style.transform='rotate(0deg)';">&times;</button>
@@ -140,7 +138,7 @@
           <div class="row" style="margin-bottom: 20px;">
             <div class="col-md-6" style="padding-right: 10px;">
               <label style="color: #ffd84d; font-weight: 500; font-size: 13px; display: flex; align-items: center; gap: 6px; margin-bottom: 8px;">
-                🏷️ Categoria
+                Categoria
               </label>
               <input list="categoriasList" type="text" id="categoria" class="form-control" placeholder="Ex: Roupas, Calçados" autocomplete="off" style="background: #0f0f0f; border: 2px solid #333; color: #fff; padding: 12px 15px; border-radius: 8px; font-size: 14px; transition: all 0.3s;" onfocus="this.style.borderColor='#ffd84d'; this.style.boxShadow='0 0 0 3px rgba(255,216,77,0.1)';" onblur="this.style.borderColor='#333'; this.style.boxShadow='none';">
               <datalist id="categoriasList">

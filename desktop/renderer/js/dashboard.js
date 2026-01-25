@@ -55,16 +55,35 @@ function atualizarAlertas(produtos) {
   const alertos = produtos.filter(p => p.estoque < 20).sort((a, b) => a.estoque - b.estoque);
   
   if (alertos.length === 0) {
-    container.innerHTML = '<p class="text-muted">✓ Nenhum alerta de estoque</p>';
+    container.innerHTML = '<div style="padding: 20px; text-align: center;"><p class="text-muted" style="margin: 0;">✓ Nenhum alerta de estoque</p></div>';
     return;
   }
   
-  container.innerHTML = alertos.map(p => `
-    <div class="alert-item" style="padding: 10px; border-bottom: 1px solid #333;">
-      <div style="font-weight: bold; color: #ffc107;">${p.nome.substring(0, 30)}</div>
-      <div style="color: #ff6b6b; font-size: 12px;">📦 ${p.estoque} unidades</div>
-    </div>
-  `).join('');
+  container.innerHTML = alertos.slice(0, 6).map(p => {
+    const percentual = Math.round((p.estoque / 100) * 100); // Assumir 100 como máximo
+    let cor = '#51cf66'; // Verde
+    let bg = 'rgba(81, 207, 102, 0.1)';
+    
+    if (p.estoque < 5) {
+      cor = '#ff6b6b'; // Vermelho crítico
+      bg = 'rgba(255, 107, 107, 0.1)';
+    } else if (p.estoque < 15) {
+      cor = '#ffa94d'; // Laranja atenção
+      bg = 'rgba(255, 169, 77, 0.1)';
+    }
+    
+    return `
+      <div style="padding: 14px; border-bottom: 1px solid #333; background: ${bg}; border-left: 4px solid ${cor};">
+        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 8px;">
+          <div style="font-weight: bold; color: #fff; font-size: 14px;">${p.nome.substring(0, 30)}</div>
+          <span style="color: ${cor}; font-weight: bold; font-size: 13px;">${p.estoque} un</span>
+        </div>
+        <div style="width: 100%; height: 6px; background: #333; border-radius: 3px; overflow: hidden;">
+          <div style="width: ${percentual}%; height: 100%; background: ${cor}; transition: width 0.3s;"></div>
+        </div>
+      </div>
+    `;
+  }).join('');
 }
 
 // ================================
@@ -77,14 +96,28 @@ function atualizarTopProdutos(produtos) {
   // Top 5 produtos por estoque
   const top = [...produtos].sort((a, b) => b.estoque - a.estoque).slice(0, 5);
   
-  container.innerHTML = top.map((p, i) => `
-    <div style="padding: 12px; border-bottom: 1px solid #444; display: flex; justify-content: space-between; align-items: center;">
-      <div style="color: #fff; font-weight: 500;">
-        <strong style="color: #ffc107; font-size: 16px;">${i + 1}º</strong> <span style="color: #e0e0e0;">${p.nome.substring(0, 25)}</span>
+  container.innerHTML = top.map((p, i) => {
+    const valorProduto = (p.preco * p.estoque).toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+    const percentualMax = Math.min((p.estoque / 500) * 100, 100);
+    
+    return `
+      <div style="padding: 16px; border-bottom: 1px solid #333; cursor: pointer;" onclick="window.location.href='produtos.html'" onmouseover="this.style.background='rgba(255,216,77,0.05)'" onmouseout="this.style.background='transparent'" style="transition: all 0.2s;">
+        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px;">
+          <div>
+            <div style="color: #ffd84d; font-size: 13px; font-weight: bold; margin-bottom: 4px;">#${i + 1}</div>
+            <div style="color: #e0e0e0; font-weight: 600; font-size: 14px;">${p.nome.substring(0, 28)}</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="color: #ffd84d; font-weight: bold; font-size: 14px;">${p.estoque} un</div>
+            <div style="color: #888; font-size: 12px;">R$ ${valorProduto}</div>
+          </div>
+        </div>
+        <div style="width: 100%; height: 6px; background: #333; border-radius: 3px; overflow: hidden;">
+          <div style="width: ${percentualMax}%; height: 100%; background: linear-gradient(90deg, #ffd84d, #ffbe33); transition: width 0.3s;"></div>
+        </div>
       </div>
-      <div style="color: #ffc107; font-weight: bold; font-size: 14px;">${p.estoque} un</div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 }
 
 // ================================
@@ -227,8 +260,9 @@ function atualizarTimestamp() {
   const agora = new Date();
   const horas = agora.getHours().toString().padStart(2, '0');
   const minutos = agora.getMinutes().toString().padStart(2, '0');
+  const dia = agora.toLocaleDateString('pt-BR');
   
-  elem.textContent = `Última atualização: ${horas}:${minutos}`;
+  elem.textContent = `Última atualização: ${dia} às ${horas}:${minutos}`;
 }
 
 // ================================
@@ -241,10 +275,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnAtualizar = document.getElementById('btnAtualizar');
   if (btnAtualizar) {
     btnAtualizar.addEventListener('click', () => {
-      btnAtualizar.textContent = '⏳ Atualizando...';
+      btnAtualizar.textContent = 'Atualizando...';
       btnAtualizar.disabled = true;
       atualizarDashboard().then(() => {
-        btnAtualizar.textContent = '🔄 ATUALIZAR';
+        btnAtualizar.textContent = 'Atualizar';
         btnAtualizar.disabled = false;
       });
     });

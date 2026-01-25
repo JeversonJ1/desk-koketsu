@@ -4,11 +4,23 @@
     "passwordHash": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9"
   },
   "sessions": {
-    "b6b9907d7939ab4379a14c0c70e95c1da7ef43497ae4aca27d7c6e6e62591a2b": {
-      "sessionId": "b6b9907d7939ab4379a14c0c70e95c1da7ef43497ae4aca27d7c6e6e62591a2b",
+    "3d175d1e9ce7db59e659e966ddbe84e3c127108edb80985c3be40c9ede274ab2": {
+      "sessionId": "3d175d1e9ce7db59e659e966ddbe84e3c127108edb80985c3be40c9ede274ab2",
       "username": "admin",
-      "createdAt": "2026-01-25T19:21:14.588Z",
-      "expiresAt": "2026-01-26T19:21:14.588Z"
+      "createdAt": "2026-01-25T19:41:29.713Z",
+      "expiresAt": "2026-01-26T19:41:29.713Z"
+    },
+    "51b6ef77a55ec9fcfe8b3234c900081aa47e86a0f65ff1daffda917d4ad8404a": {
+      "sessionId": "51b6ef77a55ec9fcfe8b3234c900081aa47e86a0f65ff1daffda917d4ad8404a",
+      "username": "admin",
+      "createdAt": "2026-01-25T21:10:01.859Z",
+      "expiresAt": "2026-01-26T21:10:01.859Z"
+    },
+    "ce5ed264101c103be9273af61701fc2bfa2234fd6eac39d8cc5315c424659948": {
+      "sessionId": "ce5ed264101c103be9273af61701fc2bfa2234fd6eac39d8cc5315c424659948",
+      "username": "admin",
+      "createdAt": "2026-01-25T23:06:04.103Z",
+      "expiresAt": "2026-01-26T23:06:04.103Z"
     }
   }
 }

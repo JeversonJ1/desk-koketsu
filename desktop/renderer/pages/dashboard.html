@@ -18,8 +18,8 @@
       <a class="active" href="dashboard.html">Dashboard</a>
       <a href="produtos.html">Produtos</a>
       <a href="clientes.html">Clientes</a>
-      <a href="pedidos.html">🛒 Pedidos</a>
-      <a href="configuracoes.html">⚙️ Configurações</a>
+      <a href="pedidos.html">Pedidos</a>
+      <a href="configuracoes.html">Configurações</a>
       <a href="#" data-logout>Sair</a>
     </nav>
   </aside>
@@ -30,42 +30,42 @@
         <h1>Dashboard</h1>
         <p>Bem-vindo, Administrador</p>
       </div>
-      <button class="btn btn-gold" id="btnAtualizar" title="Atualizar dados">🔄 Atualizar</button>
+      <button class="btn btn-gold" id="btnAtualizar" title="Atualizar dados">Atualizar</button>
     </div>
 
     <!-- CARDS DE MÉTRICAS -->
     <div class="row mb-4 mt-3">
       <div class="col-md-6 col-lg-3 mb-3">
-        <div class="card metric-card">
+        <div class="card metric-card metric-produtos" onclick="window.location.href='produtos.html'" style="cursor: pointer;">
           <div class="card-body">
-            <h6 class="card-title">📦 Produtos</h6>
+            <h6 class="card-title">Produtos</h6>
             <h3 id="totalProdutos">0</h3>
             <small id="tendenciaProdutos" class="text-muted"></small>
           </div>
         </div>
       </div>
       <div class="col-md-6 col-lg-3 mb-3">
-        <div class="card metric-card">
+        <div class="card metric-card metric-estoque" onclick="window.location.href='produtos.html'" style="cursor: pointer;">
           <div class="card-body">
-            <h6 class="card-title">📊 Estoque</h6>
+            <h6 class="card-title">Estoque</h6>
             <h3 id="totalEstoque">0</h3>
             <small id="tendenciaEstoque" class="text-muted"></small>
           </div>
         </div>
       </div>
       <div class="col-md-6 col-lg-3 mb-3">
-        <div class="card metric-card">
+        <div class="card metric-card metric-pedidos" onclick="window.location.href='pedidos.html'" style="cursor: pointer;">
           <div class="card-body">
-            <h6 class="card-title">🛒 Pedidos</h6>
+            <h6 class="card-title">Pedidos</h6>
             <h3 id="totalPedidos">0</h3>
             <small id="tendenciaPedidos" class="text-muted"></small>
           </div>
         </div>
       </div>
       <div class="col-md-6 col-lg-3 mb-3">
-        <div class="card metric-card">
+        <div class="card metric-card metric-valor" onclick="window.location.href='produtos.html'" style="cursor: pointer;">
           <div class="card-body">
-            <h6 class="card-title">💰 Valor</h6>
+            <h6 class="card-title">Valor Total</h6>
             <h3 id="valorEstoque">R$ 0</h3>
             <small id="tendenciaValor" class="text-muted"></small>
           </div>
@@ -77,7 +77,7 @@
     <div class="row mb-4">
       <div class="col-lg-8">
         <div class="card">
-          <h3>📈 Vendas por Mês</h3>
+          <h3>Vendas por Mês</h3>
           <div class="chart-container vendas">
             <canvas id="vendasChart"></canvas>
           </div>
@@ -85,7 +85,7 @@
       </div>
       <div class="col-lg-4">
         <div class="card">
-          <h3>⚠️ Estoque Baixo</h3>
+          <h3>Estoque Baixo</h3>
           <div id="alertasEstoque" class="alerts-container">
             <p class="text-muted">Nenhum alerta</p>
           </div>
@@ -97,7 +97,7 @@
     <div class="row">
       <div class="col-lg-6 mb-4">
         <div class="card">
-          <h3>🏆 Top 5 Produtos em Estoque</h3>
+          <h3>Top 5 Produtos em Estoque</h3>
           <div id="topEstoque" class="products-list">
             <p class="text-muted">Carregando...</p>
           </div>
@@ -105,7 +105,7 @@
       </div>
       <div class="col-lg-6 mb-4">
         <div class="card">
-          <h3>📦 Distribuição de Estoque</h3>
+          <h3>Distribuição de Estoque</h3>
           <div class="chart-container estoque">
             <canvas id="estoqueChart"></canvas>
           </div>

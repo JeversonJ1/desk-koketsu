@@ -1,75 +1,912 @@
-[2026-01-25T19:02:56.446Z] INFO: Aplicação Koketsu Desktop iniciada
-[2026-01-25T19:02:56.538Z] INFO: Todos os handlers IPC registrados
-[2026-01-25T19:02:56.683Z] INFO: Janela principal criada
-[2026-01-25T19:02:57.306Z] INFO: Configuração salva com sucesso
-[2026-01-25T19:03:05.480Z] INFO: Configuração salva com sucesso
-[2026-01-25T19:03:05.482Z] INFO: Login bem-sucedido para usuário: admin
-[2026-01-25T19:03:05.717Z] INFO: Dashboard carregado
-[2026-01-25T19:03:05.723Z] INFO: Produtos listados
-[2026-01-25T19:03:18.230Z] INFO: Produtos listados
-[2026-01-25T19:03:18.250Z] INFO: Tamanhos listados para produto 1
-[2026-01-25T19:03:18.258Z] INFO: Tamanhos listados para produto 21
-[2026-01-25T19:03:18.269Z] INFO: Tamanhos listados para produto 22
-[2026-01-25T19:03:18.275Z] INFO: Tamanhos listados para produto 23
-[2026-01-25T19:03:18.284Z] INFO: Tamanhos listados para produto 24
-[2026-01-25T19:03:18.292Z] INFO: Tamanhos listados para produto 25
-[2026-01-25T19:03:18.299Z] INFO: Tamanhos listados para produto 26
-[2026-01-25T19:03:20.569Z] INFO: Clientes listados
-[2026-01-25T19:03:21.963Z] INFO: Produtos listados
-[2026-01-25T19:03:21.978Z] INFO: Tamanhos listados para produto 1
-[2026-01-25T19:03:21.985Z] INFO: Tamanhos listados para produto 21
-[2026-01-25T19:03:21.992Z] INFO: Tamanhos listados para produto 22
-[2026-01-25T19:03:22.000Z] INFO: Tamanhos listados para produto 23
-[2026-01-25T19:03:22.006Z] INFO: Tamanhos listados para produto 24
-[2026-01-25T19:03:22.012Z] INFO: Tamanhos listados para produto 25
-[2026-01-25T19:03:22.019Z] INFO: Tamanhos listados para produto 26
-[2026-01-25T19:03:22.667Z] INFO: Dashboard carregado
-[2026-01-25T19:03:22.673Z] INFO: Produtos listados
-[2026-01-25T19:03:25.150Z] INFO: Produtos listados
-[2026-01-25T19:03:25.161Z] INFO: Tamanhos listados para produto 1
-[2026-01-25T19:03:25.167Z] INFO: Tamanhos listados para produto 21
-[2026-01-25T19:03:25.175Z] INFO: Tamanhos listados para produto 22
-[2026-01-25T19:03:25.180Z] INFO: Tamanhos listados para produto 23
-[2026-01-25T19:03:25.186Z] INFO: Tamanhos listados para produto 24
-[2026-01-25T19:03:25.191Z] INFO: Tamanhos listados para produto 25
-[2026-01-25T19:03:25.197Z] INFO: Tamanhos listados para produto 26
-[2026-01-25T19:03:26.220Z] INFO: Clientes listados
-[2026-01-25T19:03:29.206Z] INFO: Dashboard carregado
-[2026-01-25T19:03:29.214Z] INFO: Produtos listados
-[2026-01-25T19:03:31.625Z] INFO: Produtos listados
-[2026-01-25T19:03:31.637Z] INFO: Tamanhos listados para produto 1
-[2026-01-25T19:03:31.644Z] INFO: Tamanhos listados para produto 21
-[2026-01-25T19:03:31.651Z] INFO: Tamanhos listados para produto 22
-[2026-01-25T19:03:31.657Z] INFO: Tamanhos listados para produto 23
-[2026-01-25T19:03:31.664Z] INFO: Tamanhos listados para produto 24
-[2026-01-25T19:03:31.670Z] INFO: Tamanhos listados para produto 25
-[2026-01-25T19:03:31.676Z] INFO: Tamanhos listados para produto 26
-[2026-01-25T19:03:34.095Z] INFO: Clientes listados
-[2026-01-25T19:19:12.268Z] INFO: Aplicação Koketsu Desktop iniciada
-[2026-01-25T19:19:12.305Z] INFO: Todos os handlers IPC registrados
-[2026-01-25T19:19:12.411Z] INFO: Janela principal criada
-[2026-01-25T19:19:12.853Z] INFO: Dashboard carregado
-[2026-01-25T19:19:12.961Z] INFO: Produtos listados
-[2026-01-25T19:19:16.450Z] INFO: Produtos listados
-[2026-01-25T19:19:16.481Z] INFO: Tamanhos listados para produto 1
-[2026-01-25T19:19:16.487Z] INFO: Tamanhos listados para produto 21
-[2026-01-25T19:19:16.495Z] INFO: Tamanhos listados para produto 22
-[2026-01-25T19:19:16.502Z] INFO: Tamanhos listados para produto 23
-[2026-01-25T19:19:16.513Z] INFO: Tamanhos listados para produto 24
-[2026-01-25T19:19:16.528Z] INFO: Tamanhos listados para produto 25
-[2026-01-25T19:19:16.536Z] INFO: Tamanhos listados para produto 26
-[2026-01-25T19:19:17.681Z] INFO: Clientes listados
-[2026-01-25T19:19:18.828Z] INFO: Dashboard carregado
-[2026-01-25T19:19:18.836Z] INFO: Produtos listados
-[2026-01-25T19:19:20.813Z] INFO: Configuração salva com sucesso
-[2026-01-25T19:19:20.814Z] INFO: Logout bem-sucedido para sessão: 0f017c404493cbcc8da03bcbdba2bfba34786a7762a89e5f37421df1abbd740a
-[2026-01-25T19:21:14.589Z] INFO: Configuração salva com sucesso
-[2026-01-25T19:21:14.590Z] INFO: Login bem-sucedido para usuário: admin
-[2026-01-25T19:21:14.729Z] INFO: Dashboard carregado
-[2026-01-25T19:21:14.738Z] INFO: Produtos listados
-[2026-01-25T19:21:45.680Z] INFO: Dashboard carregado
-[2026-01-25T19:21:45.696Z] INFO: Produtos listados
-[2026-01-25T19:22:15.680Z] INFO: Dashboard carregado
-[2026-01-25T19:22:15.697Z] INFO: Produtos listados
-[2026-01-25T19:22:45.680Z] INFO: Dashboard carregado
-[2026-01-25T19:22:45.697Z] INFO: Produtos listados
+[2026-01-25T21:09:45.997Z] INFO: Aplicação Koketsu Desktop iniciada
+[2026-01-25T21:09:46.071Z] INFO: Todos os handlers IPC registrados
+[2026-01-25T21:09:46.264Z] INFO: Janela principal criada
+[2026-01-25T21:10:01.861Z] INFO: Configuração salva com sucesso
+[2026-01-25T21:10:01.862Z] INFO: Login bem-sucedido para usuário: admin
+[2026-01-25T21:10:01.936Z] INFO: Dashboard carregado
+[2026-01-25T21:10:02.014Z] INFO: Produtos listados
+[2026-01-25T21:10:04.051Z] INFO: Clientes listados
+[2026-01-25T21:10:04.057Z] INFO: Produtos listados
+[2026-01-25T21:10:04.071Z] INFO: Pedidos listados
+[2026-01-25T21:10:04.120Z] INFO: Clientes listados
+[2026-01-25T21:12:39.442Z] INFO: Aplicação Koketsu Desktop iniciada
+[2026-01-25T21:12:39.476Z] INFO: Todos os handlers IPC registrados
+[2026-01-25T21:12:39.599Z] INFO: Janela principal criada
+[2026-01-25T21:12:39.955Z] INFO: Dashboard carregado
+[2026-01-25T21:12:39.968Z] INFO: Produtos listados
+[2026-01-25T21:12:42.064Z] INFO: Clientes listados
+[2026-01-25T21:12:42.070Z] INFO: Produtos listados
+[2026-01-25T21:12:42.080Z] INFO: Pedidos listados
+[2026-01-25T21:12:42.104Z] INFO: Clientes listados
+[2026-01-25T21:14:59.681Z] INFO: Clientes listados
+[2026-01-25T21:14:59.694Z] INFO: Produtos listados
+[2026-01-25T21:14:59.703Z] INFO: Pedidos listados
+[2026-01-25T21:14:59.743Z] INFO: Clientes listados
+[2026-01-25T21:15:07.037Z] INFO: Produtos listados
+[2026-01-25T21:17:35.701Z] INFO: Clientes listados
+[2026-01-25T21:17:35.713Z] INFO: Produtos listados
+[2026-01-25T21:17:35.730Z] INFO: Pedidos listados
+[2026-01-25T21:17:35.763Z] INFO: Clientes listados
+[2026-01-25T21:18:40.961Z] INFO: Pedido criado com sucesso. ID: 1 {"total":851,"itens":3}
+[2026-01-25T21:18:41.075Z] INFO: Pedidos listados
+[2026-01-25T21:18:41.080Z] INFO: Produtos listados
+[2026-01-25T21:18:45.550Z] INFO: Clientes listados
+[2026-01-25T21:18:49.520Z] INFO: Dashboard carregado
+[2026-01-25T21:18:49.527Z] INFO: Produtos listados
+[2026-01-25T21:18:53.942Z] INFO: Dashboard carregado
+[2026-01-25T21:18:53.960Z] INFO: Produtos listados
+[2026-01-25T21:19:16.452Z] INFO: Produtos listados
+[2026-01-25T21:19:16.466Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T21:19:16.473Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T21:19:16.478Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T21:19:16.486Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T21:19:16.494Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T21:19:16.502Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T21:19:16.510Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T21:19:32.037Z] INFO: Clientes listados
+[2026-01-25T21:19:37.965Z] INFO: Dashboard carregado
+[2026-01-25T21:19:37.971Z] INFO: Produtos listados
+[2026-01-25T21:19:46.041Z] INFO: Produtos listados
+[2026-01-25T21:19:46.060Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T21:19:46.069Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T21:19:46.081Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T21:19:46.092Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T21:19:46.105Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T21:19:46.115Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T21:19:46.124Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T21:19:50.467Z] INFO: Clientes listados
+[2026-01-25T21:19:53.048Z] INFO: Clientes listados
+[2026-01-25T21:19:53.053Z] INFO: Produtos listados
+[2026-01-25T21:19:53.065Z] INFO: Pedidos listados
+[2026-01-25T21:19:53.096Z] INFO: Clientes listados
+[2026-01-25T21:19:54.858Z] INFO: Produtos listados
+[2026-01-25T21:19:56.770Z] INFO: Dashboard carregado
+[2026-01-25T21:19:56.777Z] INFO: Produtos listados
+[2026-01-25T21:19:57.952Z] INFO: Produtos listados
+[2026-01-25T21:19:57.964Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T21:19:57.969Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T21:19:57.976Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T21:19:57.983Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T21:19:57.990Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T21:19:57.996Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T21:19:58.003Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T21:19:59.515Z] INFO: Clientes listados
+[2026-01-25T21:20:01.209Z] INFO: Clientes listados
+[2026-01-25T21:20:01.214Z] INFO: Produtos listados
+[2026-01-25T21:20:01.226Z] INFO: Pedidos listados
+[2026-01-25T21:20:01.249Z] INFO: Clientes listados
+[2026-01-25T21:21:17.082Z] INFO: Clientes listados
+[2026-01-25T21:26:01.020Z] INFO: Clientes listados
+[2026-01-25T21:26:03.571Z] INFO: Clientes listados
+[2026-01-25T21:26:06.768Z] INFO: Clientes listados
+[2026-01-25T21:26:06.774Z] INFO: Produtos listados
+[2026-01-25T21:26:06.786Z] INFO: Pedidos listados
+[2026-01-25T21:26:06.830Z] INFO: Clientes listados
+[2026-01-25T21:26:11.218Z] INFO: Clientes listados
+[2026-01-25T21:26:11.639Z] INFO: Produtos listados
+[2026-01-25T21:26:11.656Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T21:26:11.665Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T21:26:11.675Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T21:26:11.685Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T21:26:11.693Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T21:26:11.704Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T21:26:11.715Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T21:26:12.043Z] INFO: Dashboard carregado
+[2026-01-25T21:26:12.050Z] INFO: Produtos listados
+[2026-01-25T21:26:14.510Z] INFO: Clientes listados
+[2026-01-25T21:26:17.124Z] INFO: Clientes listados
+[2026-01-25T21:26:18.345Z] INFO: Clientes listados
+[2026-01-25T21:26:18.352Z] INFO: Produtos listados
+[2026-01-25T21:26:18.360Z] INFO: Pedidos listados
+[2026-01-25T21:26:18.386Z] INFO: Clientes listados
+[2026-01-25T21:26:19.019Z] INFO: Clientes listados
+[2026-01-25T21:26:24.544Z] INFO: Clientes listados
+[2026-01-25T21:26:27.141Z] INFO: Clientes listados
+[2026-01-25T21:26:27.149Z] INFO: Produtos listados
+[2026-01-25T21:26:27.160Z] INFO: Pedidos listados
+[2026-01-25T21:26:27.182Z] INFO: Clientes listados
+[2026-01-25T21:26:44.215Z] INFO: Clientes listados
+[2026-01-25T21:26:55.823Z] INFO: Clientes listados
+[2026-01-25T21:28:13.748Z] INFO: Clientes listados
+[2026-01-25T21:28:19.025Z] INFO: Clientes listados
+[2026-01-25T21:28:19.033Z] INFO: Produtos listados
+[2026-01-25T21:28:19.050Z] INFO: Pedidos listados
+[2026-01-25T21:28:19.102Z] INFO: Clientes listados
+[2026-01-25T21:28:40.000Z] INFO: Clientes listados
+[2026-01-25T21:51:09.721Z] INFO: Clientes listados
+[2026-01-25T21:51:13.471Z] INFO: Clientes listados
+[2026-01-25T21:51:16.954Z] INFO: Clientes listados
+[2026-01-25T21:51:18.018Z] INFO: Clientes listados
+[2026-01-25T21:51:18.031Z] INFO: Produtos listados
+[2026-01-25T21:51:18.043Z] INFO: Pedidos listados
+[2026-01-25T21:51:18.112Z] INFO: Clientes listados
+[2026-01-25T21:51:23.388Z] INFO: Clientes listados
+[2026-01-25T21:51:23.394Z] INFO: Produtos listados
+[2026-01-25T21:51:23.406Z] INFO: Pedidos listados
+[2026-01-25T21:51:23.438Z] INFO: Clientes listados
+[2026-01-25T21:51:25.632Z] INFO: Clientes listados
+[2026-01-25T21:51:26.190Z] INFO: Clientes listados
+[2026-01-25T21:51:26.863Z] INFO: Clientes listados
+[2026-01-25T21:51:27.241Z] INFO: Clientes listados
+[2026-01-25T21:51:27.246Z] INFO: Produtos listados
+[2026-01-25T21:51:27.261Z] INFO: Pedidos listados
+[2026-01-25T21:51:27.293Z] INFO: Clientes listados
+[2026-01-25T21:51:28.116Z] INFO: Clientes listados
+[2026-01-25T21:51:28.636Z] INFO: Clientes listados
+[2026-01-25T21:51:28.644Z] INFO: Produtos listados
+[2026-01-25T21:51:28.655Z] INFO: Pedidos listados
+[2026-01-25T21:51:28.685Z] INFO: Clientes listados
+[2026-01-25T21:51:33.992Z] INFO: Clientes listados
+[2026-01-25T21:51:37.235Z] INFO: Clientes listados
+[2026-01-25T21:51:38.694Z] INFO: Produtos listados
+[2026-01-25T21:51:38.709Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T21:51:38.716Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T21:51:38.725Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T21:51:38.731Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T21:51:38.739Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T21:51:38.747Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T21:51:38.754Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T21:51:40.246Z] INFO: Dashboard carregado
+[2026-01-25T21:51:40.253Z] INFO: Produtos listados
+[2026-01-25T21:52:00.455Z] INFO: Clientes listados
+[2026-01-25T21:52:03.726Z] INFO: Produtos listados
+[2026-01-25T21:52:03.743Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T21:52:03.749Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T21:52:03.759Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T21:52:03.768Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T21:52:03.775Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T21:52:03.781Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T21:52:03.788Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T21:52:11.554Z] INFO: Clientes listados
+[2026-01-25T21:52:14.726Z] INFO: Produtos listados
+[2026-01-25T21:52:14.740Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T21:52:14.745Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T21:52:14.754Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T21:52:14.760Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T21:52:14.766Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T21:52:14.773Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T21:52:14.779Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T21:52:18.904Z] INFO: Clientes listados
+[2026-01-25T21:52:35.509Z] INFO: Clientes listados
+[2026-01-25T21:53:08.529Z] INFO: Clientes listados
+[2026-01-25T21:53:13.496Z] INFO: Clientes listados
+[2026-01-25T21:53:13.501Z] INFO: Produtos listados
+[2026-01-25T21:53:13.511Z] INFO: Pedidos listados
+[2026-01-25T21:53:13.544Z] INFO: Clientes listados
+[2026-01-25T21:54:07.013Z] INFO: Clientes listados
+[2026-01-25T21:54:40.255Z] INFO: Clientes listados
+[2026-01-25T21:54:42.382Z] INFO: Clientes listados
+[2026-01-25T21:54:46.042Z] INFO: Clientes listados
+[2026-01-25T21:54:46.049Z] INFO: Produtos listados
+[2026-01-25T21:54:46.059Z] INFO: Pedidos listados
+[2026-01-25T21:54:46.091Z] INFO: Clientes listados
+[2026-01-25T21:57:35.886Z] INFO: Clientes listados
+[2026-01-25T21:57:35.898Z] INFO: Produtos listados
+[2026-01-25T21:57:35.909Z] INFO: Pedidos listados
+[2026-01-25T21:57:35.946Z] INFO: Clientes listados
+[2026-01-25T21:57:43.682Z] INFO: Pedidos listados
+[2026-01-25T21:57:43.700Z] INFO: Clientes listados
+[2026-01-25T21:58:18.722Z] INFO: Dashboard carregado
+[2026-01-25T21:58:18.733Z] INFO: Produtos listados
+[2026-01-25T21:58:21.942Z] INFO: Produtos listados
+[2026-01-25T21:58:21.960Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T21:58:21.968Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T21:58:21.974Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T21:58:21.982Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T21:58:21.988Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T21:58:21.994Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T21:58:22.001Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T21:58:23.156Z] INFO: Clientes listados
+[2026-01-25T21:58:24.546Z] INFO: Clientes listados
+[2026-01-25T21:58:24.553Z] INFO: Produtos listados
+[2026-01-25T21:58:24.566Z] INFO: Pedidos listados
+[2026-01-25T21:58:24.588Z] INFO: Clientes listados
+[2026-01-25T21:59:11.566Z] INFO: Dashboard carregado
+[2026-01-25T21:59:11.583Z] INFO: Produtos listados
+[2026-01-25T21:59:41.974Z] INFO: Dashboard carregado
+[2026-01-25T21:59:41.991Z] INFO: Produtos listados
+[2026-01-25T22:00:11.965Z] INFO: Dashboard carregado
+[2026-01-25T22:00:11.981Z] INFO: Produtos listados
+[2026-01-25T22:00:25.514Z] INFO: Produtos listados
+[2026-01-25T22:00:25.530Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:00:25.537Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:00:25.544Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:00:25.552Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:00:25.559Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:00:25.567Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:00:25.572Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:00:29.835Z] INFO: Clientes listados
+[2026-01-25T22:00:31.814Z] INFO: Dashboard carregado
+[2026-01-25T22:00:31.820Z] INFO: Produtos listados
+[2026-01-25T22:00:36.635Z] INFO: Dashboard carregado
+[2026-01-25T22:00:36.641Z] INFO: Produtos listados
+[2026-01-25T22:00:44.188Z] INFO: Dashboard carregado
+[2026-01-25T22:00:44.197Z] INFO: Produtos listados
+[2026-01-25T22:01:01.917Z] INFO: Dashboard carregado
+[2026-01-25T22:01:01.924Z] INFO: Produtos listados
+[2026-01-25T22:01:03.387Z] INFO: Dashboard carregado
+[2026-01-25T22:01:03.393Z] INFO: Produtos listados
+[2026-01-25T22:01:07.492Z] INFO: Dashboard carregado
+[2026-01-25T22:01:07.506Z] INFO: Produtos listados
+[2026-01-25T22:01:08.315Z] INFO: Dashboard carregado
+[2026-01-25T22:01:08.320Z] INFO: Produtos listados
+[2026-01-25T22:01:09.846Z] INFO: Produtos listados
+[2026-01-25T22:01:09.857Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:01:09.863Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:01:09.869Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:01:09.879Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:01:09.885Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:01:09.891Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:01:09.898Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:01:43.558Z] INFO: Produtos listados
+[2026-01-25T22:01:43.583Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:01:43.597Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:01:43.605Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:01:43.616Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:01:43.626Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:01:43.638Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:01:43.649Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:01:45.537Z] INFO: Produtos listados
+[2026-01-25T22:01:45.552Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:01:45.558Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:01:45.566Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:01:45.575Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:01:45.582Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:01:45.590Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:01:45.596Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:01:46.841Z] INFO: Dashboard carregado
+[2026-01-25T22:01:46.848Z] INFO: Produtos listados
+[2026-01-25T22:02:16.857Z] INFO: Dashboard carregado
+[2026-01-25T22:02:16.865Z] INFO: Produtos listados
+[2026-01-25T22:02:46.842Z] INFO: Dashboard carregado
+[2026-01-25T22:02:46.853Z] INFO: Produtos listados
+[2026-01-25T22:03:03.905Z] INFO: Produtos listados
+[2026-01-25T22:03:03.916Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:03:03.924Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:03:03.934Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:03:03.940Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:03:03.946Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:03:03.953Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:03:03.960Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:03:12.863Z] INFO: Produtos listados
+[2026-01-25T22:03:12.878Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:03:12.885Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:03:12.891Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:03:12.899Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:03:12.906Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:03:12.912Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:03:12.919Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:03:14.100Z] INFO: Dashboard carregado
+[2026-01-25T22:03:14.106Z] INFO: Produtos listados
+[2026-01-25T22:03:16.024Z] INFO: Produtos listados
+[2026-01-25T22:03:16.036Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:03:16.041Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:03:16.050Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:03:16.055Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:03:16.062Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:03:16.068Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:03:16.074Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:03:18.874Z] INFO: Dashboard carregado
+[2026-01-25T22:03:18.881Z] INFO: Produtos listados
+[2026-01-25T22:03:21.357Z] INFO: Produtos listados
+[2026-01-25T22:03:21.369Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:03:21.376Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:03:21.384Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:03:21.390Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:03:21.397Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:03:21.404Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:03:21.410Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:03:27.477Z] INFO: Dashboard carregado
+[2026-01-25T22:03:27.485Z] INFO: Produtos listados
+[2026-01-25T22:03:28.569Z] INFO: Produtos listados
+[2026-01-25T22:03:28.580Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:03:28.586Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:03:28.592Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:03:28.600Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:03:28.607Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:03:28.614Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:03:28.621Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:03:29.897Z] INFO: Dashboard carregado
+[2026-01-25T22:03:29.903Z] INFO: Produtos listados
+[2026-01-25T22:03:30.536Z] INFO: Produtos listados
+[2026-01-25T22:03:30.549Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:03:30.556Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:03:30.563Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:03:30.571Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:03:30.578Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:03:30.585Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:03:30.592Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:03:31.560Z] INFO: Dashboard carregado
+[2026-01-25T22:03:31.568Z] INFO: Produtos listados
+[2026-01-25T22:03:32.247Z] INFO: Clientes listados
+[2026-01-25T22:03:32.253Z] INFO: Produtos listados
+[2026-01-25T22:03:32.265Z] INFO: Pedidos listados
+[2026-01-25T22:03:32.298Z] INFO: Clientes listados
+[2026-01-25T22:03:34.439Z] INFO: Dashboard carregado
+[2026-01-25T22:03:34.445Z] INFO: Produtos listados
+[2026-01-25T22:03:35.308Z] INFO: Produtos listados
+[2026-01-25T22:03:35.320Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:03:35.326Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:03:35.333Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:03:35.339Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:03:35.347Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:03:35.353Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:03:35.360Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:03:37.022Z] INFO: Dashboard carregado
+[2026-01-25T22:03:37.027Z] INFO: Produtos listados
+[2026-01-25T22:03:39.558Z] INFO: Produtos listados
+[2026-01-25T22:03:39.570Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:03:39.576Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:03:39.584Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:03:39.589Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:03:39.596Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:03:39.602Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:03:39.608Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:03:42.539Z] INFO: Dashboard carregado
+[2026-01-25T22:03:42.546Z] INFO: Produtos listados
+[2026-01-25T22:03:44.861Z] INFO: Produtos listados
+[2026-01-25T22:03:44.874Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:03:44.882Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:03:44.892Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:03:44.902Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:03:44.910Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:03:44.920Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:03:44.927Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:03:47.612Z] INFO: Dashboard carregado
+[2026-01-25T22:03:47.622Z] INFO: Produtos listados
+[2026-01-25T22:03:49.813Z] INFO: Clientes listados
+[2026-01-25T22:03:49.821Z] INFO: Produtos listados
+[2026-01-25T22:03:49.837Z] INFO: Pedidos listados
+[2026-01-25T22:03:49.869Z] INFO: Clientes listados
+[2026-01-25T22:04:30.318Z] INFO: Dashboard carregado
+[2026-01-25T22:04:30.327Z] INFO: Produtos listados
+[2026-01-25T22:04:34.275Z] INFO: Dashboard carregado
+[2026-01-25T22:04:34.281Z] INFO: Produtos listados
+[2026-01-25T22:04:35.075Z] INFO: Dashboard carregado
+[2026-01-25T22:04:35.085Z] INFO: Produtos listados
+[2026-01-25T22:04:35.567Z] INFO: Dashboard carregado
+[2026-01-25T22:04:35.574Z] INFO: Produtos listados
+[2026-01-25T22:04:36.915Z] INFO: Dashboard carregado
+[2026-01-25T22:04:36.924Z] INFO: Produtos listados
+[2026-01-25T22:04:47.644Z] INFO: Produtos listados
+[2026-01-25T22:04:47.658Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:04:47.665Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:04:47.671Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:04:47.680Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:04:47.686Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:04:47.693Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:04:47.700Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:04:57.491Z] INFO: Dashboard carregado
+[2026-01-25T22:04:57.499Z] INFO: Produtos listados
+[2026-01-25T22:04:58.070Z] INFO: Produtos listados
+[2026-01-25T22:04:58.082Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:04:58.087Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:04:58.093Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:04:58.100Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:04:58.106Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:04:58.112Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:04:58.119Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:05:02.060Z] INFO: Clientes listados
+[2026-01-25T22:05:03.321Z] INFO: Produtos listados
+[2026-01-25T22:05:03.334Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:05:03.340Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:05:03.345Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:05:03.351Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:05:03.357Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:05:03.363Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:05:03.369Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:05:04.898Z] INFO: Dashboard carregado
+[2026-01-25T22:05:04.907Z] INFO: Produtos listados
+[2026-01-25T22:05:06.835Z] INFO: Produtos listados
+[2026-01-25T22:05:06.848Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:05:06.856Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:05:06.863Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:05:06.869Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:05:06.877Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:05:06.884Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:05:06.890Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:06:57.406Z] INFO: Produtos listados
+[2026-01-25T22:06:57.461Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:06:57.485Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:06:57.501Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:06:57.512Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:06:57.537Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:06:57.549Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:06:57.569Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:06:59.595Z] INFO: Produtos listados
+[2026-01-25T22:06:59.624Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:06:59.640Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:06:59.652Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:06:59.664Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:06:59.673Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:06:59.680Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:06:59.691Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:07:11.854Z] INFO: Clientes listados
+[2026-01-25T22:07:13.405Z] INFO: Produtos listados
+[2026-01-25T22:07:13.418Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:07:13.423Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:07:13.430Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:07:13.438Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:07:13.444Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:07:13.452Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:07:13.460Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:07:14.558Z] INFO: Dashboard carregado
+[2026-01-25T22:07:14.564Z] INFO: Produtos listados
+[2026-01-25T22:07:17.093Z] INFO: Produtos listados
+[2026-01-25T22:07:17.104Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:07:17.111Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:07:17.121Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:07:17.129Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:07:17.137Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:07:17.144Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:07:17.151Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:07:18.485Z] INFO: Dashboard carregado
+[2026-01-25T22:07:18.492Z] INFO: Produtos listados
+[2026-01-25T22:07:48.966Z] INFO: Dashboard carregado
+[2026-01-25T22:07:48.980Z] INFO: Produtos listados
+[2026-01-25T22:07:59.814Z] INFO: Dashboard carregado
+[2026-01-25T22:07:59.824Z] INFO: Produtos listados
+[2026-01-25T22:08:02.440Z] INFO: Produtos listados
+[2026-01-25T22:08:02.450Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:08:02.456Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:08:02.463Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:08:02.471Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:08:02.478Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:08:02.484Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:08:02.491Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:10:16.948Z] INFO: Produtos listados
+[2026-01-25T22:10:16.972Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:10:17.038Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:10:17.046Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:10:17.058Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:10:17.067Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:10:17.075Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:10:17.090Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:10:19.378Z] INFO: Produtos listados
+[2026-01-25T22:10:19.409Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:10:19.421Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:10:19.432Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:10:19.443Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:10:19.450Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:10:19.460Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:10:19.471Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:13:41.574Z] INFO: Produtos listados
+[2026-01-25T22:13:41.620Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:13:41.635Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:13:41.646Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:13:41.683Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:13:41.697Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:13:41.715Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:13:41.737Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:13:44.813Z] INFO: Produtos listados
+[2026-01-25T22:13:44.828Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:13:44.834Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:13:44.844Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:13:44.852Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:13:44.873Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:13:44.881Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:13:44.891Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:14:53.873Z] INFO: Produtos listados
+[2026-01-25T22:14:53.886Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:14:53.895Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:14:53.901Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:14:53.908Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:14:53.914Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:14:53.921Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:14:53.926Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:14:55.108Z] INFO: Clientes listados
+[2026-01-25T22:14:56.493Z] INFO: Produtos listados
+[2026-01-25T22:14:56.507Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:14:56.513Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:14:56.520Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:14:56.528Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:14:56.534Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:14:56.539Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:14:56.546Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:14:59.531Z] INFO: Dashboard carregado
+[2026-01-25T22:14:59.537Z] INFO: Produtos listados
+[2026-01-25T22:15:03.296Z] INFO: Produtos listados
+[2026-01-25T22:15:03.308Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:15:03.314Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:15:03.321Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:15:03.328Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:15:03.335Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:15:03.341Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:15:03.347Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:16:48.389Z] INFO: Clientes listados
+[2026-01-25T22:16:50.056Z] INFO: Produtos listados
+[2026-01-25T22:16:50.074Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:16:50.082Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:16:50.090Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:16:50.099Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:16:50.105Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:16:50.112Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:16:50.118Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:16:53.428Z] INFO: Configuração salva com sucesso
+[2026-01-25T22:16:53.430Z] INFO: Logout bem-sucedido para sessão: 821ea41849a6db769d4c7de10831ada62a928c94c6023373d6dddf9358900c58
+[2026-01-25T22:17:08.447Z] INFO: Configuração salva com sucesso
+[2026-01-25T22:17:08.448Z] INFO: Login bem-sucedido para usuário: admin
+[2026-01-25T22:17:08.489Z] INFO: Dashboard carregado
+[2026-01-25T22:17:08.497Z] INFO: Produtos listados
+[2026-01-25T22:17:10.350Z] INFO: Produtos listados
+[2026-01-25T22:17:10.360Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:17:10.366Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:17:10.373Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:17:10.381Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:17:10.387Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:17:10.393Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:17:10.399Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:17:15.135Z] INFO: Clientes listados
+[2026-01-25T22:17:19.456Z] INFO: Produtos listados
+[2026-01-25T22:17:19.468Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:17:19.475Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:17:19.492Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:17:19.498Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:17:19.504Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:17:19.511Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:17:19.517Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:17:36.218Z] INFO: Produtos listados
+[2026-01-25T22:17:36.248Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:17:36.258Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:17:36.268Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:17:36.279Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:17:36.287Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:17:36.297Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:17:36.305Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:17:59.786Z] INFO: Produtos listados
+[2026-01-25T22:17:59.803Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:17:59.810Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:17:59.817Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:17:59.826Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:17:59.832Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:17:59.839Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:17:59.847Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:18:48.299Z] INFO: Produtos listados
+[2026-01-25T22:18:48.319Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:18:48.328Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:18:48.336Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:18:48.346Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:18:48.353Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:18:48.360Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:18:48.367Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:18:49.656Z] INFO: Clientes listados
+[2026-01-25T22:19:20.554Z] INFO: Clientes listados
+[2026-01-25T22:19:20.561Z] INFO: Produtos listados
+[2026-01-25T22:19:20.572Z] INFO: Pedidos listados
+[2026-01-25T22:19:20.600Z] INFO: Clientes listados
+[2026-01-25T22:19:43.616Z] INFO: Clientes listados
+[2026-01-25T22:19:45.467Z] INFO: Clientes listados
+[2026-01-25T22:19:48.847Z] INFO: Clientes listados
+[2026-01-25T22:19:51.592Z] INFO: Clientes listados
+[2026-01-25T22:20:18.366Z] INFO: Produtos listados
+[2026-01-25T22:20:18.380Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:20:18.386Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:20:18.392Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:20:18.398Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:20:18.405Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:20:18.411Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:20:18.418Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:20:19.413Z] INFO: Dashboard carregado
+[2026-01-25T22:20:19.419Z] INFO: Produtos listados
+[2026-01-25T22:20:21.102Z] INFO: Dashboard carregado
+[2026-01-25T22:20:21.108Z] INFO: Produtos listados
+[2026-01-25T22:20:38.241Z] INFO: Produtos listados
+[2026-01-25T22:20:38.266Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:20:38.272Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:20:38.280Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:20:38.287Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:20:38.293Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:20:38.299Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:20:38.306Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:20:41.648Z] INFO: Clientes listados
+[2026-01-25T22:20:43.445Z] INFO: Clientes listados
+[2026-01-25T22:20:43.452Z] INFO: Produtos listados
+[2026-01-25T22:20:43.464Z] INFO: Pedidos listados
+[2026-01-25T22:20:43.483Z] INFO: Clientes listados
+[2026-01-25T22:20:47.506Z] INFO: Clientes listados
+[2026-01-25T22:21:02.454Z] INFO: Clientes listados
+[2026-01-25T22:21:14.796Z] INFO: Clientes listados
+[2026-01-25T22:21:36.915Z] INFO: Clientes listados
+[2026-01-25T22:21:43.038Z] INFO: Clientes listados
+[2026-01-25T22:21:44.902Z] INFO: Produtos listados
+[2026-01-25T22:21:44.915Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:21:44.922Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:21:44.929Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:21:44.934Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:21:44.940Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:21:44.946Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:21:44.952Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:22:01.559Z] INFO: Clientes listados
+[2026-01-25T22:22:13.523Z] INFO: Clientes listados
+[2026-01-25T22:22:13.532Z] INFO: Produtos listados
+[2026-01-25T22:22:13.541Z] INFO: Pedidos listados
+[2026-01-25T22:22:13.573Z] INFO: Clientes listados
+[2026-01-25T22:22:17.801Z] INFO: Clientes listados
+[2026-01-25T22:22:17.807Z] INFO: Produtos listados
+[2026-01-25T22:22:17.818Z] INFO: Pedidos listados
+[2026-01-25T22:22:17.839Z] INFO: Clientes listados
+[2026-01-25T22:26:40.677Z] INFO: Produtos listados
+[2026-01-25T22:26:40.698Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:26:40.703Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:26:40.712Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:26:40.718Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:26:40.724Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:26:40.730Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:26:40.737Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:26:41.403Z] INFO: Clientes listados
+[2026-01-25T22:27:33.562Z] INFO: Dashboard carregado
+[2026-01-25T22:27:33.568Z] INFO: Produtos listados
+[2026-01-25T22:27:34.879Z] INFO: Produtos listados
+[2026-01-25T22:27:34.889Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:27:34.896Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:27:34.903Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:27:34.908Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:27:34.914Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:27:34.922Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:27:34.928Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:27:35.825Z] INFO: Clientes listados
+[2026-01-25T22:27:37.339Z] INFO: Produtos listados
+[2026-01-25T22:27:37.351Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:27:37.360Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:27:37.365Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:27:37.371Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:27:37.377Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:27:37.384Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:27:37.391Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:27:38.204Z] INFO: Clientes listados
+[2026-01-25T22:30:40.465Z] INFO: Aplicação Koketsu Desktop iniciada
+[2026-01-25T22:30:40.523Z] INFO: Todos os handlers IPC registrados
+[2026-01-25T22:30:40.650Z] INFO: Janela principal criada
+[2026-01-25T22:30:40.925Z] INFO: Dashboard carregado
+[2026-01-25T22:30:40.955Z] INFO: Produtos listados
+[2026-01-25T22:32:24.123Z] INFO: Clientes listados
+[2026-01-25T22:32:24.136Z] INFO: Produtos listados
+[2026-01-25T22:32:24.148Z] INFO: Pedidos listados
+[2026-01-25T22:32:24.206Z] INFO: Clientes listados
+[2026-01-25T22:32:32.489Z] INFO: Produtos listados
+[2026-01-25T22:32:54.363Z] INFO: Dashboard carregado
+[2026-01-25T22:32:54.371Z] INFO: Produtos listados
+[2026-01-25T22:33:05.500Z] INFO: Produtos listados
+[2026-01-25T22:33:05.526Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:33:05.538Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:33:05.547Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:33:05.561Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:33:05.574Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:33:05.582Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:33:05.588Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:33:33.074Z] INFO: Clientes listados
+[2026-01-25T22:33:52.708Z] INFO: Clientes listados
+[2026-01-25T22:33:52.714Z] INFO: Produtos listados
+[2026-01-25T22:33:52.723Z] INFO: Pedidos listados
+[2026-01-25T22:33:52.789Z] INFO: Clientes listados
+[2026-01-25T22:33:59.338Z] INFO: Produtos listados
+[2026-01-25T22:36:12.059Z] INFO: Clientes listados
+[2026-01-25T22:36:12.065Z] INFO: Produtos listados
+[2026-01-25T22:36:12.084Z] INFO: Pedidos listados
+[2026-01-25T22:36:12.105Z] INFO: Clientes listados
+[2026-01-25T22:51:30.908Z] INFO: Aplicação Koketsu Desktop iniciada
+[2026-01-25T22:51:30.952Z] INFO: Handlers de banners registrados
+[2026-01-25T22:51:30.952Z] INFO: Handlers de configurações registrados
+[2026-01-25T22:51:30.953Z] INFO: Todos os handlers IPC registrados
+[2026-01-25T22:51:31.059Z] INFO: Janela principal criada
+[2026-01-25T22:51:31.496Z] INFO: Dashboard carregado
+[2026-01-25T22:51:31.503Z] INFO: Produtos listados
+[2026-01-25T22:52:01.504Z] INFO: Dashboard carregado
+[2026-01-25T22:52:01.511Z] INFO: Produtos listados
+[2026-01-25T22:52:31.496Z] INFO: Dashboard carregado
+[2026-01-25T22:52:31.508Z] INFO: Produtos listados
+[2026-01-25T22:53:01.961Z] INFO: Dashboard carregado
+[2026-01-25T22:53:01.969Z] INFO: Produtos listados
+[2026-01-25T22:53:31.960Z] INFO: Dashboard carregado
+[2026-01-25T22:53:31.968Z] INFO: Produtos listados
+[2026-01-25T22:54:01.962Z] INFO: Dashboard carregado
+[2026-01-25T22:54:01.971Z] INFO: Produtos listados
+[2026-01-25T22:54:31.966Z] INFO: Dashboard carregado
+[2026-01-25T22:54:31.972Z] INFO: Produtos listados
+[2026-01-25T22:55:00.379Z] INFO: Produtos listados
+[2026-01-25T22:55:00.406Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:55:00.415Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:55:00.425Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:55:00.434Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:55:00.445Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:55:00.455Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:55:00.466Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:55:00.972Z] INFO: Clientes listados
+[2026-01-25T22:55:02.539Z] INFO: Clientes listados
+[2026-01-25T22:55:02.546Z] INFO: Produtos listados
+[2026-01-25T22:55:02.555Z] INFO: Pedidos listados
+[2026-01-25T22:55:02.578Z] INFO: Clientes listados
+[2026-01-25T22:55:05.357Z] INFO: Banners carregados: 0
+[2026-01-25T22:55:20.910Z] INFO: Banner criado: homem aranha (ID: 1)
+[2026-01-25T22:55:21.012Z] INFO: Banners carregados: 1
+[2026-01-25T22:55:54.435Z] INFO: Produtos listados
+[2026-01-25T22:55:54.448Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:55:54.456Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:55:54.464Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:55:54.471Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:55:54.480Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:55:54.487Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:55:54.493Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:55:55.203Z] INFO: Dashboard carregado
+[2026-01-25T22:55:55.209Z] INFO: Produtos listados
+[2026-01-25T22:55:56.713Z] INFO: Produtos listados
+[2026-01-25T22:55:56.725Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:55:56.733Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:55:56.740Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:55:56.754Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:55:56.763Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:55:56.774Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:55:56.782Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:55:57.366Z] INFO: Clientes listados
+[2026-01-25T22:55:58.833Z] INFO: Clientes listados
+[2026-01-25T22:55:58.838Z] INFO: Produtos listados
+[2026-01-25T22:55:58.851Z] INFO: Pedidos listados
+[2026-01-25T22:55:58.873Z] INFO: Clientes listados
+[2026-01-25T22:56:06.413Z] INFO: Banners carregados: 1
+[2026-01-25T22:56:08.446Z] INFO: Banners carregados: 1
+[2026-01-25T22:56:12.425Z] INFO: Banners carregados: 1
+[2026-01-25T22:56:46.271Z] INFO: Configuração salva com sucesso
+[2026-01-25T22:56:46.273Z] INFO: Logout bem-sucedido para sessão: d94e80354996c99de5063895764fb93ac48e572643ad936cbbc3828c02214aff
+[2026-01-25T22:56:53.633Z] INFO: Configuração salva com sucesso
+[2026-01-25T22:56:53.634Z] INFO: Login bem-sucedido para usuário: admin
+[2026-01-25T22:56:53.674Z] INFO: Dashboard carregado
+[2026-01-25T22:56:53.682Z] INFO: Produtos listados
+[2026-01-25T22:56:56.302Z] INFO: Configuração salva com sucesso
+[2026-01-25T22:56:56.303Z] INFO: Logout bem-sucedido para sessão: f811cf1386965bb5b39afbf324b34961b21c70a29db163b083f165ee76507128
+[2026-01-25T22:57:32.531Z] INFO: Configuração salva com sucesso
+[2026-01-25T22:57:32.533Z] INFO: Login bem-sucedido para usuário: admin
+[2026-01-25T22:57:32.586Z] INFO: Dashboard carregado
+[2026-01-25T22:57:32.595Z] INFO: Produtos listados
+[2026-01-25T22:57:45.495Z] INFO: Produtos listados
+[2026-01-25T22:57:45.508Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:57:45.515Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:57:45.521Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:57:45.529Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:57:45.537Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:57:45.544Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:57:45.551Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:57:52.649Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:57:57.353Z] INFO: Produto atualizado. ID: 25 {"nome":"calça social"}
+[2026-01-25T22:57:57.438Z] INFO: 1 tamanhos excluídos do produto 25
+[2026-01-25T22:57:57.528Z] INFO: Tamanho criado. ID: 38, Produto: 25
+[2026-01-25T22:57:59.020Z] INFO: Produtos listados
+[2026-01-25T22:57:59.032Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:57:59.041Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:57:59.050Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:57:59.056Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:57:59.067Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:57:59.072Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:57:59.081Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:58:01.208Z] INFO: Dashboard carregado
+[2026-01-25T22:58:01.217Z] INFO: Produtos listados
+[2026-01-25T22:58:31.229Z] INFO: Dashboard carregado
+[2026-01-25T22:58:31.235Z] INFO: Produtos listados
+[2026-01-25T22:58:38.051Z] INFO: Produtos listados
+[2026-01-25T22:58:38.063Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:58:38.069Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:58:38.076Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:58:38.083Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:58:38.091Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:58:38.098Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:58:38.105Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:58:44.186Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:58:58.112Z] INFO: Produto atualizado. ID: 1 {"nome":"Camiseta Básica Branca"}
+[2026-01-25T22:58:58.195Z] INFO: 3 tamanhos excluídos do produto 1
+[2026-01-25T22:58:58.279Z] INFO: Tamanho criado. ID: 39, Produto: 1
+[2026-01-25T22:58:58.356Z] INFO: Tamanho criado. ID: 40, Produto: 1
+[2026-01-25T22:58:58.432Z] INFO: Tamanho criado. ID: 41, Produto: 1
+[2026-01-25T22:58:59.920Z] INFO: Produtos listados
+[2026-01-25T22:58:59.933Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:58:59.939Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:58:59.947Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:58:59.953Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:58:59.960Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:58:59.967Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:58:59.973Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:59:05.353Z] INFO: Dashboard carregado
+[2026-01-25T22:59:05.361Z] INFO: Produtos listados
+[2026-01-25T22:59:28.434Z] INFO: Produtos listados
+[2026-01-25T22:59:28.446Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:59:28.453Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:59:28.462Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:59:28.469Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:59:28.477Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:59:28.484Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:59:28.491Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:59:30.136Z] INFO: Dashboard carregado
+[2026-01-25T22:59:30.142Z] INFO: Produtos listados
+[2026-01-25T22:59:39.142Z] INFO: Produtos listados
+[2026-01-25T22:59:39.156Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T22:59:39.162Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T22:59:39.169Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T22:59:39.175Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T22:59:39.182Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T22:59:39.189Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T22:59:39.196Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T22:59:42.023Z] INFO: Dashboard carregado
+[2026-01-25T22:59:42.029Z] INFO: Produtos listados
+[2026-01-25T23:00:00.373Z] INFO: Produtos listados
+[2026-01-25T23:00:00.388Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T23:00:00.394Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T23:00:00.400Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T23:00:00.407Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T23:00:00.414Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T23:00:00.420Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T23:00:00.426Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T23:00:11.416Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T23:00:24.047Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T23:00:44.461Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T23:03:07.893Z] INFO: Produtos listados
+[2026-01-25T23:03:07.996Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T23:03:08.005Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T23:03:08.015Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T23:03:08.026Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T23:03:08.038Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T23:03:08.047Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T23:03:08.059Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T23:03:26.982Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T23:03:31.247Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T23:03:38.923Z] INFO: Produto atualizado. ID: 22 {"nome":"tenisvaldo"}
+[2026-01-25T23:03:39.073Z] INFO: 3 tamanhos excluídos do produto 22
+[2026-01-25T23:03:39.158Z] INFO: Tamanho criado. ID: 42, Produto: 22
+[2026-01-25T23:03:39.238Z] INFO: Tamanho criado. ID: 43, Produto: 22
+[2026-01-25T23:03:39.312Z] INFO: Tamanho criado. ID: 44, Produto: 22
+[2026-01-25T23:03:41.180Z] INFO: Produtos listados
+[2026-01-25T23:03:41.195Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T23:03:41.203Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T23:03:41.218Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T23:03:41.231Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T23:03:41.246Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T23:03:41.257Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T23:03:41.269Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T23:03:42.938Z] INFO: Dashboard carregado
+[2026-01-25T23:03:42.946Z] INFO: Produtos listados
+[2026-01-25T23:03:53.101Z] INFO: Dashboard carregado
+[2026-01-25T23:03:53.110Z] INFO: Produtos listados
+[2026-01-25T23:04:12.954Z] INFO: Dashboard carregado
+[2026-01-25T23:04:12.965Z] INFO: Produtos listados
+[2026-01-25T23:04:33.582Z] INFO: Dashboard carregado
+[2026-01-25T23:04:33.592Z] INFO: Produtos listados
+[2026-01-25T23:04:36.579Z] INFO: Produtos listados
+[2026-01-25T23:04:36.592Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T23:04:36.602Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T23:04:36.611Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T23:04:36.620Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T23:04:36.627Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T23:04:36.636Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T23:04:36.644Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T23:04:38.517Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T23:04:47.863Z] INFO: Dashboard carregado
+[2026-01-25T23:04:47.870Z] INFO: Produtos listados
+[2026-01-25T23:05:17.868Z] INFO: Dashboard carregado
+[2026-01-25T23:05:17.877Z] INFO: Produtos listados
+[2026-01-25T23:05:28.703Z] INFO: Produtos listados
+[2026-01-25T23:05:28.720Z] INFO: Tamanhos listados para produto 1
+[2026-01-25T23:05:28.728Z] INFO: Tamanhos listados para produto 21
+[2026-01-25T23:05:28.735Z] INFO: Tamanhos listados para produto 22
+[2026-01-25T23:05:28.743Z] INFO: Tamanhos listados para produto 23
+[2026-01-25T23:05:28.753Z] INFO: Tamanhos listados para produto 24
+[2026-01-25T23:05:28.760Z] INFO: Tamanhos listados para produto 25
+[2026-01-25T23:05:28.766Z] INFO: Tamanhos listados para produto 26
+[2026-01-25T23:05:30.139Z] INFO: Clientes listados
+[2026-01-25T23:05:31.365Z] INFO: Clientes listados
+[2026-01-25T23:05:31.372Z] INFO: Produtos listados
+[2026-01-25T23:05:31.381Z] INFO: Pedidos listados
+[2026-01-25T23:05:31.424Z] INFO: Clientes listados
+[2026-01-25T23:05:34.726Z] INFO: Banners carregados: 1
+[2026-01-25T23:05:47.452Z] INFO: Clientes listados
+[2026-01-25T23:05:48.648Z] INFO: Dashboard carregado
+[2026-01-25T23:05:48.656Z] INFO: Produtos listados
+[2026-01-25T23:05:49.304Z] INFO: Clientes listados
+[2026-01-25T23:05:49.310Z] INFO: Produtos listados
+[2026-01-25T23:05:49.323Z] INFO: Pedidos listados
+[2026-01-25T23:05:49.346Z] INFO: Clientes listados
+[2026-01-25T23:05:51.565Z] INFO: Configuração salva com sucesso
+[2026-01-25T23:05:51.566Z] INFO: Logout bem-sucedido para sessão: 9769a1546cba6b5ff4afaef1be1e02f49ad2bb328b18b33b5b26224c761655ad
+[2026-01-25T23:05:58.764Z] WARN: Tentativa de login falha para usuário: admin
+[2026-01-25T23:05:58.766Z] ERROR: Erro no login "Usuário ou senha inválidos"
+[2026-01-25T23:05:58.767Z] ERROR: Erro no IPC auth:login "Usuário ou senha inválidos"
+[2026-01-25T23:06:04.104Z] INFO: Configuração salva com sucesso
+[2026-01-25T23:06:04.105Z] INFO: Login bem-sucedido para usuário: admin
+[2026-01-25T23:06:04.142Z] INFO: Dashboard carregado
+[2026-01-25T23:06:04.152Z] INFO: Produtos listados

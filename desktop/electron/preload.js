@@ -35,6 +35,14 @@ contextBridge.exposeInMainWorld('api', {
   // DASHBOARD
   obterDashboard: () => ipcRenderer.invoke('dashboard:obter'),
   vendasMes: () => ipcRenderer.invoke('dashboard:vendas-mes'),
-  estoqueDashboard: () => ipcRenderer.invoke('dashboard:estoque')
-});
+  estoqueDashboard: () => ipcRenderer.invoke('dashboard:estoque'),
 
+  // BANNERS
+  obterBanners: () => ipcRenderer.invoke('banners:obter'),
+  criarBanner: (banner) => ipcRenderer.invoke('banners:criar', banner),
+  atualizarBanner: (index, dados) => ipcRenderer.invoke('banners:atualizar', index, dados),
+  excluirBanner: (index) => ipcRenderer.invoke('banners:excluir', index),
+
+  // CONFIGURAÇÕES
+  alterarCredenciais: (dados) => ipcRenderer.invoke('config:alterar-credenciais', dados)
+});
