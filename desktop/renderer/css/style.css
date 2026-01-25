@@ -74,6 +74,7 @@ select.form-control:focus {
   border-color: #ffd84d;
   box-shadow: 0 0 0 3px rgba(255, 216, 77, 0.1), inset 0 2px 4px rgba(0, 0, 0, 0.3);
   background: #1a1a1a;
+  color: #fff;
 }
 
 input.form-control::placeholder {

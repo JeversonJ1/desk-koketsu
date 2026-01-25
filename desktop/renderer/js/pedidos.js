@@ -2,8 +2,24 @@
 // VARIÁVEIS GLOBAIS
 // ================================
 let produtos = [];
+let clientes = [];
 let carrinho = [];
 let pedidosRealizados = [];
+
+// ================================
+// CARREGAR CLIENTES
+// ================================
+async function carregarClientes() {
+  try {
+    clientes = await window.api.listarClientes();
+    const select = document.getElementById('clientePedido');
+    
+    select.innerHTML = '<option value="">Selecione um cliente...</option>' +
+      clientes.map(c => `<option value="${c.id_cliente}">${c.nome_clientes}</option>`).join('');
+  } catch (erro) {
+    console.error('Erro ao carregar clientes:', erro);
+  }
+}
 
 // ================================
 // CARREGAR PRODUTOS
@@ -167,35 +183,54 @@ function removerCarrinho(id) {
 document.getElementById('btnFinalizar').addEventListener('click', async () => {
   try {
     if (carrinho.length === 0) {
-      alert('Adicione produtos ao pedido');
+      alert('❌ Adicione produtos ao pedido');
+      return;
+    }
+    
+    const clienteId = parseInt(document.getElementById('clientePedido').value);
+    if (!clienteId) {
+      alert('❌ Selecione um cliente');
       return;
     }
     
     const total = carrinho.reduce((sum, item) => sum + (item.preco * item.quantidade), 0);
     
-    console.log('Finalizando pedido...');
-    await window.api.criarPedido({
-      itens: carrinho,
+    // Preparar itens para o pedido
+    const itens = carrinho.map(item => ({
+      produto_id: item.id,
+      quantidade: item.quantidade,
+      preco_unitario: item.preco
+    }));
+    
+    console.log('Finalizando pedido...', { clienteId, itens, total });
+    
+    const resultado = await window.api.criarPedido({
+      cliente_id: clienteId,
+      itens: itens,
       total: total
     });
     
     // Adicionar ao histórico local
+    const cliente = clientes.find(c => c.id_cliente === clienteId);
     pedidosRealizados.unshift({
-      id: Date.now(),
+      id: resultado.id,
       data: new Date().toLocaleString('pt-BR'),
+      cliente: cliente ? cliente.nome_clientes : 'Cliente',
       itens: carrinho.length,
       total: total
     });
     
     // Limpar carrinho
     carrinho = [];
+    document.getElementById('clientePedido').value = '';
     atualizarCarrinho();
     carregarHistorico();
+    carregarProdutos(); // Recarregar para atualizar estoque
     
-    alert('✓ Pedido realizado com sucesso!');
+    alert('✅ Pedido #' + resultado.id + ' realizado com sucesso!\n\nTotal: R$ ' + total.toFixed(2));
   } catch (erro) {
     console.error('Erro ao finalizar pedido:', erro);
-    alert('Erro ao finalizar pedido: ' + erro.message);
+    alert('❌ Erro ao finalizar pedido: ' + erro.message);
   }
 });
 
@@ -243,10 +278,16 @@ function carregarHistorico() {
   }
   
   container.innerHTML = pedidosRealizados.slice(0, 5).map(pedido => `
-    <div class="pedido-item">
-      <div class="pedido-item-data">${pedido.data}</div>
-      <div><strong>${pedido.itens} itens</strong></div>
-      <div class="pedido-item-valor">${pedido.total.toFixed(2)}</div>
+    <div class="pedido-item" style="border-bottom: 1px solid #333; padding: 12px 0;">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+        <strong style="color: #ffd84d;">#${pedido.id}</strong>
+        <span style="font-size: 11px; color: #888;">${pedido.data}</span>
+      </div>
+      ${pedido.cliente ? `<div style="font-size: 12px; color: #aaa; margin-bottom: 4px;">👤 ${pedido.cliente}</div>` : ''}
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 13px; color: #bbb;">${pedido.itens} ${pedido.itens === 1 ? 'item' : 'itens'}</span>
+        <strong style="color: #51cf66;">R$ ${pedido.total.toFixed(2)}</strong>
+      </div>
     </div>
   `).join('');
 }
@@ -256,6 +297,7 @@ function carregarHistorico() {
 // ================================
 document.addEventListener('DOMContentLoaded', () => {
   console.log('Página de pedidos carregando...');
+  carregarClientes();
   carregarProdutos();
   carregarHistorico();
 });

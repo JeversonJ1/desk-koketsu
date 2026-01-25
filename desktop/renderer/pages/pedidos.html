@@ -16,7 +16,9 @@
       <a href="dashboard.html">Dashboard</a>
       <a href="produtos.html">Produtos</a>
       <a href="clientes.html">Clientes</a>
-      <a href="login.html">Sair</a>
+      <a class="active" href="pedidos.html">🛒 Pedidos</a>
+      <a href="configuracoes.html">⚙️ Configurações</a>
+      <a href="#" data-logout>Sair</a>
     </nav>
   </aside>
 
@@ -49,6 +51,14 @@
       <div class="col-lg-4">
         <div class="card position-sticky" style="top: 20px;">
           <h3>🛒 Carrinho</h3>
+          
+          <!-- SELECIONAR CLIENTE -->
+          <div class="mb-3">
+            <label style="font-size: 12px; color: #bbb; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; display: block;">👤 Cliente</label>
+            <select id="clientePedido" class="form-control">
+              <option value="">Selecione um cliente...</option>
+            </select>
+          </div>
           
           <!-- ITENS CARRINHO -->
           <div id="carrinhoItems" class="carrinho-container">

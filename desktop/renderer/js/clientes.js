@@ -353,10 +353,39 @@ window.editarCliente = async function(id) {
 
   clienteEditando = id;
 
+  // Preencher campos básicos
   document.getElementById('nome').value = cliente.nome_clientes;
   document.getElementById('email').value = cliente.email_clientes;
   document.getElementById('telefone').value = cliente.telefone_clientes || '';
-  document.getElementById('endereco').value = cliente.endereco_clientes || '';
+  document.getElementById('cpf').value = cliente.cpf_clientes || '';
+  document.getElementById('dataNascimento').value = cliente.data_nascimento || '';
+  document.getElementById('cep').value = cliente.cep_clientes || '';
+  document.getElementById('cidade').value = cliente.cidade_clientes || '';
+  document.getElementById('observacoes').value = cliente.observacoes_clientes || '';
+  
+  // Tentar extrair partes do endereço completo
+  const enderecoCompleto = cliente.endereco_clientes || '';
+  const partesEndereco = enderecoCompleto.split(',').map(p => p.trim());
+  
+  if (partesEndereco.length > 0) {
+    document.getElementById('endereco').value = partesEndereco[0] || '';
+  }
+  
+  // Tentar extrair número (formato "nº 123")
+  const parteNumero = partesEndereco.find(p => p.startsWith('nº'));
+  if (parteNumero) {
+    document.getElementById('numero').value = parteNumero.replace('nº', '').trim();
+  }
+  
+  // Bairro geralmente é a penúltima parte (se houver número) ou segunda parte
+  if (partesEndereco.length >= 3) {
+    const indexNumero = partesEndereco.findIndex(p => p.startsWith('nº'));
+    if (indexNumero > 0 && indexNumero < partesEndereco.length - 1) {
+      document.getElementById('bairro').value = partesEndereco[indexNumero + 1] || '';
+    } else if (partesEndereco.length >= 2) {
+      document.getElementById('bairro').value = partesEndereco[partesEndereco.length - 2] || '';
+    }
+  }
 
   modalTitulo.textContent = '✏️ Editar Cliente';
   modal.style.display = 'flex';
@@ -420,7 +449,7 @@ async function salvarClienteHandler() {
     };
 
     if (clienteEditando) {
-      await window.api.atualizarCliente({ id: clienteEditando, ...dados });
+      await window.api.atualizarCliente({ id_cliente: clienteEditando, ...dados });
       console.log('Cliente atualizado:', clienteEditando);
     } else {
       await window.api.criarCliente(dados);

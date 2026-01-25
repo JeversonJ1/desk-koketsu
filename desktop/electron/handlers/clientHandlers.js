@@ -67,8 +67,13 @@ function registerClientHandlers() {
         ...dados.clientes[index],
         nome_clientes: cliente.nome_clientes.trim(),
         email_clientes: cliente.email_clientes.toLowerCase().trim(),
-        telefone_clientes: cliente.telefone_clientes.trim(),
-        endereco_clientes: cliente.endereco_clientes.trim(),
+        telefone_clientes: cliente.telefone_clientes ? cliente.telefone_clientes.trim() : '',
+        endereco_clientes: cliente.endereco_clientes ? cliente.endereco_clientes.trim() : '',
+        cpf_clientes: cliente.cpf_clientes ? cliente.cpf_clientes.trim() : '',
+        data_nascimento: cliente.data_nascimento || '',
+        cep_clientes: cliente.cep_clientes ? cliente.cep_clientes.trim() : '',
+        cidade_clientes: cliente.cidade_clientes ? cliente.cidade_clientes.trim() : '',
+        observacoes_clientes: cliente.observacoes_clientes ? cliente.observacoes_clientes.trim() : '',
         atualizadoEm: new Date().toISOString()
       };
 
