@@ -21,6 +21,37 @@
       "username": "admin",
       "createdAt": "2026-01-25T23:06:04.103Z",
       "expiresAt": "2026-01-26T23:06:04.103Z"
+    },
+    "7a34ef927cefe6a267c03278f66cd1109f5f6023d9060b97b3811de99caae970": {
+      "sessionId": "7a34ef927cefe6a267c03278f66cd1109f5f6023d9060b97b3811de99caae970",
+      "username": "admin",
+      "createdAt": "2026-01-26T12:47:42.229Z",
+      "expiresAt": "2026-01-27T12:47:42.229Z"
     }
+  },
+  "app": {
+    "theme": "light",
+    "autoStart": false,
+    "showInTray": true,
+    "closeToTray": false,
+    "language": "pt-BR"
+  },
+  "api": {
+    "baseUrl": "http://localhost:8000/api",
+    "timeout": 30000,
+    "retryAttempts": 3
+  },
+  "logs": {
+    "enabled": true,
+    "level": "info",
+    "maxFiles": 10,
+    "maxSizeMB": 5
+  },
+  "backup": {
+    "enabled": true,
+    "autoBackup": true,
+    "frequency": "daily",
+    "maxBackups": 7,
+    "path": "C:\\Users\\jeverson.bsantos\\AppData\\Roaming\\desk-koketsu\\backups"
   }
 }

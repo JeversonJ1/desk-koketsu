@@ -56,7 +56,10 @@
     <!-- CONTAINER DE ABAS -->
     <div class="tabs-container" style="margin-bottom: 30px;">
       <div class="tabs-buttons" style="display: flex; gap: 12px; border-bottom: 2px solid #333; margin-bottom: 20px;">
-        <button class="tab-btn active" data-tab="credenciais" style="padding: 12px 24px; background: transparent; border: none; color: #fff; font-weight: 600; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.3s;" onclick="mudarAba('credenciais')" onmouseover="this.style.color='#ffc107';" onmouseout="this.style.color='#fff';">
+        <button class="tab-btn active" data-tab="aplicativo" style="padding: 12px 24px; background: transparent; border: none; color: #fff; font-weight: 600; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.3s;" onclick="mudarAba('aplicativo')" onmouseover="this.style.color='#ffc107';" onmouseout="this.style.color='#fff';">
+          Aplicativo
+        </button>
+        <button class="tab-btn" data-tab="credenciais" style="padding: 12px 24px; background: transparent; border: none; color: #fff; font-weight: 600; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.3s;" onclick="mudarAba('credenciais')" onmouseover="this.style.color='#ffc107';" onmouseout="this.style.color='#fff';">
           Credenciais
         </button>
         <button class="tab-btn" data-tab="banners" style="padding: 12px 24px; background: transparent; border: none; color: #fff; font-weight: 600; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.3s;" onclick="mudarAba('banners')" onmouseover="this.style.color='#ffc107';" onmouseout="this.style.color='#fff';">
@@ -65,8 +68,114 @@
       </div>
     </div>
 
+    <!-- ABA APLICATIVO -->
+    <div id="aplicativo" class="tab-content" style="display: block;">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="card" style="background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); border: 1px solid #333; padding: 30px; border-radius: 12px; margin-bottom: 20px;">
+            <h3 style="color: #ffc107; margin-bottom: 25px;">
+              ⚙️ Configurações Gerais
+            </h3>
+            
+            <form id="formApp">
+              <!-- Aparência -->
+              <div class="mb-4">
+                <label class="form-label" style="color: #fff; font-weight: 600;">Tema da Interface</label>
+                <select id="appTheme" class="form-select" style="background: #0f0f0f; border: 2px solid #333; color: #fff; padding: 12px 15px; border-radius: 8px;">
+                  <option value="dark">Escuro (Padrão)</option>
+                  <option value="light">Claro</option>
+                </select>
+              </div>
+
+              <!-- Auto-start -->
+              <div class="mb-4">
+                <div class="form-check" style="padding-left: 0;">
+                  <label style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
+                    <input type="checkbox" id="appAutoStart" style="width: 20px; height: 20px; cursor: pointer;">
+                    <span style="color: #fff; font-weight: 600;">Iniciar automaticamente com o Windows</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Tray -->
+              <div class="mb-4">
+                <div class="form-check" style="padding-left: 0;">
+                  <label style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
+                    <input type="checkbox" id="appShowInTray" style="width: 20px; height: 20px; cursor: pointer;">
+                    <span style="color: #fff; font-weight: 600;">Mostrar ícone na bandeja do sistema</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Close to Tray -->
+              <div class="mb-4">
+                <div class="form-check" style="padding-left: 0;">
+                  <label style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
+                    <input type="checkbox" id="appCloseToTray" style="width: 20px; height: 20px; cursor: pointer;">
+                    <span style="color: #fff; font-weight: 600;">Minimizar para bandeja ao fechar</span>
+                  </label>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-gold w-100" style="padding: 12px; font-weight: 600; margin-top: 10px;">Salvar Configurações</button>
+            </form>
+          </div>
+
+          <!-- Backup -->
+          <div class="card" style="background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); border: 1px solid #333; padding: 30px; border-radius: 12px; margin-bottom: 20px;">
+            <h3 style="color: #ffc107; margin-bottom: 25px;">
+              💾 Configurações de Backup
+            </h3>
+            
+            <form id="formBackup">
+              <div class="mb-4">
+                <div class="form-check" style="padding-left: 0;">
+                  <label style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
+                    <input type="checkbox" id="backupEnabled" style="width: 20px; height: 20px; cursor: pointer;">
+                    <span style="color: #fff; font-weight: 600;">Habilitar backups</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <div class="form-check" style="padding-left: 0;">
+                  <label style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
+                    <input type="checkbox" id="backupAutoBackup" style="width: 20px; height: 20px; cursor: pointer;">
+                    <span style="color: #fff; font-weight: 600;">Backup automático</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label" style="color: #fff; font-weight: 600;">Frequência</label>
+                <select id="backupFrequency" class="form-select" style="background: #0f0f0f; border: 2px solid #333; color: #fff; padding: 12px 15px; border-radius: 8px;">
+                  <option value="daily">Diário</option>
+                  <option value="weekly">Semanal</option>
+                  <option value="monthly">Mensal</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label" style="color: #fff; font-weight: 600;">Máximo de Backups</label>
+                <input type="number" id="backupMaxBackups" class="form-control" min="1" max="50" placeholder="7" style="background: #0f0f0f; border: 2px solid #333; color: #fff; padding: 12px 15px; border-radius: 8px;">
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label" style="color: #fff; font-weight: 600;">Caminho de Backup</label>
+                <input type="text" id="backupPath" class="form-control" placeholder="Caminho do diretório" readonly style="background: #0f0f0f; border: 2px solid #333; color: #888; padding: 12px 15px; border-radius: 8px; cursor: not-allowed;">
+                <small style="color: #888; font-size: 12px;">Backups são salvos em: AppData\Roaming\desk-koketsu\backups</small>
+              </div>
+
+              <button type="submit" class="btn btn-gold w-100" style="padding: 12px; font-weight: 600; margin-top: 10px;">Salvar Backup</button>
+              <button type="button" onclick="resetarConfiguracoes()" class="btn w-100" style="padding: 12px; font-weight: 600; margin-top: 10px; background: #ff4444; color: white; border: none; border-radius: 8px;">Resetar Todas as Configurações</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- ABA CREDENCIAIS -->
-    <div id="credenciais" class="tab-content" style="display: block;">
+    <div id="credenciais" class="tab-content" style="display: none;">
       <div class="row">
         <div class="col-lg-6">
           <div class="card" style="background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); border: 1px solid #333; padding: 30px; border-radius: 12px;">

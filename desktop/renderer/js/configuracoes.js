@@ -137,11 +137,63 @@ function mudarAba(abaName) {
     botao.style.borderBottomColor = '#ffc107';
   }
   
-  // Carregar banners ao abrir aba
+  // Carregar dados ao abrir aba
   if (abaName === 'banners') {
     carregarBanners();
+  } else if (abaName === 'aplicativo') {
+    carregarConfiguracoes();
   }
 }
+
+// ================================
+// CARREGAR CONFIGURAÇÕES
+// ================================
+async function carregarConfiguracoes() {
+  try {
+    const config = await window.api.obterConfig();
+    
+    // App
+    if (config.app) {
+      document.getElementById('appTheme').value = config.app.theme || 'dark';
+      document.getElementById('appAutoStart').checked = config.app.autoStart || false;
+      document.getElementById('appShowInTray').checked = config.app.showInTray !== false;
+      document.getElementById('appCloseToTray').checked = config.app.closeToTray || false;
+    }
+    
+    // Backup
+    if (config.backup) {
+      document.getElementById('backupEnabled').checked = config.backup.enabled !== false;
+      document.getElementById('backupAutoBackup').checked = config.backup.autoBackup !== false;
+      document.getElementById('backupFrequency').value = config.backup.frequency || 'daily';
+      document.getElementById('backupMaxBackups').value = config.backup.maxBackups || 7;
+      document.getElementById('backupPath').value = config.backup.path || '';
+    }
+  } catch (err) {
+    console.error('Erro ao carregar configurações:', err);
+    mostrarNotificacao('Erro ao carregar configurações', 'erro');
+  }
+}
+
+// ================================
+// RESETAR CONFIGURAÇÕES
+// ================================
+async function resetarConfiguracoes() {
+  if (!confirm('Tem certeza que deseja resetar TODAS as configurações para os valores padrão?\n\nIsso NÃO afetará suas credenciais de login.')) {
+    return;
+  }
+  
+  try {
+    await window.api.resetarConfig();
+    mostrarNotificacao('Configurações resetadas com sucesso', 'sucesso');
+    carregarConfiguracoes();
+  } catch (err) {
+    console.error('Erro ao resetar configurações:', err);
+    mostrarNotificacao('Erro ao resetar: ' + err.message, 'erro');
+  }
+}
+
+// Expor função globalmente
+window.resetarConfiguracoes = resetarConfiguracoes;
 
 // ================================
 // CARREGAR BANNERS EXISTENTES
@@ -483,3 +535,60 @@ function limparFormBanner() {
   delete formBanners.dataset.modoEdicao;
   delete formBanners.dataset.bannerIndex;
 }
+
+// ================================
+// FORMULÁRIO APP
+// ================================
+const formApp = document.getElementById('formApp');
+if (formApp) {
+  formApp.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    try {
+      const dados = {
+        theme: document.getElementById('appTheme').value,
+        autoStart: document.getElementById('appAutoStart').checked,
+        showInTray: document.getElementById('appShowInTray').checked,
+        closeToTray: document.getElementById('appCloseToTray').checked
+      };
+      
+      await window.api.atualizarConfigApp(dados);
+      mostrarNotificacao('Configurações do aplicativo salvas', 'sucesso');
+    } catch (err) {
+      console.error('Erro ao salvar config app:', err);
+      mostrarNotificacao('Erro: ' + err.message, 'erro');
+    }
+  });
+}
+
+// ================================
+// FORMULÁRIO BACKUP
+// ================================
+const formBackup = document.getElementById('formBackup');
+if (formBackup) {
+  formBackup.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    try {
+      const dados = {
+        enabled: document.getElementById('backupEnabled').checked,
+        autoBackup: document.getElementById('backupAutoBackup').checked,
+        frequency: document.getElementById('backupFrequency').value,
+        maxBackups: parseInt(document.getElementById('backupMaxBackups').value)
+      };
+      
+      await window.api.atualizarConfigBackup(dados);
+      mostrarNotificacao('Configurações de backup salvas', 'sucesso');
+    } catch (err) {
+      console.error('Erro ao salvar config backup:', err);
+      mostrarNotificacao('Erro: ' + err.message, 'erro');
+    }
+  });
+}
+
+// ================================
+// CARREGAR CONFIGURAÇÕES AO INICIAR
+// ================================
+document.addEventListener('DOMContentLoaded', () => {
+  carregarConfiguracoes();
+});

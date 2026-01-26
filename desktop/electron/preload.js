@@ -44,5 +44,11 @@ contextBridge.exposeInMainWorld('api', {
   excluirBanner: (index) => ipcRenderer.invoke('banners:excluir', index),
 
   // CONFIGURAÇÕES
-  alterarCredenciais: (dados) => ipcRenderer.invoke('config:alterar-credenciais', dados)
+  alterarCredenciais: (dados) => ipcRenderer.invoke('config:alterar-credenciais', dados),
+  obterConfig: () => ipcRenderer.invoke('config:obter'),
+  atualizarConfigApp: (dados) => ipcRenderer.invoke('config:atualizar-app', dados),
+  atualizarConfigApi: (dados) => ipcRenderer.invoke('config:atualizar-api', dados),
+  atualizarConfigLogs: (dados) => ipcRenderer.invoke('config:atualizar-logs', dados),
+  atualizarConfigBackup: (dados) => ipcRenderer.invoke('config:atualizar-backup', dados),
+  resetarConfig: () => ipcRenderer.invoke('config:resetar')
 });
