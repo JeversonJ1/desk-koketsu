@@ -84,7 +84,8 @@ class Validator {
   static validateOrder(order) {
     const errors = [];
 
-    if (!this._validate('id', order.cliente_id)) {
+    // Cliente é opcional - pode ser null para clientes não cadastrados
+    if (order.cliente_id && !this._validate('id', order.cliente_id)) {
       errors.push('ID do cliente inválido');
     }
 

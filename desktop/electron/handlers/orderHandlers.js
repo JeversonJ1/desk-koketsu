@@ -17,8 +17,9 @@ function registerOrderHandlers() {
 
   ipcMain.handle('pedidos:criar', (e, pedido) => {
     try {
-      if (!pedido.cliente_id || !Array.isArray(pedido.itens) || pedido.itens.length === 0) {
-        throw new Error('Cliente e itens são obrigatórios');
+      // Cliente é opcional - pode ser null para clientes não cadastrados
+      if (!Array.isArray(pedido.itens) || pedido.itens.length === 0) {
+        throw new Error('Itens são obrigatórios');
       }
 
       const dados = carregarDados();

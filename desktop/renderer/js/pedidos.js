@@ -328,12 +328,9 @@ document.getElementById('btnFinalizar').addEventListener('click', async () => {
       return;
     }
     
-    const clienteId = parseInt(document.getElementById('clientePedido').value);
-    if (!clienteId) {
-      mostrarNotificacao('Selecione um cliente', 'aviso');
-      document.getElementById('clientePedido').focus();
-      return;
-    }
+    // Cliente é opcional - pode ser null para clientes não cadastrados
+    const clienteIdValue = document.getElementById('clientePedido').value;
+    const clienteId = clienteIdValue ? parseInt(clienteIdValue) : null;
     
     // Calcular total com desconto
     const subtotalValor = carrinho.reduce((sum, item) => sum + (item.preco * item.quantidade), 0);
@@ -373,11 +370,12 @@ document.getElementById('btnFinalizar').addEventListener('click', async () => {
     });
     
     // Adicionar ao histórico local
-    const cliente = clientes.find(c => c.id_cliente === clienteId);
+    const cliente = clienteId ? clientes.find(c => c.id_cliente === clienteId) : null;
     pedidosRealizados.unshift({
       id: resultado.id,
-      data: new Date().toLocaleString('pt-BR'),
-      cliente: cliente ? cliente.nome_clientes : 'Cliente',
+      criadoEm: new Date().toISOString(),
+      cliente_id: clienteId,
+      cliente: cliente ? cliente.nome_clientes : 'Não cadastrado',
       itens: carrinho.length,
       total: total
     });
@@ -534,8 +532,8 @@ async function carregarHistorico() {
     
     container.innerHTML = ultimosPedidos.map(pedido => {
       const cliente = clientesDB.find(c => c.id === pedido.cliente_id);
-      const nomeCliente = cliente ? cliente.nome : 'Cliente não encontrado';
-      const data = new Date(pedido.data).toLocaleString('pt-BR', {
+      const nomeCliente = pedido.cliente_id ? (cliente ? cliente.nome_clientes : 'Cliente não encontrado') : 'Não cadastrado';
+      const data = new Date(pedido.criadoEm).toLocaleString('pt-BR', {
         day: '2-digit',
         month: '2-digit',
         year: 'numeric',
