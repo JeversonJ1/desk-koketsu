@@ -77,24 +77,6 @@ class LoginManager {
 
 // Inicializar quando o DOM estiver pronto
 document.addEventListener('DOMContentLoaded', () => {
-  // Verificar se já há uma sessão válida
-  const sessionId = localStorage.getItem('sessionId');
-  if (sessionId) {
-    window.api.validateSession(sessionId).then(result => {
-      if (result.valido) {
-        // Sessão ainda válida, redirecionar para dashboard
-        window.location.href = 'dashboard.html';
-      } else {
-        // Sessão expirada, limpar localStorage
-        localStorage.removeItem('sessionId');
-        localStorage.removeItem('username');
-        new LoginManager();
-      }
-    }).catch(err => {
-      console.error('Erro ao validar sessão:', err);
-      new LoginManager();
-    });
-  } else {
-    new LoginManager();
-  }
+  // Sempre iniciar pela tela de login
+  new LoginManager();
 });
