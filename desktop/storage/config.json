@@ -21,6 +21,12 @@
       "username": "admin",
       "createdAt": "2026-01-25T23:06:04.103Z",
       "expiresAt": "2026-01-26T23:06:04.103Z"
+    },
+    "19a3c09ea6dc8ad4df38627e2e9c067e55b4cf05da5c9ae773ed76df06772f8e": {
+      "sessionId": "19a3c09ea6dc8ad4df38627e2e9c067e55b4cf05da5c9ae773ed76df06772f8e",
+      "username": "admin",
+      "createdAt": "2026-01-28T18:34:09.563Z",
+      "expiresAt": "2026-01-29T18:34:09.563Z"
     }
   },
   "app": {

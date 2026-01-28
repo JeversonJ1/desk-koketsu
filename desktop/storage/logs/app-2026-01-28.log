@@ -7,3 +7,75 @@
 [2026-01-28T11:19:59.188Z] INFO: Produtos listados
 [2026-01-28T11:20:05.266Z] INFO: Configuração salva com sucesso
 [2026-01-28T11:20:05.269Z] INFO: Logout bem-sucedido para sessão: 54e8aa18558e05e1078f2e7e805c05a173eb1ba8053187343350799acc20ea75
+[2026-01-28T18:34:00.778Z] INFO: Aplicação Koketsu Desktop iniciada
+[2026-01-28T18:34:00.896Z] INFO: Handlers de banners registrados
+[2026-01-28T18:34:00.897Z] INFO: Handlers de configurações registrados
+[2026-01-28T18:34:00.898Z] INFO: Todos os handlers IPC registrados
+[2026-01-28T18:34:01.033Z] INFO: Janela principal criada
+[2026-01-28T18:34:09.564Z] INFO: Configuração salva com sucesso
+[2026-01-28T18:34:09.565Z] INFO: Login bem-sucedido para usuário: admin
+[2026-01-28T18:34:09.874Z] INFO: Dashboard carregado
+[2026-01-28T18:34:09.889Z] INFO: Produtos listados
+[2026-01-28T18:34:39.857Z] INFO: Dashboard carregado
+[2026-01-28T18:34:39.888Z] INFO: Produtos listados
+[2026-01-28T18:35:09.855Z] INFO: Dashboard carregado
+[2026-01-28T18:35:09.921Z] INFO: Produtos listados
+[2026-01-28T18:35:39.845Z] INFO: Dashboard carregado
+[2026-01-28T18:35:39.890Z] INFO: Produtos listados
+[2026-01-28T18:36:09.848Z] INFO: Dashboard carregado
+[2026-01-28T18:36:09.896Z] INFO: Produtos listados
+[2026-01-28T18:36:39.855Z] INFO: Dashboard carregado
+[2026-01-28T18:36:39.900Z] INFO: Produtos listados
+[2026-01-28T18:37:06.608Z] INFO: Produtos listados
+[2026-01-28T18:37:06.635Z] INFO: Tamanhos listados para produto 1
+[2026-01-28T18:37:06.651Z] INFO: Tamanhos listados para produto 21
+[2026-01-28T18:37:06.666Z] INFO: Tamanhos listados para produto 22
+[2026-01-28T18:37:06.681Z] INFO: Tamanhos listados para produto 23
+[2026-01-28T18:37:06.692Z] INFO: Tamanhos listados para produto 24
+[2026-01-28T18:37:06.705Z] INFO: Tamanhos listados para produto 25
+[2026-01-28T18:37:06.719Z] INFO: Tamanhos listados para produto 26
+[2026-01-28T18:37:12.676Z] INFO: Clientes listados
+[2026-01-28T18:37:12.687Z] INFO: Produtos listados
+[2026-01-28T18:37:12.709Z] INFO: Pedidos listados
+[2026-01-28T18:37:12.770Z] INFO: Clientes listados
+[2026-01-28T18:37:21.099Z] INFO: Clientes listados
+[2026-01-28T18:37:23.217Z] INFO: Clientes listados
+[2026-01-28T18:37:23.233Z] INFO: Produtos listados
+[2026-01-28T18:37:23.256Z] INFO: Pedidos listados
+[2026-01-28T18:37:23.290Z] INFO: Clientes listados
+[2026-01-28T18:37:31.578Z] INFO: Clientes listados
+[2026-01-28T18:37:31.591Z] INFO: Produtos listados
+[2026-01-28T18:37:31.616Z] INFO: Pedidos listados
+[2026-01-28T18:37:31.647Z] INFO: Clientes listados
+[2026-01-28T18:37:33.620Z] INFO: Produtos listados
+[2026-01-28T18:37:33.642Z] INFO: Tamanhos listados para produto 1
+[2026-01-28T18:37:33.660Z] INFO: Tamanhos listados para produto 21
+[2026-01-28T18:37:33.675Z] INFO: Tamanhos listados para produto 22
+[2026-01-28T18:37:33.692Z] INFO: Tamanhos listados para produto 23
+[2026-01-28T18:37:33.705Z] INFO: Tamanhos listados para produto 24
+[2026-01-28T18:37:33.725Z] INFO: Tamanhos listados para produto 25
+[2026-01-28T18:37:33.809Z] INFO: Tamanhos listados para produto 26
+[2026-01-28T18:37:34.602Z] INFO: Dashboard carregado
+[2026-01-28T18:37:34.619Z] INFO: Produtos listados
+[2026-01-28T18:38:04.855Z] INFO: Dashboard carregado
+[2026-01-28T18:38:04.889Z] INFO: Produtos listados
+[2026-01-28T18:38:34.850Z] INFO: Dashboard carregado
+[2026-01-28T18:38:34.883Z] INFO: Produtos listados
+[2026-01-28T18:39:04.844Z] INFO: Dashboard carregado
+[2026-01-28T18:39:04.892Z] INFO: Produtos listados
+[2026-01-28T18:39:34.850Z] INFO: Dashboard carregado
+[2026-01-28T18:39:34.877Z] INFO: Produtos listados
+[2026-01-28T18:40:04.851Z] INFO: Dashboard carregado
+[2026-01-28T18:40:04.879Z] INFO: Produtos listados
+[2026-01-28T18:40:34.852Z] INFO: Dashboard carregado
+[2026-01-28T18:40:34.923Z] INFO: Produtos listados
+[2026-01-28T18:41:04.859Z] INFO: Dashboard carregado
+[2026-01-28T18:41:04.913Z] INFO: Produtos listados
+[2026-01-28T18:41:53.854Z] INFO: Dashboard carregado
+[2026-01-28T18:41:53.875Z] INFO: Produtos listados
+[2026-01-28T18:42:53.851Z] INFO: Dashboard carregado
+[2026-01-28T18:42:53.878Z] INFO: Produtos listados
+[2026-01-28T18:43:53.855Z] INFO: Dashboard carregado
+[2026-01-28T18:43:53.892Z] INFO: Produtos listados
+[2026-01-28T18:44:13.173Z] INFO: Dashboard carregado
+[2026-01-28T18:44:13.194Z] INFO: Produtos listados
