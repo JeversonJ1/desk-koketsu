@@ -1,6 +1,15 @@
 <?php
 namespace App\Koketsu;
 require_once __DIR__ . '/../vendor/autoload.php';
+
+// Carregar variáveis de ambiente
+if (file_exists(__DIR__ . '/.env')) {
+    $env = parse_ini_file(__DIR__ . '/.env');
+    foreach ($env as $key => $value) {
+        $_ENV[$key] = $value;
+    }
+}
+
 if (!isset($_SESSION)) {
   session_start();
  }
@@ -10,6 +19,14 @@ use Bramus\Router\Router;
 
 $router = new Router();
 $router->setNamespace('\App\Koketsu\Controles');
+
+// Rotas de banco de dados
+$router->get('/api/database/testar', 'DatabaseController@testarConexao');
+$router->get('/api/database/produtos', 'DatabaseController@getProdutos');
+$router->get('/api/database/clientes', 'DatabaseController@getClientes');
+$router->get('/api/database/pedidos', 'DatabaseController@getPedidos');
+$router->get('/api/database/categorias', 'DatabaseController@getCategorias');
+
 $router->get('/backend/relatorios', 'RelatoriosController@exibirRelatorios');
 $router->get('/backend/register', 'AuthController@register');
 $router->get('/admin/relatorios', 'RelatoriosController@index');
