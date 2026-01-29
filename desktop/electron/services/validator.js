@@ -46,7 +46,15 @@ class Validator {
       errors.push('Estoque deve ser um número não-negativo');
     }
 
-    if (product.categoria && !this._validate('string', product.categoria, 1, 50)) {
+    const categoria = product.categoria;
+    const categoriaValida =
+      categoria === undefined ||
+      categoria === null ||
+      categoria === '' ||
+      this._validate('string', categoria, 1, 50) ||
+      this._validate('id', categoria);
+
+    if (!categoriaValida) {
       errors.push('Categoria inválida');
     }
 
